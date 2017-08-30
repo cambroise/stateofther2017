@@ -1,0 +1,91 @@
+# Blogdown pour créer un site
+
+## Principes de blogdown
+
+blogdown permet de gérer un site web à partir de pages statiques 
+en markdown ou Rmarkdown. Le package R utilise le générateur de site 
+`Hugo`. 
+
+Les fichiers du site sont écrits dans le répertoire `content` et copiés 
+pour devenir visible dans le répertoire `public` en passant par le répertoire `static`. 
+
+##  Étapes 
+
+### Préliminaires
+
+#### Remarque MacOSX
+ Commencer par installer `homebrew`  https://brew.sh
+
+#### Outils de base
+  - Installer une version supérieure à 1.1.350
+  - Installer le package `blogdown` et `Hugo`
+
+```{r echo=TRUE, eval=FALSE}
+install.packages('blogdown')
+library('blogdown')
+install_hugo()
+```
+
+### Créer le projet par RStudio
+
+  - New project > New Directory > Website using blogdown
+  - Ne pas décocher "install hugo automatically"
+
+### Créer le post `_index.md`  
+  - Le post doit être dans le répertoire principal (dégager "post"). Ce post sera la page d'accueil qui deviendra index.html dans le répertoire `public`
+
+### Visualisation du site web
+  - pour visualiser le site web, nous avons utilisé la commande `Server Site` du menu `Addins` proposé par `blogdown
+
+### Créer des pages additionnelles
+
+  - créer un post dans le répertoire principal
+  - le nom du fichier ne doit pas comporter de majuscule
+  - choisir l'extension 
+  - Les hyperliens classiques `markdown` entre fichiers fonctionnent
+
+#### Exemple
+
+Création d'un lien vers le fichier `blogdown-pour-creer-un-site.Rmarkdown`
+```
+[Notre expérience blogdown](blogdown-pour-creer-un-site)
+```
+
+###  Gestion des images
+
+#### Inclusion d'une images à la taille voulue
+
+  - les images sont stockées dans un sous  répertoire du répertoire `static`. Dans l'exemple qui suit le répertoire des images est `/static/images-markdown/` 
+  - pour éviter les messages d'erreurs liés à l'édition du markdown, nous avons ajouté un champ `resource-files`dans le YAML
+
+#### Exemple
+
+```
+---
+title: Introduction à Rmarkdown
+author: ''
+date: '2017-08-29'
+resource_files:
+  - ../static/
+slug: introduction-a-rmarkdown
+categories: []
+tags: []
+---
+```  
+
+Les images sont alors incluses comme suit:
+
+
+````python
+`r ''````{r,  out.width="50px", echo=TRUE, fig.show='hide'}
+knitr::include_graphics("/images-markdown/ExempleMdFile.png", 
+                          auto_pdf = TRUE, dpi = NA)
+```
+````
+
+
+### Reste à faire
+
+  - publication en ligne
+  - changement de thème ou personnalisation du thème par défaut
+  

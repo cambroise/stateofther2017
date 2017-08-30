@@ -1,0 +1,126 @@
+# RMarkdown {#RMarkdown}
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, background = 'gray', cache=TRUE, include=TRUE, eval=TRUE)
+```
+
+##  RMarkdown pour quoi faire ? {#pourquoi}
+
+### Automatisation de la production de document scientifique
+
+Dans un contexte de science reproductible, produire
+
+  - Présentation, article, notes de cours, livre, ...
+  - Code
+  - Données
+
+sous la forme de documents PDF, HTML, MS Word etc ... 
+
+Site web : <http://rmarkdown.rstudio.com>
+
+
+## Comment ça marche
+
+### Un exemple de fichier .Rmd : ce document {.smaller}
+
+![Exemple d'un document RMarkdown](./images/ExempleMdFile.png)
+
+```{r,  out.width="50px", echo=FALSE, fig.show='asis'}
+knitr::include_graphics("./images/ExempleMdFile.png", auto_pdf = TRUE, dpi = NA)
+```
+
+
+### Schéma conceptuel 
+
+![Processus de production de documents](./images/RMarkdownFlow.png)
+  
+### Markdown 
+Un langage à balises très simple (version simplifiée de html par exemple)
+
+#### Exemple
+```
+## Heading
+
+### Sub-heading
+#### Another deeper heading
+ Paragraphs are separated
+by a blank line.
+```
+### Markdown Cheatsheet
+Tout le détail (rapide !) 
+
+![Détails sur Markdown](./images/RMarkdownF2.png)
+
+### Pandoc
+C'est un convertisseur de format de documents. Il sait 
+
+- prendre un document d'un format x pour le passer en Markdown étendu
+- prendre un document Markdown étendu pour le passer en un format y
+
+De fait il peut passer d'un format x à un format y
+
+<https://pandoc.org/MANUAL.pdf>
+
+### RMarkdown
+
+C'est un document pandoc avec des balises spécifiques R. 
+<http://rmarkdown.rstudio.com/lesson-1.html>
+
+
+### De RMarkdown à un document finalisé avec knitr
+
+Le bouton knit effectue les opérations suivantes :
+
+  1. Extraire la partie Markdown texte
+  2. Executer le code R pour produire les sorties demandées
+  3. Intégrer les sorties précédentes dans un document html, word ou pdf
+
+
+## Un document RMarkdown à la loupe
+
+### Entete du document : YAML 
+
+![Un exemple d'entête de fichier RMarkdown](./images/HeaderYAML.png)
+
+### Options globales pour le code R
+
+Les options du code R du document peuvent être spécifiées par défaut 
+![Gérer les options globalement](./images/GlobalOptions.png)
+
+
+### Code Chunk 
+````python
+`r ''````{r}
+2+2
+```
+````
+
+```{r, echo=FALSE, message=FALSE}
+2+2
+```
+
+ou python, ou sql, bash ....
+
+### R Code Chunk, quelques options utiles 
+
+
+````python
+`r ''````{r, fig.show='hide', warning=TRUE, message=FALSE}
+data(cars)
+m <- mean(cars$speed)
+plot(speed~dist)
+```
+````
+
+```{r, echo=FALSE, fig.show='hide', warning=TRUE, message=FALSE}
+data(cars)
+m <- mean(cars$speed)
+with(cars, plot(speed~dist))
+```
+
+
+
+
+La vitesse moyenne est \`\` `` r m `` \`\`. 
+
+
