@@ -1,6 +1,6 @@
 --- 
 title: "A Minimal Book Example"
-author: "Yihui Xie"
+author: "Le groupe State Of The R in Roscoff"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 documentclass: book
@@ -10,25 +10,16 @@ link-citations: yes
 description: "This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook."
 ---
 
-# Prerequisites
+# Introduction
 
-This is a _sample_ book written in **Markdown**. You can use anything that Pandoc's Markdown supports, e.g., a math equation $a^2 + b^2 = c^2$.
 
-The **bookdown** package can be installed from CRAN or Github:
+Le groupe State Of The R (SOTR) s'est réuni  à Roscoff du 28 août 2017 au 1$^{\mbox{er}}$ septembre 2017 pour une semaine d'auto-formation autour du logiciel R. Différents sujets ont été abordés durant cette semaine 
+  - Manipulation de données :`` tidy``,
+  - Automatisation et reproductibilité du code : ``Markdown``, 
+  - Programmation orientée objets : ``R6 class``,
+  - Aspects techniques : Production de packages, ``Rcpp``. 
 
-```{r eval=FALSE}
-install.packages("bookdown")
-# or the development version
-# devtools::install_github("rstudio/bookdown")
-```
 
-Remember each Rmd file contains one and only one chapter, and a chapter is defined by the first-level heading `#`.
+Ce livre résume les expériences des participants durant l'atelier. 
 
-To compile this example to PDF, you need to install XeLaTeX.
 
-```{r include=FALSE}
-# automatically create a bib database for R packages
-knitr::write_bib(c(
-  .packages(), 'bookdown', 'knitr', 'rmarkdown'
-), 'packages.bib')
-```
