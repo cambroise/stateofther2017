@@ -1,5 +1,5 @@
 --- 
-title: "A Minimal Book Example"
+title: "Auto Formation R avancé"
 author: "Le groupe State Of The R in Roscoff"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
