@@ -1,0 +1,423 @@
+# Programmation orientée object à l'aide de classe R6
+
+
+
+## Principes et buts
+
+Principe :
+
+- créer de nouvelles classes avec des attributs/champs (variables) définis et des méthodes (fonctions propres)
+- un objet est alors intancié à partir d'une classe,
+- créer des classes générales et des classes plus spécifiques qui héritent des clases générales.
+
+\bigskip
+
+
+Intérêt :
+
+  - structurer le code, 
+  - éviter de dupliquer le code,
+  - plus facile à débugger, plus robuste,
+  - plus lisible pour la diffusion,
+  - code à plusieurs.
+
+## Structure d'une classe
+
+```{r,eval=FALSE}
+library(R6)
+maclasse=R6class("maclasse",
+                 public=list(
+                  attr1=NULL,
+                  attr2=NULL,
+                  attr3=NULL,
+                  initialize=function(attr1=NA,attr2=NA)
+                  {
+                    self$attr1=attr1
+                    self$attr2=attr2
+                    private$check()
+                  }
+                  ),
+                  private=list(
+                  attr4=NULL,
+                  check=function()
+                  {
+                    if (self$attr1<0) 
+                      stop("attr1 must be positive")
+                  }
+                 )
+                 )
+```
+
+
+``self$`` perm
+
+
+
+
+
+## Un exemple d'estimation de modèle linéaire 
+
+\tiny
+```{r,eval=FALSE}
+linData <- R6Class("linData",
+                   public = list(
+                     design = NULL,
+                     response  = NULL,
+                     initialize = function(design = NA, response = NA) {
+                       self$design <- design
+                       self$response   <- response
+                       self$check()
+                       self$EstmodLin()
+                     },
+                     set.design = function(X) {
+                       self$design <- X
+                       self$check()
+                       self$EstmodLin()
+                     },
+                     set.response = function(y) {
+                       self$response <- y
+                       self$check()
+                       self$EstmodLin()
+                     },
+                     check = function(){
+                       if(length(self$response) != nrow(self$design)){
+                         stop("unconsistent dimension")
+                       }
+                     }
+                   )
+)
+
+```
+
+
+
+## Un exemple d'estimation de modèle linéaire, sous-classes
+
+\tiny
+```{r,eval=FALSE}
+linData.Gaussien <- R6Class("linData.Gaussien",
+                           inherit = linData,
+                           public = list(
+                             EstmodLin = function() {
+                               beta   <- solve(t(self$design)
+                                               %*% self$design) %*% t(self$design) %*% self$response
+                               sigma2 <- sum((self$response - self$design %*% beta)^2)
+                                                        /(nrow(self$design) - 2) 
+                               obj <- modLin.Gaussien$new(self$design, beta)
+                               obj$set.sigma2(sigma2)
+                               return(obj)
+                             }
+                           )
+)
+
+linData.Poisson <- R6Class("linData.Poisson",
+                          inherit = linData,
+                          public = list(
+                            EstmodLin = function() {
+                              mod <- glm(formula = self$response ~ self$design[, 2], family = "poisson")
+                              obj <- modLin.Poisson$new(self$design, mod$coefficients)
+                              return(obj)
+                            }
+                          )
+)
+```
+
+
+## Exemple d'utilisation
+
+```{r,echo=FALSE,eval=TRUE,message=FALSE}
+library(R6)
+library(igraph)
+
+## Modeling Class :
+
+modLin <- R6Class("modLin",
+               public = list(
+                 design = NULL,
+                 beta  = NULL,
+                 initialize = function(design = NA, beta = NA) {
+                   self$design <- design
+                   self$beta   <- beta
+                   self$check()
+                 },
+                 get.design = function() {
+                   return(self$design)
+                 },
+                 set.design = function(X) {
+                   self$design <- X
+                 },
+                 get.beta = function() {
+                   return(self$beta)
+                 },
+                 set.beta = function(b) {
+                   self$beta <- b
+                 },
+                 check = function(){
+                   if(length(self$beta) != ncol(self$design)){
+                     stop("unconsistent dimension")
+                   }
+                 }
+               )
+)
+
+modLin.Gaussien <- R6Class("modLin.Gaussien",
+                        inherit = modLin,
+                        public = list(
+                          sigma2 = NULL,
+                          rmodLin = function() {
+                            res <- rnorm(nrow(self$design),self$design %*% self$beta, sqrt(self$sigma2))
+                            return(linData.Gaussien$new(self$design, res))
+                          },
+                          get.sigma2 = function() {
+                            return(self$sigma2)
+                          },
+                          set.sigma2 = function(s) {
+                            self$sigma2 <- s
+                          }
+                        )
+)
+
+modLin.Poisson <- R6Class("modLin.Poisson",
+                           inherit = modLin,
+                           public = list(
+                             rmodLin = function() {
+                               res <- rpois(nrow(self$design),exp(self$design %*% self$beta))
+                               return(linData.Poisson$new(self$design, res))
+                             }
+                           )
+)
+
+
+## Estimation class : 
+
+linData <- R6Class("linData",
+                  public = list(
+                    design = NULL,
+                    response  = NULL,
+                    initialize = function(design = NA, response = NA) {
+                      self$design <- design
+                      self$response   <- response
+                      self$check()
+                    },
+                    get.design = function() {
+                      return(self$design)
+                    },
+                    set.design = function(X) {
+                      self$design <- X
+                    },
+                    get.response = function() {
+                      return(self$response)
+                    },
+                    set.response = function(y) {
+                      self$response <- y
+                    },
+                    check = function(){
+                      if(length(self$response) != nrow(self$design)){
+                        stop("unconsistent dimension")
+                      }
+                    }
+                  )
+)
+
+linData.Gaussien <- R6Class("linData.Gaussien",
+                           inherit = linData,
+                           public = list(
+                             EstmodLin = function() {
+                               beta   <- solve(t(self$design) %*% self$design) %*% t(self$design) %*% self$response
+                               sigma2 <- sum((self$response - self$design %*% beta)^2)/(nrow(self$design) - 2) 
+                               obj <- modLin.Gaussien$new(self$design, beta)
+                               obj$set.sigma2(sigma2)
+                               return(obj)
+                             }
+                           )
+)
+
+linData.Poisson <- R6Class("linData.Poisson",
+                          inherit = linData,
+                          public = list(
+                            EstmodLin = function() {
+                              mod <- glm(formula = self$response ~ self$design[, 2], family = "poisson")
+                              obj <- modLin.Poisson$new(self$design, mod$coefficients)
+                              return(obj)
+                            }
+                          )
+)
+```
+
+\tiny
+```{r,eval=TRUE}
+# Paramètres du modèle :
+X    <- cbind(rep(1, 20), runif(20, 0, 30))
+beta <- c(-5, 3)
+
+# Création de l'objet modèle linéaire gaussien :
+dada <- modLin.Gaussien$new(X, beta)
+dada$set.sigma2(1)
+Y    <- dada$rmodLin()
+#plot(dada$get.design()[,2], Y$get.response())
+
+# Création de l'objet d'estimation des données :
+
+Y      <- Y$get.response()
+robert <- linData.Gaussien$new(X, Y)
+res    <- robert$EstmodLin()
+res$get.beta()
+res$get.sigma2()
+```
+
+
+## Autre paradigme
+
+Pour l'instant, 
+
+- 1 classe = modèle probabiliste avec une fonction pour simuler des données
+- 1 classe = données avec une fonction pour estimer les paramètres du modèles, renvoie un objet de type modèle probabiliste
+
+Vision globale
+
+ - 1 classe pour tout regrouper : données, estimations
+
+
+## Code
+
+\tiny
+```{r,eval=FALSE}
+library(R6)
+
+
+mod_lin <- R6Class("mod_lin",
+                  public = list(
+                    X = NULL,
+                    n = NULL,
+                    p = NULL,
+                    Y.sim = NULL,
+                    Y.obs = NULL,
+                    beta.sim = NULL,
+                    beta.estim=NULL,
+                    sigma2.sim=NULL,
+                    sigma2.estim=NULL,
+                    initialize = function(X = NA) {self$X<- X;self$n<-nrow(X);self$p<-ncol(X)},
+                    check.inverse = function(){
+                      D  =det(t(self$X)%*%self$X); 
+                      if(D!=0){print('X est de rang plein')}else{print('X n est pas de rang plein')}
+                    }
+                  )
+)
+
+
+```
+
+
+## Code (2)
+
+\tiny
+```{r,eval=FALSE}
+mod_lin_gauss <- R6Class("mod_lin_gauss",
+                  inherit = mod_lin,
+                  public = list(
+                     simu = function(beta,sigma2){
+                       if(self$p==length(beta)){
+                         self$beta.sim = beta;
+                         self$sigma2.sim = sigma2;
+                         self$Y.sim  =self$X %*%matrix(beta,ncol=1) + sqrt(sigma2)*rnorm(self$n); 
+                         return(self$Y.sim)}
+                       else{print('Problèmes de dimension')}
+                     },
+                     estim = function(Y){
+                       if(self$n==length(Y)){
+                         self$beta.estim = c(solve(t(self$X)%*%self$X)%*%t(self$X)%*%matrix(Y,ncol=1))
+                         self$sigma2.estim =
+                               sum((Y-c(self$X%*%matrix(self$beta.estim,ncol=1)))^2)/(self$n-self$p)
+                          self$Y.obs = Y;                      
+                                                 
+                       }
+                       
+                     }
+                   )
+)
+```
+
+
+## Pour aboutir à un consensus
+
+Pour un utilisateur de notre méthode,
+
+- ne fournir que la classe données avec une fonction estimate qui remplit un champ paramètre (estimé)
+- créer éventuellement une classe modèle pour vérifier l'estimation mais ne pas le fournir à l'utilisateur.
+
+
+## Quelques remarques et pour aller plus loin
+
+- privé public
+- initialize à faire (maclasse$new() -> correspond à la fonction définie initialize)
+- méthode = fonction interne
+- self dans la classe pour accéder à l'objet, ses champs et ses méthodes
+- get et set bonne pratique de syntaxe ? intérêt 
+```{r,eval=FALSE}
+maclasse$get.attr1()
+maclasse$attr1()
+```
+
+- initialize adaptable ? 
+- classes plus générales et faire hériter
+- classe R6 a des fonctions propres (type clone) pour copier un objet
+
+
+
+
+## Exercice
+
+- 1) Coder la sous-classe correspondante au modèle linéaire généralisée pour une loi bernoulli (lien logit ou probit ?)
+- 2) Coder en classe votre modèle préféré
+
+
+
+## Quelques éléments
+
+set et get utile que pour les attributs déclarés en privé
+
+pour diffuser un code mieux vaut refaire une surcouche qui s'appelle de maniere classique avec une fonction et option
+exemple 
+```{r}
+fitmod=function(X,Y,loi)
+{
+  if (loi =="poisson")
+  {
+    obj=linData.Poisson(X,Y)
+    obj$Estmodlin()
+  }
+}
+
+```
+
+
+initialize pas forcément utile si traitement simple, par contre on fait toujours un new pour créer un objet
+
+
+attention initialize est en public forcément 
+
+lorsqu'on définit des fonctions ou attribut en privé faire private$
+
+
+## Présentation Julien
+
+
+super$initialize pour appeler initilialize dont la fonction hérite
+
+- classes pour réstultats de l'estimation des modèles
+
+- classes pour les donnees et les caractéristiques des modèles a ajuster
+    
+    - contient les fonctions pour estimer
+    
+    
+```{r,eval=FALSE}
+maclasse$set("public","mamethode",
+             function()
+             {
+               ...
+             }
+             )
+```
+
+
