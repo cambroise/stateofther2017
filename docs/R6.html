@@ -163,18 +163,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="6" data-path="R6.html"><a href="R6.html"><i class="fa fa-check"></i><b>6</b> Programmation orientée object à l’aide de classe R6</a><ul>
 <li class="chapter" data-level="6.1" data-path="R6.html"><a href="R6.html#principes-et-buts"><i class="fa fa-check"></i><b>6.1</b> Principes et buts</a></li>
-<li class="chapter" data-level="6.2" data-path="R6.html"><a href="R6.html#structure-dune-classe"><i class="fa fa-check"></i><b>6.2</b> Structure d’une classe</a></li>
-<li class="chapter" data-level="6.3" data-path="R6.html"><a href="R6.html#un-exemple-destimation-de-modele-lineaire"><i class="fa fa-check"></i><b>6.3</b> Un exemple d’estimation de modèle linéaire</a></li>
-<li class="chapter" data-level="6.4" data-path="R6.html"><a href="R6.html#un-exemple-destimation-de-modele-lineaire-sous-classes"><i class="fa fa-check"></i><b>6.4</b> Un exemple d’estimation de modèle linéaire, sous-classes</a></li>
-<li class="chapter" data-level="6.5" data-path="R6.html"><a href="R6.html#exemple-dutilisation"><i class="fa fa-check"></i><b>6.5</b> Exemple d’utilisation</a></li>
-<li class="chapter" data-level="6.6" data-path="R6.html"><a href="R6.html#autre-paradigme"><i class="fa fa-check"></i><b>6.6</b> Autre paradigme</a></li>
-<li class="chapter" data-level="6.7" data-path="R6.html"><a href="R6.html#code"><i class="fa fa-check"></i><b>6.7</b> Code</a></li>
-<li class="chapter" data-level="6.8" data-path="R6.html"><a href="R6.html#code-2"><i class="fa fa-check"></i><b>6.8</b> Code (2)</a></li>
-<li class="chapter" data-level="6.9" data-path="R6.html"><a href="R6.html#pour-aboutir-a-un-consensus"><i class="fa fa-check"></i><b>6.9</b> Pour aboutir à un consensus</a></li>
-<li class="chapter" data-level="6.10" data-path="R6.html"><a href="R6.html#quelques-remarques-et-pour-aller-plus-loin"><i class="fa fa-check"></i><b>6.10</b> Quelques remarques et pour aller plus loin</a></li>
-<li class="chapter" data-level="6.11" data-path="R6.html"><a href="R6.html#exercice-1"><i class="fa fa-check"></i><b>6.11</b> Exercice</a></li>
-<li class="chapter" data-level="6.12" data-path="R6.html"><a href="R6.html#quelques-elements"><i class="fa fa-check"></i><b>6.12</b> Quelques éléments</a></li>
-<li class="chapter" data-level="6.13" data-path="R6.html"><a href="R6.html#presentation-julien"><i class="fa fa-check"></i><b>6.13</b> Présentation Julien</a></li>
+<li class="chapter" data-level="6.2" data-path="R6.html"><a href="R6.html#exemple-de-classes-pour-le-modele-lineaire-generalise"><i class="fa fa-check"></i><b>6.2</b> Exemple de classes pour le modèle linéaire (généralisé)</a></li>
+<li class="chapter" data-level="6.3" data-path="R6.html"><a href="R6.html#exercice-1"><i class="fa fa-check"></i><b>6.3</b> Exercice</a></li>
+<li class="chapter" data-level="6.4" data-path="R6.html"><a href="R6.html#quelques-remarques-supplementaires"><i class="fa fa-check"></i><b>6.4</b> Quelques remarques supplémentaires</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="packages.html"><a href="packages.html"><i class="fa fa-check"></i><b>7</b> Création de package avec Rstudio</a><ul>
 <li class="chapter" data-level="7.1" data-path="packages.html"><a href="packages.html#introduction-1"><i class="fa fa-check"></i><b>7.1</b> Introduction</a></li>
@@ -217,6 +208,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h1><span class="header-section-number">Chapitre 6</span> Programmation orientée object à l’aide de classe R6</h1>
 <div id="principes-et-buts" class="section level2">
 <h2><span class="header-section-number">6.1</span> Principes et buts</h2>
+<p>Un objet est une sorte de liste mieux structurée.</p>
 <p>Principe :</p>
 <ul>
 <li>créer de nouvelles classes avec des attributs/champs (variables) définis et des méthodes (fonctions propres)</li>
@@ -232,9 +224,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li>plus lisible pour la diffusion,</li>
 <li>code à plusieurs.</li>
 </ul>
-</div>
-<div id="structure-dune-classe" class="section level2">
-<h2><span class="header-section-number">6.2</span> Structure d’une classe</h2>
+<p>Structure d’une classe</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(R6)
 maclasse=<span class="kw">R6class</span>(<span class="st">&quot;maclasse&quot;</span>,
                  <span class="dt">public=</span><span class="kw">list</span>(
@@ -246,6 +236,11 @@ maclasse=<span class="kw">R6class</span>(<span class="st">&quot;maclasse&quot;</
                     self<span class="op">$</span>attr1=attr1
                     self<span class="op">$</span>attr2=attr2
                     private<span class="op">$</span><span class="kw">check</span>()
+                    private<span class="op">$</span>attr4=attr1<span class="op">+</span>attr2
+                  },
+                  <span class="dt">somme=</span><span class="cf">function</span>()
+                  {
+                    <span class="kw">return</span>(private<span class="op">$</span>attr4)
                   }
                   ),
                   <span class="dt">private=</span><span class="kw">list</span>(
@@ -257,225 +252,231 @@ maclasse=<span class="kw">R6class</span>(<span class="st">&quot;maclasse&quot;</
                   }
                  )
                  )</code></pre></div>
-<p><code>self$</code> perm</p>
-</div>
-<div id="un-exemple-destimation-de-modele-lineaire" class="section level2">
-<h2><span class="header-section-number">6.3</span> Un exemple d’estimation de modèle linéaire</h2>
-
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">linData &lt;-<span class="st"> </span><span class="kw">R6Class</span>(<span class="st">&quot;linData&quot;</span>,
-                   <span class="dt">public =</span> <span class="kw">list</span>(
-                     <span class="dt">design =</span> <span class="ot">NULL</span>,
-                     <span class="dt">response  =</span> <span class="ot">NULL</span>,
-                     <span class="dt">initialize =</span> <span class="cf">function</span>(<span class="dt">design =</span> <span class="ot">NA</span>, <span class="dt">response =</span> <span class="ot">NA</span>) {
-                       self<span class="op">$</span>design &lt;-<span class="st"> </span>design
-                       self<span class="op">$</span>response   &lt;-<span class="st"> </span>response
-                       self<span class="op">$</span><span class="kw">check</span>()
-                       self<span class="op">$</span><span class="kw">EstmodLin</span>()
-                     },
-                     <span class="dt">set.design =</span> <span class="cf">function</span>(X) {
-                       self<span class="op">$</span>design &lt;-<span class="st"> </span>X
-                       self<span class="op">$</span><span class="kw">check</span>()
-                       self<span class="op">$</span><span class="kw">EstmodLin</span>()
-                     },
-                     <span class="dt">set.response =</span> <span class="cf">function</span>(y) {
-                       self<span class="op">$</span>response &lt;-<span class="st"> </span>y
-                       self<span class="op">$</span><span class="kw">check</span>()
-                       self<span class="op">$</span><span class="kw">EstmodLin</span>()
-                     },
-                     <span class="dt">check =</span> <span class="cf">function</span>(){
-                       <span class="cf">if</span>(<span class="kw">length</span>(self<span class="op">$</span>response) <span class="op">!=</span><span class="st"> </span><span class="kw">nrow</span>(self<span class="op">$</span>design)){
-                         <span class="kw">stop</span>(<span class="st">&quot;unconsistent dimension&quot;</span>)
-                       }
-                     }
-                   )
-)</code></pre></div>
-</div>
-<div id="un-exemple-destimation-de-modele-lineaire-sous-classes" class="section level2">
-<h2><span class="header-section-number">6.4</span> Un exemple d’estimation de modèle linéaire, sous-classes</h2>
-
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">linData.Gaussien &lt;-<span class="st"> </span><span class="kw">R6Class</span>(<span class="st">&quot;linData.Gaussien&quot;</span>,
-                           <span class="dt">inherit =</span> linData,
-                           <span class="dt">public =</span> <span class="kw">list</span>(
-                             <span class="dt">EstmodLin =</span> <span class="cf">function</span>() {
-                               beta   &lt;-<span class="st"> </span><span class="kw">solve</span>(<span class="kw">t</span>(self<span class="op">$</span>design)
-                                               <span class="op">%*%</span><span class="st"> </span>self<span class="op">$</span>design) <span class="op">%*%</span><span class="st"> </span><span class="kw">t</span>(self<span class="op">$</span>design) <span class="op">%*%</span><span class="st"> </span>self<span class="op">$</span>response
-                               sigma2 &lt;-<span class="st"> </span><span class="kw">sum</span>((self<span class="op">$</span>response <span class="op">-</span><span class="st"> </span>self<span class="op">$</span>design <span class="op">%*%</span><span class="st"> </span>beta)<span class="op">^</span><span class="dv">2</span>)
-                                                        <span class="op">/</span>(<span class="kw">nrow</span>(self<span class="op">$</span>design) <span class="op">-</span><span class="st"> </span><span class="dv">2</span>) 
-                               obj &lt;-<span class="st"> </span>modLin.Gaussien<span class="op">$</span><span class="kw">new</span>(self<span class="op">$</span>design, beta)
-                               obj<span class="op">$</span><span class="kw">set.sigma2</span>(sigma2)
-                               <span class="kw">return</span>(obj)
-                             }
-                           )
-)
-
-linData.Poisson &lt;-<span class="st"> </span><span class="kw">R6Class</span>(<span class="st">&quot;linData.Poisson&quot;</span>,
-                          <span class="dt">inherit =</span> linData,
-                          <span class="dt">public =</span> <span class="kw">list</span>(
-                            <span class="dt">EstmodLin =</span> <span class="cf">function</span>() {
-                              mod &lt;-<span class="st"> </span><span class="kw">glm</span>(<span class="dt">formula =</span> self<span class="op">$</span>response <span class="op">~</span><span class="st"> </span>self<span class="op">$</span>design[, <span class="dv">2</span>], <span class="dt">family =</span> <span class="st">&quot;poisson&quot;</span>)
-                              obj &lt;-<span class="st"> </span>modLin.Poisson<span class="op">$</span><span class="kw">new</span>(self<span class="op">$</span>design, mod<span class="op">$</span>coefficients)
-                              <span class="kw">return</span>(obj)
-                            }
-                          )
-)</code></pre></div>
-</div>
-<div id="exemple-dutilisation" class="section level2">
-<h2><span class="header-section-number">6.5</span> Exemple d’utilisation</h2>
-
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Paramètres du modèle :</span>
-X    &lt;-<span class="st"> </span><span class="kw">cbind</span>(<span class="kw">rep</span>(<span class="dv">1</span>, <span class="dv">20</span>), <span class="kw">runif</span>(<span class="dv">20</span>, <span class="dv">0</span>, <span class="dv">30</span>))
-beta &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="op">-</span><span class="dv">5</span>, <span class="dv">3</span>)
-
-<span class="co"># Création de l&#39;objet modèle linéaire gaussien :</span>
-dada &lt;-<span class="st"> </span>modLin.Gaussien<span class="op">$</span><span class="kw">new</span>(X, beta)
-dada<span class="op">$</span><span class="kw">set.sigma2</span>(<span class="dv">1</span>)
-Y    &lt;-<span class="st"> </span>dada<span class="op">$</span><span class="kw">rmodLin</span>()
-<span class="co">#plot(dada$get.design()[,2], Y$get.response())</span>
-
-<span class="co"># Création de l&#39;objet d&#39;estimation des données :</span>
-
-Y      &lt;-<span class="st"> </span>Y<span class="op">$</span><span class="kw">get.response</span>()
-robert &lt;-<span class="st"> </span>linData.Gaussien<span class="op">$</span><span class="kw">new</span>(X, Y)
-res    &lt;-<span class="st"> </span>robert<span class="op">$</span><span class="kw">EstmodLin</span>()
-res<span class="op">$</span><span class="kw">get.beta</span>()</code></pre></div>
-<pre><code>##           [,1]
-## [1,] -4.800389
-## [2,]  2.996743</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">res<span class="op">$</span><span class="kw">get.sigma2</span>()</code></pre></div>
-<pre><code>## [1] 0.9650992</code></pre>
-</div>
-<div id="autre-paradigme" class="section level2">
-<h2><span class="header-section-number">6.6</span> Autre paradigme</h2>
-<p>Pour l’instant,</p>
 <ul>
-<li>1 classe = modèle probabiliste avec une fonction pour simuler des données</li>
-<li>1 classe = données avec une fonction pour estimer les paramètres du modèles, renvoie un objet de type modèle probabiliste</li>
-</ul>
-<p>Vision globale</p>
-<ul>
-<li>1 classe pour tout regrouper : données, estimations</li>
+<li><code>self$...</code> permet d’appeler (dans la définition de la classe) les champs et les méthodes propres à la classe déclarés en public.</li>
+<li><code>private$</code> permet d’appeler (dans la définition de la classe) les champes et les méthodes propres à la classe déclarés en private.</li>
+<li>on crée/instancie un objet de la classe en tapant <code>obj=maclasse$new(a1,a2)</code>.</li>
+<li>on appelle les méthodes de la classe en tapant <code>maclasse$somme()</code>.</li>
+<li>on peut créer des sous-classes qui hériteront d’une classe supérieure.</li>
 </ul>
 </div>
-<div id="code" class="section level2">
-<h2><span class="header-section-number">6.7</span> Code</h2>
-
+<div id="exemple-de-classes-pour-le-modele-lineaire-generalise" class="section level2">
+<h2><span class="header-section-number">6.2</span> Exemple de classes pour le modèle linéaire (généralisé)</h2>
+<p>On commence par créer des classes modèles ajustées qui contiennent les paramètres qui seront ajustés par le modèle.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(R6)
-
-
-mod_lin &lt;-<span class="st"> </span><span class="kw">R6Class</span>(<span class="st">&quot;mod_lin&quot;</span>,
-                  <span class="dt">public =</span> <span class="kw">list</span>(
-                    <span class="dt">X =</span> <span class="ot">NULL</span>,
-                    <span class="dt">n =</span> <span class="ot">NULL</span>,
-                    <span class="dt">p =</span> <span class="ot">NULL</span>,
-                    <span class="dt">Y.sim =</span> <span class="ot">NULL</span>,
-                    <span class="dt">Y.obs =</span> <span class="ot">NULL</span>,
-                    <span class="dt">beta.sim =</span> <span class="ot">NULL</span>,
-                    <span class="dt">beta.estim=</span><span class="ot">NULL</span>,
-                    <span class="dt">sigma2.sim=</span><span class="ot">NULL</span>,
-                    <span class="dt">sigma2.estim=</span><span class="ot">NULL</span>,
-                    <span class="dt">initialize =</span> <span class="cf">function</span>(<span class="dt">X =</span> <span class="ot">NA</span>) {self<span class="op">$</span>X&lt;-<span class="st"> </span>X;self<span class="op">$</span>n&lt;-<span class="kw">nrow</span>(X);self<span class="op">$</span>p&lt;-<span class="kw">ncol</span>(X)},
-                    <span class="dt">check.inverse =</span> <span class="cf">function</span>(){
-                      D  =<span class="kw">det</span>(<span class="kw">t</span>(self<span class="op">$</span>X)<span class="op">%*%</span>self<span class="op">$</span>X); 
-                      <span class="cf">if</span>(D<span class="op">!=</span><span class="dv">0</span>){<span class="kw">print</span>(<span class="st">&#39;X est de rang plein&#39;</span>)}<span class="cf">else</span>{<span class="kw">print</span>(<span class="st">&#39;X n est pas de rang plein&#39;</span>)}
-                    }
-                  )
+modlin_ajuste=<span class="kw">R6Class</span>(<span class="st">&quot;modlin_ajuste&quot;</span>,
+        <span class="dt">public =</span> <span class="kw">list</span>(
+          <span class="dt">X=</span><span class="ot">NULL</span>,
+          <span class="dt">beta=</span><span class="ot">NULL</span>,
+          <span class="dt">initialize=</span><span class="cf">function</span>(X,beta)
+          {
+             self<span class="op">$</span>X=X
+             self<span class="op">$</span>beta=beta
+          }
+        )
 )</code></pre></div>
-</div>
-<div id="code-2" class="section level2">
-<h2><span class="header-section-number">6.8</span> Code (2)</h2>
-
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mod_lin_gauss &lt;-<span class="st"> </span><span class="kw">R6Class</span>(<span class="st">&quot;mod_lin_gauss&quot;</span>,
-                  <span class="dt">inherit =</span> mod_lin,
-                  <span class="dt">public =</span> <span class="kw">list</span>(
-                     <span class="dt">simu =</span> <span class="cf">function</span>(beta,sigma2){
-                       <span class="cf">if</span>(self<span class="op">$</span>p<span class="op">==</span><span class="kw">length</span>(beta)){
-                         self<span class="op">$</span>beta.sim =<span class="st"> </span>beta;
-                         self<span class="op">$</span>sigma2.sim =<span class="st"> </span>sigma2;
-                         self<span class="op">$</span>Y.sim  =self<span class="op">$</span>X <span class="op">%*%</span><span class="kw">matrix</span>(beta,<span class="dt">ncol=</span><span class="dv">1</span>) <span class="op">+</span><span class="st"> </span><span class="kw">sqrt</span>(sigma2)<span class="op">*</span><span class="kw">rnorm</span>(self<span class="op">$</span>n); 
-                         <span class="kw">return</span>(self<span class="op">$</span>Y.sim)}
-                       <span class="cf">else</span>{<span class="kw">print</span>(<span class="st">&#39;Problèmes de dimension&#39;</span>)}
-                     },
-                     <span class="dt">estim =</span> <span class="cf">function</span>(Y){
-                       <span class="cf">if</span>(self<span class="op">$</span>n<span class="op">==</span><span class="kw">length</span>(Y)){
-                         self<span class="op">$</span>beta.estim =<span class="st"> </span><span class="kw">c</span>(<span class="kw">solve</span>(<span class="kw">t</span>(self<span class="op">$</span>X)<span class="op">%*%</span>self<span class="op">$</span>X)<span class="op">%*%</span><span class="kw">t</span>(self<span class="op">$</span>X)<span class="op">%*%</span><span class="kw">matrix</span>(Y,<span class="dt">ncol=</span><span class="dv">1</span>))
-                         self<span class="op">$</span>sigma2.estim =
-<span class="st">                               </span><span class="kw">sum</span>((Y<span class="op">-</span><span class="kw">c</span>(self<span class="op">$</span>X<span class="op">%*%</span><span class="kw">matrix</span>(self<span class="op">$</span>beta.estim,<span class="dt">ncol=</span><span class="dv">1</span>)))<span class="op">^</span><span class="dv">2</span>)<span class="op">/</span>(self<span class="op">$</span>n<span class="op">-</span>self<span class="op">$</span>p)
-                          self<span class="op">$</span>Y.obs =<span class="st"> </span>Y;                      
-                                                 
-                       }
-                       
-                     }
-                   )
+<p>On a créé une classe générale et on crée 2 sousclasses qui en hériteront : <code>gauss_modlin_ajuste</code> et <code>poiss_modlin_ajuste</code>. Dans la définition des sous-clases, la commande <code>inherit</code> permet de faire hériter de la classe précédemment définie. Pour le modèle gaussien, on peut compléter l’initialisation pour ajouter <span class="math inline">\(\sigma^2\)</span> en utilisant <code>super$initialize(X,beta)</code> dans la fonction intialize de cette classe.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">poiss_modlin_ajuste=<span class="kw">R6Class</span>(<span class="st">&quot;poiss_modlin_ajuste&quot;</span>,
+          <span class="dt">inherit =</span> modlin_ajuste,
+          <span class="dt">public =</span> <span class="kw">list</span>(
+             <span class="dt">pred=</span><span class="cf">function</span>(<span class="dt">Xnew=</span><span class="ot">NULL</span>)
+             {
+               <span class="cf">if</span> (<span class="kw">is.null</span>(Xnew))
+                 {
+                   <span class="kw">return</span>(<span class="kw">exp</span>(self<span class="op">$</span>X<span class="op">%*%</span>self<span class="op">$</span>beta))
+               }
+               <span class="cf">else</span>
+                 <span class="kw">return</span>(<span class="kw">exp</span>(Xnew<span class="op">%*%</span>self<span class="op">$</span>beta))
+             },
+             <span class="dt">sim=</span><span class="cf">function</span>(<span class="dt">Xnew=</span><span class="ot">NULL</span>)
+             {
+               <span class="cf">if</span> (<span class="kw">is.null</span>(Xnew))
+               {
+                 <span class="kw">return</span>(<span class="kw">rpois</span>(<span class="kw">nrow</span>(self<span class="op">$</span>X),self<span class="op">$</span><span class="kw">pred</span>()))
+               }
+               <span class="cf">else</span> 
+                 <span class="kw">return</span>(<span class="kw">rpois</span>(<span class="kw">nrow</span>(Xnew),self<span class="op">$</span><span class="kw">pred</span>(Xnew)))
+             }
+          )
 )</code></pre></div>
-</div>
-<div id="pour-aboutir-a-un-consensus" class="section level2">
-<h2><span class="header-section-number">6.9</span> Pour aboutir à un consensus</h2>
-<p>Pour un utilisateur de notre méthode,</p>
-<ul>
-<li>ne fournir que la classe données avec une fonction estimate qui remplit un champ paramètre (estimé)</li>
-<li>créer éventuellement une classe modèle pour vérifier l’estimation mais ne pas le fournir à l’utilisateur.</li>
-</ul>
-</div>
-<div id="quelques-remarques-et-pour-aller-plus-loin" class="section level2">
-<h2><span class="header-section-number">6.10</span> Quelques remarques et pour aller plus loin</h2>
-<ul>
-<li>privé public</li>
-<li>initialize à faire (maclasse$new() -&gt; correspond à la fonction définie initialize)</li>
-<li>méthode = fonction interne</li>
-<li>self dans la classe pour accéder à l’objet, ses champs et ses méthodes</li>
-<li>get et set bonne pratique de syntaxe ? intérêt</li>
-</ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">maclasse<span class="op">$</span><span class="kw">get.attr1</span>()
-maclasse<span class="op">$</span><span class="kw">attr1</span>()</code></pre></div>
-<ul>
-<li>initialize adaptable ?</li>
-<li>classes plus générales et faire hériter</li>
-<li>classe R6 a des fonctions propres (type clone) pour copier un objet</li>
-</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gauss_modlin_ajuste=<span class="kw">R6Class</span>(<span class="st">&quot;gauss_modlin_ajuste&quot;</span>,
+          <span class="dt">inherit =</span> modlin_ajuste,
+          <span class="dt">public =</span> <span class="kw">list</span>(
+            <span class="dt">sigma2=</span><span class="ot">NULL</span>,
+            <span class="dt">initialize=</span><span class="cf">function</span>(X,beta,sig2)
+            {
+               super<span class="op">$</span><span class="kw">initialize</span>(X,beta)
+               self<span class="op">$</span>sigma2=sig2
+               private<span class="op">$</span><span class="kw">check</span>()
+            },
+            <span class="dt">pred=</span><span class="cf">function</span>(<span class="dt">Xnew=</span><span class="ot">NULL</span>)
+            {
+              <span class="cf">if</span> (<span class="kw">is.null</span>(Xnew))
+              {
+                 <span class="kw">return</span>(self<span class="op">$</span>X<span class="op">%*%</span>self<span class="op">$</span>beta)  
+              }
+              <span class="cf">else</span> 
+                  <span class="kw">return</span>(Xnew<span class="op">%*%</span>self<span class="op">$</span>beta)
+            },
+            <span class="dt">sim=</span><span class="cf">function</span>(<span class="dt">Xnew=</span><span class="ot">NULL</span>)
+            { 
+              <span class="cf">if</span> (<span class="kw">is.null</span>(Xnew))
+              {
+                <span class="kw">return</span>(<span class="kw">rnorm</span>(<span class="kw">nrow</span>(self<span class="op">$</span>X),self<span class="op">$</span><span class="kw">pred</span>(),<span class="kw">sqrt</span>(self<span class="op">$</span>sigma2)))
+              }
+              <span class="cf">else</span> 
+                 <span class="kw">return</span>(<span class="kw">rnorm</span>(<span class="kw">nrow</span>(Xnew),self<span class="op">$</span><span class="kw">pred</span>(Xnew),<span class="kw">sqrt</span>(self<span class="op">$</span>sigma2)))
+            }
+          ),
+          <span class="dt">private =</span> <span class="kw">list</span>(
+            <span class="dt">check=</span><span class="cf">function</span>()
+            {
+              <span class="cf">if</span> (self<span class="op">$</span>sigma2<span class="op">&lt;</span><span class="dv">0</span>) <span class="kw">stop</span>(<span class="st">&quot;sigma^2 must be positive&quot;</span>)
+            }
+          )
+)</code></pre></div>
+<p>On essaie :</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">modgauss=gauss_modlin_ajuste<span class="op">$</span><span class="kw">new</span>(<span class="kw">matrix</span>(<span class="kw">runif</span>(<span class="dv">100</span>,<span class="dv">1</span>,<span class="dv">7</span>),<span class="dv">50</span>,<span class="dv">2</span>),<span class="kw">c</span>(<span class="op">-</span><span class="dv">2</span>,<span class="dv">6</span>),<span class="dv">3</span>)
+<span class="co"># on accede aux champs ainsi</span>
+modgauss<span class="op">$</span>beta</code></pre></div>
+<pre><code>## [1] -2  6</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># on peut utiliser les fonctions pour simuler aux points du meme design</span>
+modgauss<span class="op">$</span><span class="kw">sim</span>()</code></pre></div>
+<pre><code>##  [1]  3.9253414  8.8516137 20.2406528  6.6197553 31.0180087  1.8641920
+##  [7] 16.4806058  5.6472867 36.0301711 16.2222472 -1.1046866  5.2245384
+## [13]  3.6818691  4.5784981 -4.9366466 35.1921634 11.2176183 28.7373307
+## [19] 25.0481311  5.1689941  8.9235460 26.9439104 12.7581362 24.8360465
+## [25]  5.3993443 23.6410534  0.8388448 20.3889301 13.5690916 33.4030088
+## [31] -2.8909051  0.4464236  4.9208528 -3.1908468  0.5840698 29.9401227
+## [37]  9.8378896 21.6009441  8.2153769 28.0664441 36.6189895  5.9710942
+## [43] 26.8855223 14.1728177  2.5706293 27.9538621 28.3275601 -2.4636619
+## [49] 10.5126848 30.9396202</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># on peut utiliser la meme fonction pour simuler aux points d&#39;un autre design</span>
+modgauss<span class="op">$</span><span class="kw">sim</span>(<span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">2</span>),<span class="dv">1</span>,<span class="dv">2</span>))</code></pre></div>
+<pre><code>## [1] 13.91759</code></pre>
+<p>On crée à présent les classes permettant de recevoir les données. Une fonction <code>estime</code> au sein de ces classes aura pour sortie un modèle ajusté.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">don=<span class="kw">R6Class</span>(<span class="st">&quot;don&quot;</span>,
+    <span class="dt">public=</span><span class="kw">list</span>(
+      <span class="dt">Y=</span><span class="ot">NULL</span>,
+      <span class="dt">X=</span><span class="ot">NULL</span>,
+      <span class="dt">initialize=</span><span class="cf">function</span>(X,Y)
+      {
+        self<span class="op">$</span>X=X
+        self<span class="op">$</span>Y=Y
+        private<span class="op">$</span><span class="kw">check</span>()
+      }
+      ),
+     <span class="dt">private=</span><span class="kw">list</span>(
+       <span class="dt">check=</span><span class="cf">function</span>()
+       {
+         <span class="cf">if</span> (<span class="kw">nrow</span>(self<span class="op">$</span>X)<span class="op">!=</span><span class="kw">length</span>(self<span class="op">$</span>Y))
+           <span class="kw">stop</span>(<span class="st">&quot;êtes vous ivre ?&quot;</span>)
+       }
+     )
+    )</code></pre></div>
+<p>On distingue une classe pour le modèle Poisson et pour le modèle gaussien.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">poisdon=<span class="kw">R6Class</span>(<span class="st">&quot;poisdon&quot;</span>,
+                 <span class="dt">inherit =</span> don,
+                 <span class="dt">public =</span> <span class="kw">list</span>(
+                   <span class="dt">estime=</span><span class="cf">function</span>()
+                   {
+                     res=<span class="kw">glm</span>(self<span class="op">$</span>Y<span class="op">~</span>self<span class="op">$</span>X<span class="op">-</span><span class="dv">1</span>,<span class="dt">family =</span> <span class="st">&quot;poisson&quot;</span>)
+                     obj=poiss_modlin_ajuste<span class="op">$</span><span class="kw">new</span>(self<span class="op">$</span>X,<span class="kw">unname</span>(res<span class="op">$</span>coefficients))
+                     <span class="kw">return</span>(obj)
+                   }
+                 )
+                 )</code></pre></div>
+<p>On essaie</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#on définit un modèle</span>
+modpois=poiss_modlin_ajuste<span class="op">$</span><span class="kw">new</span>(<span class="kw">matrix</span>(<span class="kw">runif</span>(<span class="dv">100</span>,<span class="op">-</span><span class="dv">1</span>,<span class="dv">2</span>),<span class="dv">50</span>,<span class="dv">2</span>),<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))
+<span class="co">#on simule selon ce modele</span>
+Y=modpois<span class="op">$</span><span class="kw">sim</span>()
+X=modpois<span class="op">$</span>X
+
+<span class="co"># on cree la structure donnees</span>
+ex=poisdon<span class="op">$</span><span class="kw">new</span>(X,Y)
+<span class="co">#on estime</span>
+est=ex<span class="op">$</span><span class="kw">estime</span>()
+est<span class="op">$</span>beta</code></pre></div>
+<pre><code>## [1] 0.974176 2.003777</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#on peut prédire selon le modèle</span>
+est<span class="op">$</span><span class="kw">pred</span>(<span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>),<span class="dv">1</span>,<span class="dv">2</span>))</code></pre></div>
+<pre><code>##          [,1]
+## [1,] 145.7263</code></pre>
+<p>On fait de même pour les données censées suivre une loi gaussienne en ajoutant la fonction à la suite de la définition de la classe. Ceci est utile lorsque les fonctions sont trop volumineuses.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gaussdon=<span class="kw">R6Class</span>(<span class="st">&quot;gaussdon&quot;</span>,
+                 <span class="dt">inherit =</span> don)
+
+gaussdon<span class="op">$</span><span class="kw">set</span>(<span class="st">&quot;public&quot;</span>,<span class="st">&quot;estime&quot;</span>,
+       <span class="cf">function</span>()
+       {
+            beta   &lt;-<span class="st"> </span><span class="kw">solve</span>(<span class="kw">t</span>(self<span class="op">$</span>X)<span class="op">%*%</span><span class="st"> </span>self<span class="op">$</span>X) <span class="op">%*%</span><span class="st"> </span><span class="kw">t</span>(self<span class="op">$</span>X) <span class="op">%*%</span><span class="st"> </span>self<span class="op">$</span>Y
+            sigma2 &lt;-<span class="st"> </span><span class="kw">sum</span>((self<span class="op">$</span>Y <span class="op">-</span><span class="st"> </span>self<span class="op">$</span>X <span class="op">%*%</span><span class="st"> </span>beta)<span class="op">^</span><span class="dv">2</span>)<span class="op">/</span>(<span class="kw">nrow</span>(self<span class="op">$</span>X) <span class="op">-</span><span class="st"> </span><span class="kw">ncol</span>(self<span class="op">$</span>X)) 
+            obj=gauss_modlin_ajuste<span class="op">$</span><span class="kw">new</span>(self<span class="op">$</span>X,<span class="kw">c</span>(beta),sigma2)
+            <span class="kw">return</span>(obj)       
+        }
+)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">modgauss=gauss_modlin_ajuste<span class="op">$</span><span class="kw">new</span>(<span class="kw">matrix</span>(<span class="kw">runif</span>(<span class="dv">100</span>,<span class="dv">1</span>,<span class="dv">7</span>),<span class="dv">50</span>,<span class="dv">2</span>),<span class="kw">c</span>(<span class="op">-</span><span class="dv">2</span>,<span class="dv">6</span>),<span class="dv">3</span>)
+X=modgauss<span class="op">$</span>X
+Y=modgauss<span class="op">$</span><span class="kw">sim</span>()
+exx=gaussdon<span class="op">$</span><span class="kw">new</span>(X,Y)
+estt=exx<span class="op">$</span><span class="kw">estime</span>()
+estt<span class="op">$</span>beta</code></pre></div>
+<pre><code>## [1] -2.027765  5.977719</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">estt<span class="op">$</span>sigma2</code></pre></div>
+<pre><code>## [1] 3.012972</code></pre>
+<p>Si on s’était trompé sur les dimensions.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">modgauss=gauss_modlin_ajuste<span class="op">$</span><span class="kw">new</span>(<span class="kw">matrix</span>(<span class="kw">runif</span>(<span class="dv">100</span>,<span class="dv">1</span>,<span class="dv">7</span>),<span class="dv">50</span>,<span class="dv">2</span>),<span class="kw">c</span>(<span class="op">-</span><span class="dv">2</span>,<span class="dv">6</span>),<span class="dv">3</span>)
+X=modgauss<span class="op">$</span>X
+Y=modgauss<span class="op">$</span><span class="kw">sim</span>()
+Y=Y[<span class="op">-</span><span class="dv">1</span>]
+a=<span class="kw">try</span>(gaussdon<span class="op">$</span><span class="kw">new</span>(X,Y))
+<span class="kw">print</span>(a)</code></pre></div>
+<pre><code>## [1] &quot;Error in private$check() : êtes vous ivre ?\n&quot;
+## attr(,&quot;class&quot;)
+## [1] &quot;try-error&quot;
+## attr(,&quot;condition&quot;)
+## &lt;simpleError in private$check(): êtes vous ivre ?&gt;</code></pre>
 </div>
 <div id="exercice-1" class="section level2">
-<h2><span class="header-section-number">6.11</span> Exercice</h2>
+<h2><span class="header-section-number">6.3</span> Exercice</h2>
 <ul>
 <li><ol style="list-style-type: decimal">
-<li>Coder la sous-classe correspondante au modèle linéaire généralisée pour une loi bernoulli (lien logit ou probit ?)</li>
+<li>Coder la sous-classe correspondante au modèle linéaire généralisée pour une loi bernoulli (lien logit ou probit)</li>
 </ol></li>
 <li><ol start="2" style="list-style-type: decimal">
 <li>Coder en classe votre modèle préféré</li>
 </ol></li>
 </ul>
 </div>
-<div id="quelques-elements" class="section level2">
-<h2><span class="header-section-number">6.12</span> Quelques éléments</h2>
-<p>set et get utile que pour les attributs déclarés en privé</p>
-<p>pour diffuser un code mieux vaut refaire une surcouche qui s’appelle de maniere classique avec une fonction et option exemple</p>
+<div id="quelques-remarques-supplementaires" class="section level2">
+<h2><span class="header-section-number">6.4</span> Quelques remarques supplémentaires</h2>
+<p>Pour diffuser un code, certains (dont JC) pensent qu’il vaut mieux refaire une surcouche qui s’appelle de maniere classique avec une fonction et des options.</p>
+<p>Exemple</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">fitmod=<span class="cf">function</span>(X,Y,loi)
 {
-  <span class="cf">if</span> (loi <span class="op">==</span><span class="st">&quot;poisson&quot;</span>)
-  {
-    obj=<span class="kw">linData.Poisson</span>(X,Y)
-    obj<span class="op">$</span><span class="kw">Estmodlin</span>()
-  }
+  <span class="cf">switch</span>(loi, 
+         <span class="dt">poisson=</span>{
+           obj=<span class="kw">poisdon</span>(X,Y)
+           res=obj<span class="op">$</span><span class="kw">estime</span>()
+           <span class="kw">return</span>(res<span class="op">$</span>beta)
+         },
+         <span class="dt">gaussien=</span>{
+           obj=<span class="kw">gaussdon</span>(X,Y)
+           res=obj<span class="op">$</span><span class="kw">estime</span>()
+           <span class="kw">return</span>(<span class="kw">list</span>(res<span class="op">$</span>beta,res<span class="op">$</span>sigma2))
+         }  
+  )
 }</code></pre></div>
-<p>initialize pas forcément utile si traitement simple, par contre on fait toujours un new pour créer un objet</p>
-<p>attention initialize est en public forcément</p>
-<p>lorsqu’on définit des fonctions ou attribut en privé faire private$</p>
-</div>
-<div id="presentation-julien" class="section level2">
-<h2><span class="header-section-number">6.13</span> Présentation Julien</h2>
-<p>super$initialize pour appeler initilialize dont la fonction hérite</p>
+<p>Lorsque l’on veut copier un objet (par exemple <code>exx</code> de la classe <code>gaussdon</code>), il faut faire :</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a=exx<span class="op">$</span><span class="kw">clone</span>()</code></pre></div>
+<p>Sinon, si on fait <code>b=exx</code>, on modifiera <code>exx</code> en modifiant <code>b</code>.</p>
+<p>Quelques liens utiles :</p>
 <ul>
-<li><p>classes pour réstultats de l’estimation des modèles</p></li>
-<li><p>classes pour les donnees et les caractéristiques des modèles a ajuster</p>
-<ul>
-<li>contient les fonctions pour estimer</li>
-</ul></li>
+<li><p><a href="https://cran.r-project.org/web/packages/R6/vignettes/Introduction.html#adding-members-to-an-existing-class">vignette sur les classes R6</a></p></li>
+<li><p><a href="https://thinkr.fr/au-menu-du-jour-r6-partie-1/">Think R partie 1</a></p></li>
+<li><p><a href="https://thinkr.fr/au-menu-du-jour-r6-partie-2/">Think R partie 2</a></p></li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">maclasse<span class="op">$</span><span class="kw">set</span>(<span class="st">&quot;public&quot;</span>,<span class="st">&quot;mamethode&quot;</span>,
-             <span class="cf">function</span>()
-             {
-               ...
-             }
-             )</code></pre></div>
 
 </div>
 </div>
