@@ -1,4 +1,4 @@
-# Blogdown pour créer un site
+# Blogdown pour créer un site {#blogdown}
 
 ## Principes de blogdown
 
