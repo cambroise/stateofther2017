@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Auto Formation R avancé</title>
+  <meta name="description" content="Ceci est le résultat d’une semaine d’auto formation à R.">
+  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Auto Formation R avancé" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Ceci est le résultat d’une semaine d’auto formation à R." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Auto Formation R avancé" />
+  
+  <meta name="twitter:description" content="Ceci est le résultat d’une semaine d’auto formation à R." />
+  
+
+<meta name="author" content="Le groupe State Of The R in Roscoff">
+
+
+<meta name="date" content="2017-08-31">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="final-words.html">
+<link rel="next" href="references.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="2" data-path="RMarkdown.html"><a href="RMarkdown.html"><i class="fa fa-check"></i><b>2</b> RMarkdown</a><ul>
+<li class="chapter" data-level="2.1" data-path="RMarkdown.html"><a href="RMarkdown.html#pourquoi"><i class="fa fa-check"></i><b>2.1</b> RMarkdown pour quoi faire ?</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="RMarkdown.html"><a href="RMarkdown.html#automatisation-de-la-production-de-document-scientifique"><i class="fa fa-check"></i><b>2.1.1</b> Automatisation de la production de document scientifique</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="RMarkdown.html"><a href="RMarkdown.html#comment-ca-marche"><i class="fa fa-check"></i><b>2.2</b> Comment ça marche</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="RMarkdown.html"><a href="RMarkdown.html#un-exemple-de-fichier-.rmd-ce-document"><i class="fa fa-check"></i><b>2.2.1</b> Un exemple de fichier .Rmd : ce document</a></li>
+<li class="chapter" data-level="2.2.2" data-path="RMarkdown.html"><a href="RMarkdown.html#schema-conceptuel"><i class="fa fa-check"></i><b>2.2.2</b> Schéma conceptuel</a></li>
+<li class="chapter" data-level="2.2.3" data-path="RMarkdown.html"><a href="RMarkdown.html#markdown"><i class="fa fa-check"></i><b>2.2.3</b> Markdown</a></li>
+<li class="chapter" data-level="2.2.4" data-path="RMarkdown.html"><a href="RMarkdown.html#markdown-cheatsheet"><i class="fa fa-check"></i><b>2.2.4</b> Markdown Cheatsheet</a></li>
+<li class="chapter" data-level="2.2.5" data-path="RMarkdown.html"><a href="RMarkdown.html#pandoc"><i class="fa fa-check"></i><b>2.2.5</b> Pandoc</a></li>
+<li class="chapter" data-level="2.2.6" data-path="RMarkdown.html"><a href="RMarkdown.html#rmarkdown"><i class="fa fa-check"></i><b>2.2.6</b> RMarkdown</a></li>
+<li class="chapter" data-level="2.2.7" data-path="RMarkdown.html"><a href="RMarkdown.html#de-rmarkdown-a-un-document-finalise-avec-knitr"><i class="fa fa-check"></i><b>2.2.7</b> De RMarkdown à un document finalisé avec knitr</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="RMarkdown.html"><a href="RMarkdown.html#un-document-rmarkdown-a-la-loupe"><i class="fa fa-check"></i><b>2.3</b> Un document RMarkdown à la loupe</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="RMarkdown.html"><a href="RMarkdown.html#entete-du-document-yaml"><i class="fa fa-check"></i><b>2.3.1</b> Entete du document : YAML</a></li>
+<li class="chapter" data-level="2.3.2" data-path="RMarkdown.html"><a href="RMarkdown.html#options-globales-pour-le-code-r"><i class="fa fa-check"></i><b>2.3.2</b> Options globales pour le code R</a></li>
+<li class="chapter" data-level="2.3.3" data-path="RMarkdown.html"><a href="RMarkdown.html#code-chunk"><i class="fa fa-check"></i><b>2.3.3</b> Code Chunk</a></li>
+<li class="chapter" data-level="2.3.4" data-path="RMarkdown.html"><a href="RMarkdown.html#r-code-chunk-quelques-options-utiles"><i class="fa fa-check"></i><b>2.3.4</b> R Code Chunk, quelques options utiles</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="blogdown-pour-creer-un-site.html"><a href="blogdown-pour-creer-un-site.html"><i class="fa fa-check"></i><b>3</b> Blogdown pour créer un site</a><ul>
+<li class="chapter" data-level="3.1" data-path="blogdown-pour-creer-un-site.html"><a href="blogdown-pour-creer-un-site.html#principes-de-blogdown"><i class="fa fa-check"></i><b>3.1</b> Principes de blogdown</a></li>
+<li class="chapter" data-level="3.2" data-path="blogdown-pour-creer-un-site.html"><a href="blogdown-pour-creer-un-site.html#etapes"><i class="fa fa-check"></i><b>3.2</b> Étapes</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="blogdown-pour-creer-un-site.html"><a href="blogdown-pour-creer-un-site.html#preliminaires"><i class="fa fa-check"></i><b>3.2.1</b> Préliminaires</a></li>
+<li class="chapter" data-level="3.2.2" data-path="blogdown-pour-creer-un-site.html"><a href="blogdown-pour-creer-un-site.html#creer-le-projet-par-rstudio"><i class="fa fa-check"></i><b>3.2.2</b> Créer le projet par RStudio</a></li>
+<li class="chapter" data-level="3.2.3" data-path="blogdown-pour-creer-un-site.html"><a href="blogdown-pour-creer-un-site.html#creer-le-post-_index.md"><i class="fa fa-check"></i><b>3.2.3</b> Créer le post <code>_index.md</code></a></li>
+<li class="chapter" data-level="3.2.4" data-path="blogdown-pour-creer-un-site.html"><a href="blogdown-pour-creer-un-site.html#visualisation-du-site-web"><i class="fa fa-check"></i><b>3.2.4</b> Visualisation du site web</a></li>
+<li class="chapter" data-level="3.2.5" data-path="blogdown-pour-creer-un-site.html"><a href="blogdown-pour-creer-un-site.html#creer-des-pages-additionnelles"><i class="fa fa-check"></i><b>3.2.5</b> Créer des pages additionnelles</a></li>
+<li class="chapter" data-level="3.2.6" data-path="blogdown-pour-creer-un-site.html"><a href="blogdown-pour-creer-un-site.html#gestion-des-images"><i class="fa fa-check"></i><b>3.2.6</b> Gestion des images</a></li>
+<li class="chapter" data-level="3.2.7" data-path="blogdown-pour-creer-un-site.html"><a href="blogdown-pour-creer-un-site.html#reste-a-faire"><i class="fa fa-check"></i><b>3.2.7</b> Reste à faire</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="r-bookdown.html"><a href="r-bookdown.html"><i class="fa fa-check"></i><b>4</b> R Bookdown</a><ul>
+<li class="chapter" data-level="4.1" data-path="r-bookdown.html"><a href="r-bookdown.html#mise-en-oeuvre-principe"><i class="fa fa-check"></i><b>4.1</b> Mise en oeuvre principe</a></li>
+<li class="chapter" data-level="4.2" data-path="r-bookdown.html"><a href="r-bookdown.html#publication"><i class="fa fa-check"></i><b>4.2</b> Publication du livre sur GitHub</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="final-words.html"><a href="final-words.html"><i class="fa fa-check"></i><b>5</b> Final Words</a></li>
+<li class="chapter" data-level="6" data-path="programmation-orientee-object-a-laide-de-classe-r6.html"><a href="programmation-orientee-object-a-laide-de-classe-r6.html"><i class="fa fa-check"></i><b>6</b> Programmation orientée object à l’aide de classe R6</a><ul>
+<li class="chapter" data-level="6.1" data-path="programmation-orientee-object-a-laide-de-classe-r6.html"><a href="programmation-orientee-object-a-laide-de-classe-r6.html#principes-et-buts"><i class="fa fa-check"></i><b>6.1</b> Principes et buts</a></li>
+<li class="chapter" data-level="6.2" data-path="programmation-orientee-object-a-laide-de-classe-r6.html"><a href="programmation-orientee-object-a-laide-de-classe-r6.html#structure-dune-classe"><i class="fa fa-check"></i><b>6.2</b> Structure d’une classe</a></li>
+<li class="chapter" data-level="6.3" data-path="programmation-orientee-object-a-laide-de-classe-r6.html"><a href="programmation-orientee-object-a-laide-de-classe-r6.html#un-exemple-destimation-de-modele-lineaire"><i class="fa fa-check"></i><b>6.3</b> Un exemple d’estimation de modèle linéaire</a></li>
+<li class="chapter" data-level="6.4" data-path="programmation-orientee-object-a-laide-de-classe-r6.html"><a href="programmation-orientee-object-a-laide-de-classe-r6.html#un-exemple-destimation-de-modele-lineaire-sous-classes"><i class="fa fa-check"></i><b>6.4</b> Un exemple d’estimation de modèle linéaire, sous-classes</a></li>
+<li class="chapter" data-level="6.5" data-path="programmation-orientee-object-a-laide-de-classe-r6.html"><a href="programmation-orientee-object-a-laide-de-classe-r6.html#exemple-dutilisation"><i class="fa fa-check"></i><b>6.5</b> Exemple d’utilisation</a></li>
+<li class="chapter" data-level="6.6" data-path="programmation-orientee-object-a-laide-de-classe-r6.html"><a href="programmation-orientee-object-a-laide-de-classe-r6.html#autre-paradigme"><i class="fa fa-check"></i><b>6.6</b> Autre paradigme</a></li>
+<li class="chapter" data-level="6.7" data-path="programmation-orientee-object-a-laide-de-classe-r6.html"><a href="programmation-orientee-object-a-laide-de-classe-r6.html#code"><i class="fa fa-check"></i><b>6.7</b> Code</a></li>
+<li class="chapter" data-level="6.8" data-path="programmation-orientee-object-a-laide-de-classe-r6.html"><a href="programmation-orientee-object-a-laide-de-classe-r6.html#code-2"><i class="fa fa-check"></i><b>6.8</b> Code (2)</a></li>
+<li class="chapter" data-level="6.9" data-path="programmation-orientee-object-a-laide-de-classe-r6.html"><a href="programmation-orientee-object-a-laide-de-classe-r6.html#pour-aboutir-a-un-consensus"><i class="fa fa-check"></i><b>6.9</b> Pour aboutir à un consensus</a></li>
+<li class="chapter" data-level="6.10" data-path="programmation-orientee-object-a-laide-de-classe-r6.html"><a href="programmation-orientee-object-a-laide-de-classe-r6.html#quelques-remarques-et-pour-aller-plus-loin"><i class="fa fa-check"></i><b>6.10</b> Quelques remarques et pour aller plus loin</a></li>
+<li class="chapter" data-level="6.11" data-path="programmation-orientee-object-a-laide-de-classe-r6.html"><a href="programmation-orientee-object-a-laide-de-classe-r6.html#exercice"><i class="fa fa-check"></i><b>6.11</b> Exercice</a></li>
+<li class="chapter" data-level="6.12" data-path="programmation-orientee-object-a-laide-de-classe-r6.html"><a href="programmation-orientee-object-a-laide-de-classe-r6.html#quelques-elements"><i class="fa fa-check"></i><b>6.12</b> Quelques éléments</a></li>
+<li class="chapter" data-level="6.13" data-path="programmation-orientee-object-a-laide-de-classe-r6.html"><a href="programmation-orientee-object-a-laide-de-classe-r6.html#presentation-julien"><i class="fa fa-check"></i><b>6.13</b> Présentation Julien</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Auto Formation R avancé</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="programmation-orientee-object-a-laide-de-classe-r6" class="section level1">
+<h1><span class="header-section-number">Chapitre 6</span> Programmation orientée object à l’aide de classe R6</h1>
+<div id="principes-et-buts" class="section level2">
+<h2><span class="header-section-number">6.1</span> Principes et buts</h2>
+<p>Principe :</p>
+<ul>
+<li>créer de nouvelles classes avec des attributs/champs (variables) définis et des méthodes (fonctions propres)</li>
+<li>un objet est alors intancié à partir d’une classe,</li>
+<li>créer des classes générales et des classes plus spécifiques qui héritent des clases générales.</li>
+</ul>
+<p></p>
+<p>Intérêt :</p>
+<ul>
+<li>structurer le code,</li>
+<li>éviter de dupliquer le code,</li>
+<li>plus facile à débugger, plus robuste,</li>
+<li>plus lisible pour la diffusion,</li>
+<li>code à plusieurs.</li>
+</ul>
+</div>
+<div id="structure-dune-classe" class="section level2">
+<h2><span class="header-section-number">6.2</span> Structure d’une classe</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(R6)
+maclasse=<span class="kw">R6class</span>(<span class="st">&quot;maclasse&quot;</span>,
+                 <span class="dt">public=</span><span class="kw">list</span>(
+                  <span class="dt">attr1=</span><span class="ot">NULL</span>,
+                  <span class="dt">attr2=</span><span class="ot">NULL</span>,
+                  <span class="dt">attr3=</span><span class="ot">NULL</span>,
+                  <span class="dt">initialize=</span>function(<span class="dt">attr1=</span><span class="ot">NA</span>,<span class="dt">attr2=</span><span class="ot">NA</span>)
+                  {
+                    self$attr1=attr1
+                    self$attr2=attr2
+                    private$<span class="kw">check</span>()
+                  }
+                  ),
+                  <span class="dt">private=</span><span class="kw">list</span>(
+                  <span class="dt">attr4=</span><span class="ot">NULL</span>,
+                  <span class="dt">check=</span>function()
+                  {
+                    if (self$attr1&lt;<span class="dv">0</span>) 
+                      <span class="kw">stop</span>(<span class="st">&quot;attr1 must be positive&quot;</span>)
+                  }
+                 )
+                 )</code></pre></div>
+<p><code>self$</code> perm</p>
+</div>
+<div id="un-exemple-destimation-de-modele-lineaire" class="section level2">
+<h2><span class="header-section-number">6.3</span> Un exemple d’estimation de modèle linéaire</h2>
+<p></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">linData &lt;-<span class="st"> </span><span class="kw">R6Class</span>(<span class="st">&quot;linData&quot;</span>,
+                   <span class="dt">public =</span> <span class="kw">list</span>(
+                     <span class="dt">design =</span> <span class="ot">NULL</span>,
+                     <span class="dt">response  =</span> <span class="ot">NULL</span>,
+                     <span class="dt">initialize =</span> function(<span class="dt">design =</span> <span class="ot">NA</span>, <span class="dt">response =</span> <span class="ot">NA</span>) {
+                       self$design &lt;-<span class="st"> </span>design
+                       self$response   &lt;-<span class="st"> </span>response
+                       self$<span class="kw">check</span>()
+                       self$<span class="kw">EstmodLin</span>()
+                     },
+                     <span class="dt">set.design =</span> function(X) {
+                       self$design &lt;-<span class="st"> </span>X
+                       self$<span class="kw">check</span>()
+                       self$<span class="kw">EstmodLin</span>()
+                     },
+                     <span class="dt">set.response =</span> function(y) {
+                       self$response &lt;-<span class="st"> </span>y
+                       self$<span class="kw">check</span>()
+                       self$<span class="kw">EstmodLin</span>()
+                     },
+                     <span class="dt">check =</span> function(){
+                       if(<span class="kw">length</span>(self$response) !=<span class="st"> </span><span class="kw">nrow</span>(self$design)){
+                         <span class="kw">stop</span>(<span class="st">&quot;unconsistent dimension&quot;</span>)
+                       }
+                     }
+                   )
+)</code></pre></div>
+</div>
+<div id="un-exemple-destimation-de-modele-lineaire-sous-classes" class="section level2">
+<h2><span class="header-section-number">6.4</span> Un exemple d’estimation de modèle linéaire, sous-classes</h2>
+<p></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">linData.Gaussien &lt;-<span class="st"> </span><span class="kw">R6Class</span>(<span class="st">&quot;linData.Gaussien&quot;</span>,
+                           <span class="dt">inherit =</span> linData,
+                           <span class="dt">public =</span> <span class="kw">list</span>(
+                             <span class="dt">EstmodLin =</span> function() {
+                               beta   &lt;-<span class="st"> </span><span class="kw">solve</span>(<span class="kw">t</span>(self$design)
+                                               %*%<span class="st"> </span>self$design) %*%<span class="st"> </span><span class="kw">t</span>(self$design) %*%<span class="st"> </span>self$response
+                               sigma2 &lt;-<span class="st"> </span><span class="kw">sum</span>((self$response -<span class="st"> </span>self$design %*%<span class="st"> </span>beta)^<span class="dv">2</span>)
+                                                        /(<span class="kw">nrow</span>(self$design) -<span class="st"> </span><span class="dv">2</span>) 
+                               obj &lt;-<span class="st"> </span>modLin.Gaussien$<span class="kw">new</span>(self$design, beta)
+                               obj$<span class="kw">set.sigma2</span>(sigma2)
+                               <span class="kw">return</span>(obj)
+                             }
+                           )
+)
+
+linData.Poisson &lt;-<span class="st"> </span><span class="kw">R6Class</span>(<span class="st">&quot;linData.Poisson&quot;</span>,
+                          <span class="dt">inherit =</span> linData,
+                          <span class="dt">public =</span> <span class="kw">list</span>(
+                            <span class="dt">EstmodLin =</span> function() {
+                              mod &lt;-<span class="st"> </span><span class="kw">glm</span>(<span class="dt">formula =</span> self$response ~<span class="st"> </span>self$design[, <span class="dv">2</span>], <span class="dt">family =</span> <span class="st">&quot;poisson&quot;</span>)
+                              obj &lt;-<span class="st"> </span>modLin.Poisson$<span class="kw">new</span>(self$design, mod$coefficients)
+                              <span class="kw">return</span>(obj)
+                            }
+                          )
+)</code></pre></div>
+</div>
+<div id="exemple-dutilisation" class="section level2">
+<h2><span class="header-section-number">6.5</span> Exemple d’utilisation</h2>
+<p></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Paramètres du modèle :</span>
+X    &lt;-<span class="st"> </span><span class="kw">cbind</span>(<span class="kw">rep</span>(<span class="dv">1</span>, <span class="dv">20</span>), <span class="kw">runif</span>(<span class="dv">20</span>, <span class="dv">0</span>, <span class="dv">30</span>))
+beta &lt;-<span class="st"> </span><span class="kw">c</span>(-<span class="dv">5</span>, <span class="dv">3</span>)
+
+<span class="co"># Création de l&#39;objet modèle linéaire gaussien :</span>
+dada &lt;-<span class="st"> </span>modLin.Gaussien$<span class="kw">new</span>(X, beta)
+dada$<span class="kw">set.sigma2</span>(<span class="dv">1</span>)
+Y    &lt;-<span class="st"> </span>dada$<span class="kw">rmodLin</span>()
+<span class="co">#plot(dada$get.design()[,2], Y$get.response())</span>
+
+<span class="co"># Création de l&#39;objet d&#39;estimation des données :</span>
+
+Y      &lt;-<span class="st"> </span>Y$<span class="kw">get.response</span>()
+robert &lt;-<span class="st"> </span>linData.Gaussien$<span class="kw">new</span>(X, Y)
+res    &lt;-<span class="st"> </span>robert$<span class="kw">EstmodLin</span>()
+res$<span class="kw">get.beta</span>()</code></pre></div>
+<pre><code>##           [,1]
+## [1,] -5.367639
+## [2,]  3.027095</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">res$<span class="kw">get.sigma2</span>()</code></pre></div>
+<pre><code>## [1] 0.8653056</code></pre>
+</div>
+<div id="autre-paradigme" class="section level2">
+<h2><span class="header-section-number">6.6</span> Autre paradigme</h2>
+<p>Pour l’instant,</p>
+<ul>
+<li>1 classe = modèle probabiliste avec une fonction pour simuler des données</li>
+<li>1 classe = données avec une fonction pour estimer les paramètres du modèles, renvoie un objet de type modèle probabiliste</li>
+</ul>
+<p>Vision globale</p>
+<ul>
+<li>1 classe pour tout regrouper : données, estimations</li>
+</ul>
+</div>
+<div id="code" class="section level2">
+<h2><span class="header-section-number">6.7</span> Code</h2>
+<p></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(R6)
+
+
+mod_lin &lt;-<span class="st"> </span><span class="kw">R6Class</span>(<span class="st">&quot;mod_lin&quot;</span>,
+                  <span class="dt">public =</span> <span class="kw">list</span>(
+                    <span class="dt">X =</span> <span class="ot">NULL</span>,
+                    <span class="dt">n =</span> <span class="ot">NULL</span>,
+                    <span class="dt">p =</span> <span class="ot">NULL</span>,
+                    <span class="dt">Y.sim =</span> <span class="ot">NULL</span>,
+                    <span class="dt">Y.obs =</span> <span class="ot">NULL</span>,
+                    <span class="dt">beta.sim =</span> <span class="ot">NULL</span>,
+                    <span class="dt">beta.estim=</span><span class="ot">NULL</span>,
+                    <span class="dt">sigma2.sim=</span><span class="ot">NULL</span>,
+                    <span class="dt">sigma2.estim=</span><span class="ot">NULL</span>,
+                    <span class="dt">initialize =</span> function(<span class="dt">X =</span> <span class="ot">NA</span>) {self$X&lt;-<span class="st"> </span>X;self$n&lt;-<span class="kw">nrow</span>(X);self$p&lt;-<span class="kw">ncol</span>(X)},
+                    <span class="dt">check.inverse =</span> function(){
+                      D  =<span class="kw">det</span>(<span class="kw">t</span>(self$X)%*%self$X); 
+                      if(D!=<span class="dv">0</span>){<span class="kw">print</span>(<span class="st">&#39;X est de rang plein&#39;</span>)}else{<span class="kw">print</span>(<span class="st">&#39;X n est pas de rang plein&#39;</span>)}
+                    }
+                  )
+)</code></pre></div>
+</div>
+<div id="code-2" class="section level2">
+<h2><span class="header-section-number">6.8</span> Code (2)</h2>
+<p></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mod_lin_gauss &lt;-<span class="st"> </span><span class="kw">R6Class</span>(<span class="st">&quot;mod_lin_gauss&quot;</span>,
+                  <span class="dt">inherit =</span> mod_lin,
+                  <span class="dt">public =</span> <span class="kw">list</span>(
+                     <span class="dt">simu =</span> function(beta,sigma2){
+                       if(self$p==<span class="kw">length</span>(beta)){
+                         self$beta.sim =<span class="st"> </span>beta;
+                         self$sigma2.sim =<span class="st"> </span>sigma2;
+                         self$Y.sim  =self$X %*%<span class="kw">matrix</span>(beta,<span class="dt">ncol=</span><span class="dv">1</span>) +<span class="st"> </span><span class="kw">sqrt</span>(sigma2)*<span class="kw">rnorm</span>(self$n); 
+                         <span class="kw">return</span>(self$Y.sim)}
+                       else{<span class="kw">print</span>(<span class="st">&#39;Problèmes de dimension&#39;</span>)}
+                     },
+                     <span class="dt">estim =</span> function(Y){
+                       if(self$n==<span class="kw">length</span>(Y)){
+                         self$beta.estim =<span class="st"> </span><span class="kw">c</span>(<span class="kw">solve</span>(<span class="kw">t</span>(self$X)%*%self$X)%*%<span class="kw">t</span>(self$X)%*%<span class="kw">matrix</span>(Y,<span class="dt">ncol=</span><span class="dv">1</span>))
+                         self$sigma2.estim =
+<span class="st">                               </span><span class="kw">sum</span>((Y-<span class="kw">c</span>(self$X%*%<span class="kw">matrix</span>(self$beta.estim,<span class="dt">ncol=</span><span class="dv">1</span>)))^<span class="dv">2</span>)/(self$n-self$p)
+                          self$Y.obs =<span class="st"> </span>Y;                      
+                                                 
+                       }
+                       
+                     }
+                   )
+)</code></pre></div>
+</div>
+<div id="pour-aboutir-a-un-consensus" class="section level2">
+<h2><span class="header-section-number">6.9</span> Pour aboutir à un consensus</h2>
+<p>Pour un utilisateur de notre méthode,</p>
+<ul>
+<li>ne fournir que la classe données avec une fonction estimate qui remplit un champ paramètre (estimé)</li>
+<li>créer éventuellement une classe modèle pour vérifier l’estimation mais ne pas le fournir à l’utilisateur.</li>
+</ul>
+</div>
+<div id="quelques-remarques-et-pour-aller-plus-loin" class="section level2">
+<h2><span class="header-section-number">6.10</span> Quelques remarques et pour aller plus loin</h2>
+<ul>
+<li>privé public</li>
+<li>initialize à faire (maclasse$new() -&gt; correspond à la fonction définie initialize)</li>
+<li>méthode = fonction interne</li>
+<li>self dans la classe pour accéder à l’objet, ses champs et ses méthodes</li>
+<li>get et set bonne pratique de syntaxe ? intérêt</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">maclasse$<span class="kw">get.attr1</span>()
+maclasse$<span class="kw">attr1</span>()</code></pre></div>
+<ul>
+<li>initialize adaptable ?</li>
+<li>classes plus générales et faire hériter</li>
+<li>classe R6 a des fonctions propres (type clone) pour copier un objet</li>
+</ul>
+</div>
+<div id="exercice" class="section level2">
+<h2><span class="header-section-number">6.11</span> Exercice</h2>
+<ul>
+<li><ol style="list-style-type: decimal">
+<li>Coder la sous-classe correspondante au modèle linéaire généralisée pour une loi bernoulli (lien logit ou probit ?)</li>
+</ol></li>
+<li><ol start="2" style="list-style-type: decimal">
+<li>Coder en classe votre modèle préféré</li>
+</ol></li>
+</ul>
+</div>
+<div id="quelques-elements" class="section level2">
+<h2><span class="header-section-number">6.12</span> Quelques éléments</h2>
+<p>set et get utile que pour les attributs déclarés en privé</p>
+<p>pour diffuser un code mieux vaut refaire une surcouche qui s’appelle de maniere classique avec une fonction et option exemple</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">fitmod=function(X,Y,loi)
+{
+  if (loi ==<span class="st">&quot;poisson&quot;</span>)
+  {
+    obj=<span class="kw">linData.Poisson</span>(X,Y)
+    obj$<span class="kw">Estmodlin</span>()
+  }
+}</code></pre></div>
+<p>initialize pas forcément utile si traitement simple, par contre on fait toujours un new pour créer un objet</p>
+<p>attention initialize est en public forcément</p>
+<p>lorsqu’on définit des fonctions ou attribut en privé faire private$</p>
+</div>
+<div id="presentation-julien" class="section level2">
+<h2><span class="header-section-number">6.13</span> Présentation Julien</h2>
+<p>super$initialize pour appeler initilialize dont la fonction hérite</p>
+<ul>
+<li><p>classes pour réstultats de l’estimation des modèles</p></li>
+<li><p>classes pour les donnees et les caractéristiques des modèles a ajuster</p>
+<ul>
+<li>contient les fonctions pour estimer</li>
+</ul></li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">maclasse$<span class="kw">set</span>(<span class="st">&quot;public&quot;</span>,<span class="st">&quot;mamethode&quot;</span>,
+             function()
+             {
+               ...
+             }
+             )</code></pre></div>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="final-words.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(script.src))
+      script.src  = script.src.replace(/^https?:/, '');
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
