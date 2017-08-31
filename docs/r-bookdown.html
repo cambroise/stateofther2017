@@ -141,6 +141,22 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="4.2" data-path="r-bookdown.html"><a href="r-bookdown.html#publication"><i class="fa fa-check"></i><b>4.2</b> Publication du livre sur GitHub</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="final-words.html"><a href="final-words.html"><i class="fa fa-check"></i><b>5</b> Final Words</a></li>
+<li class="chapter" data-level="6" data-path="tidyVerse.html"><a href="tidyVerse.html"><i class="fa fa-check"></i><b>6</b> Découverte du tidyVerse</a><ul>
+<li class="chapter" data-level="6.1" data-path="tidyVerse.html"><a href="tidyVerse.html#motivations"><i class="fa fa-check"></i><b>6.1</b> Motivations</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="tidyVerse.html"><a href="tidyVerse.html#analyse-de-donnees"><i class="fa fa-check"></i><b>6.1.1</b> Analyse de données</a></li>
+<li class="chapter" data-level="6.1.2" data-path="tidyVerse.html"><a href="tidyVerse.html#tidy-data"><i class="fa fa-check"></i><b>6.1.2</b> Tidy data</a></li>
+<li class="chapter" data-level="6.1.3" data-path="tidyVerse.html"><a href="tidyVerse.html#tidy-vs-non-tidy-exemple"><i class="fa fa-check"></i><b>6.1.3</b> Tidy vs non tidy: exemple</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="tidyVerse.html"><a href="tidyVerse.html#les-packages-du-tidyverse"><i class="fa fa-check"></i><b>6.2</b> Les packages du tidyverse</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="tidyVerse.html"><a href="tidyVerse.html#readr"><i class="fa fa-check"></i><b>6.2.1</b> readr</a></li>
+<li class="chapter" data-level="6.2.2" data-path="tidyVerse.html"><a href="tidyVerse.html#tidyr"><i class="fa fa-check"></i><b>6.2.2</b> tidyr</a></li>
+<li class="chapter" data-level="6.2.3" data-path="tidyVerse.html"><a href="tidyVerse.html#dplyr"><i class="fa fa-check"></i><b>6.2.3</b> dplyr</a></li>
+<li class="chapter" data-level="6.2.4" data-path="tidyVerse.html"><a href="tidyVerse.html#purrr"><i class="fa fa-check"></i><b>6.2.4</b> purrr</a></li>
+<li class="chapter" data-level="6.2.5" data-path="tidyVerse.html"><a href="tidyVerse.html#ggplot2"><i class="fa fa-check"></i><b>6.2.5</b> ggplot2</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="tidyVerse.html"><a href="tidyVerse.html#exercice"><i class="fa fa-check"></i><b>6.3</b> Exercice</a></li>
+<li class="chapter" data-level="6.4" data-path="tidyVerse.html"><a href="tidyVerse.html#solution"><i class="fa fa-check"></i><b>6.4</b> Solution</a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -171,13 +187,13 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h2><span class="header-section-number">4.1</span> Mise en oeuvre principe</h2>
 <p>1 . Installer le package <code>bookdown</code> via la CRAN ou bien via devtools</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;devtools&quot;</span>)
-devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">&quot;rstudio/bookdown&quot;</span>)</code></pre></div>
+devtools::<span class="kw">install_github</span>(<span class="st">&quot;rstudio/bookdown&quot;</span>)</code></pre></div>
 <ol start="2" style="list-style-type: decimal">
 <li>Utiliser RStudio pour créer un répertoire “bookproject”</li>
 <li>Par défaut les fichiers RMarkdown du répertoire du “bookproject” deviendront des chapitres, ordonnés ordres alphanumériques. Il est possible d’utiliser le fichier <code>_bookdown.yml</code> pour changer l’ordre des chapitres.</li>
 <li>La compilation peut être effectué pour un clic sur <code>Build Book</code> ou par la ligne</li>
 </ol>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">rmarkdown<span class="op">::</span><span class="kw">render_site</span>(<span class="dt">output_format =</span> <span class="st">&#39;bookdown::gitbook&#39;</span>, <span class="dt">encoding =</span> <span class="st">&#39;UTF-8&#39;</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">rmarkdown::<span class="kw">render_site</span>(<span class="dt">output_format =</span> <span class="st">&#39;bookdown::gitbook&#39;</span>, <span class="dt">encoding =</span> <span class="st">&#39;UTF-8&#39;</span>)</code></pre></div>
 <p>Les formats de sortie possibles sont</p>
 <pre><code>- pdf
 - gitbook

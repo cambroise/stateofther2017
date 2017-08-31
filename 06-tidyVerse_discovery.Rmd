@@ -1,0 +1,213 @@
+# Découverte du tidyVerse {#tidyVerse}
+
+```{r setup-tidy, include=FALSE}
+library(tidyverse)
+```
+
+## Motivations 
+
+### Analyse de données
+
+![processus d'analyse](images/data-science.png) 
+
+  * **import:** récupération des données  
+  * **tidy:**  mise en forme (tableau individus variables)
+  * **transform:**  suppression/création/filtrage de variables/individus
+  * **visualization:** représentation des données et validation/illustration de l'analyse
+  * **model**: ajustement statistique
+  * **communication**: diffusion des résultats (page web / présentation / article)
+
+### Tidy data
+
+Les données collectées ne sont (jamais) sous forme canonique pour le statisticiens.
+
+> “Happy families are all alike; every unhappy family is unhappy in its own way.” –– Leo Tolstoy
+
+> “Tidy datasets are all alike, but every messy dataset is messy in its own way.” –– Hadley Wickham
+
+![Tidy data](images/tidy-1.png)
+Intérêt
+
+  * facilite la manipulation, la visualisation et la modélisation
+  * une structure commune, utilisée par les packages du tydiverse
+  * Philosophie de représentation des données (indépendante de R)
+
+### Tidy vs non tidy: exemple  
+
+```{r}
+table2
+```
+
+```{r}
+table1
+```
+
+## Les packages du tidyverse
+
+  * `tibble`: structure de données
+  * `readr`: lecture de données
+  * `tidyr`: tidyfication
+  * `dplyr`: transformation/ "wrangling"
+  * `purrr`: programmation fonctionnelle / traitement successif
+  * `ggplot2` : visualisation
+
+### readr 
+
+Import de données et création de `tibble`, version amélioré des `data.frame` (+ performant que les fonction de `base`)
+
+```{r, echo=TRUE}
+iris <- read.csv("data/iris.csv")
+head(iris)
+```
+
+```{r, echo=TRUE, eval=FALSE}
+iris <- readr::read_csv("data/iris.csv")
+iris
+```
+
+```{r, echo=FALSE, message=FALSE, eval=TRUE}
+iris <- readr::read_csv("data/iris.csv")
+```
+
+```{r, echo=FALSE, message=FALSE, eval=TRUE}
+iris
+```
+
+### tidyr
+
+Fonctions de mise au format `tidy`
+
+Évolution des fonctions classiques type `reshape` 
+
+  * fonctions `spread`, `gather`, `unite`, `separate`
+
+```{r, echo=TRUE}
+iris_sepal <- add_column(iris, ind = 1:nrow(iris))
+iris_sepal <- select(iris_sepal, ind, sepal_length, sepal_width, species)
+iris_sepal <- gather(iris_sepal, key="attribute", value="measure", -species, -ind)
+iris_sepal <- arrange(iris_sepal, ind)
+iris_sepal
+```
+
+### dplyr
+
+Fonctions de transformation et manipulation de données
+
+  * `select`: sélection variables
+  * `filter` : sélection d'observations
+  * `arrange` : réordonner les observations
+  * `mutate` : créer de nouvelles variables à partir d'existante
+  * `summarize`: résumé de plusieurs variables
+
+et aussi `rename`, `group_by`
+
+```{r, echo=TRUE}
+by_species <- group_by(iris, species)
+dplyr::summarize(by_species, moyenne = mean(sepal_length))
+```
+
+### purrr
+
+  * Définition de l'opérateur pipe `%>%` pour "enchaîner" les traitement sur un `tibble`
+  * Force à la programmation fonctionnelle (une fonction = un argument, une sortie)
+
+```{r,  echo=TRUE}
+iris_sepal <- iris %>%  add_column(ind = 1:nrow(iris)) %>%
+    select(ind, sepal_length, sepal_width, species) %>%
+  gather(key="attribute", value="measure", -species, -ind) %>%
+  arrange(ind)
+iris_sepal
+```
+
+### ggplot2
+
+Outil de visualisation
+
+```{r, echo=TRUE}
+ggplot(iris, mapping = aes(x= species, y=sepal_length)) + 
+  geom_boxplot()
+```
+
+```{r, echo=TRUE}
+ggplot(iris, mapping = aes(x= species, y=sepal_length, color = species)) + 
+  geom_jitter()
+```
+
+```{r}
+ggplot(iris, mapping = aes(x= species, y=sepal_length, colour=species)) + 
+  geom_boxplot() + geom_jitter(alpha=0.5) +
+  labs(title="un très beau graphe", x="espèce", y="longueur de sépale")
+```
+
+```{r, echo=TRUE}
+ggplot(iris, mapping = aes(x= species, fill=species)) + 
+  geom_bar() + coord_polar() + theme_bw()
+```
+
+```{r, echo=TRUE}
+by_attr <- gather(iris, key = "attribut", value="measurement",
+       sepal_length,sepal_width, petal_length,petal_width)
+head(attr)
+ggplot(by_attr, mapping = aes(x=attribut, y=measurement, fill=species)) + 
+  geom_boxplot() 
+```
+```
+
+```{r, echo=TRUE}
+ggplot(by_attr, mapping = aes(x=attribut, y=measurement)) + 
+  geom_boxplot() + facet_grid(~species)
+```
+
+```{r, echo=TRUE}
+ggplot(by_species, mapping = aes(x=sepal_width, y=sepal_length, group=species, colour=species)) + 
+  geom_smooth(method=lm) + geom_point()
+```
+
+```{r, echo=TRUE}
+ggplot(by_species, mapping = aes(x=sepal_width, y=sepal_length, group=species, colour=species)) + 
+  geom_smooth(method=loess) + geom_point()
+```
+
+## Exercice
+
+Lisez les données suivantes à l'adresse [http://stat405.had.co.nz/data/pew.txt](http://stat405.had.co.nz/data/pew.txt "messy data")
+
+  * Transformez en une `tibble` à trois colonnes `religion` `income` `effectif`
+  * Pour les durs: calculez le salaire moyen par religion (après conversion en numerique du salaire)
+
+Pour vous aider :
+
+http://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf
+
+### Solution
+
+```{r}
+pew <- readr::read_delim(file="http://stat405.had.co.nz/data/pew.txt", delim="\t")
+pew <- read_tsv(file="http://stat405.had.co.nz/data/pew.txt")
+
+tidy_pew <- pew  %>% gather(key="income", value="effectif", -religion)
+
+convert <- function(income) {
+  convert.one <- function(x) {
+    switch(x, 
+    "<$10k" = 5000,
+    "$10-20k" = 15000,
+    "$20-30k" = 25000,
+    "$30-40k" = 35000,
+    "$40-50k" = 45000,
+    "$50-75k" = 62500,
+    "$75-100k"= 87250, 
+    "$100-150k" = 125000,          
+    ">150k" = 200000,
+    NA
+    )
+  }
+  sapply(income, convert.one)
+}
+
+tidy_pew %>% mutate(income.numeric = convert(income)) %>% 
+group_by(religion) %>% 
+  summarise(mean.income = weighted.mean(income.numeric, effectif, na.rm=TRUE)) %>%
+  arrange(desc(mean.income))
+```
+
