@@ -1,0 +1,54 @@
+# R Bookdown
+
+Bookdown est un package R développé par Yihui Xe qui permet d'écrire des livres en format Rmarkdown pour les publier en pdf (via latex), epub, gitbook. Le principe de base consiste à utiliser un fichier Rmarkdown par chapitre. 
+
+
+Une documentation assez exhaustive écrite pour l'auteur est disponible 
+
+https://bookdown.org/yihui/bookdown/
+
+Ce chapitre vise simplement à décrire notre expérience du l'utilisation du package. 
+
+
+## Mise en oeuvre principe 
+
+  1 . Installer le package `bookdown` via la CRAN ou bien via devtools
+```{r , echo=TRUE, eval=FALSE}
+install.packages("devtools")
+devtools::install_github("rstudio/bookdown")
+```
+  2. Utiliser RStudio pour créer un répertoire "bookproject"
+  3. Par défaut les fichiers RMarkdown du répertoire du "bookproject" deviendront des chapitres, ordonnés ordres alphanumériques. Il est possible d'utiliser le fichier `_bookdown.yml` pour changer l'ordre des chapitres. 
+  4. La compilation peut être effectué pour un clic sur `Build Book` ou par la ligne 
+```{r, echo=T, eval=FALSE}
+rmarkdown::render_site(output_format = 'bookdown::gitbook', encoding = 'UTF-8')
+```
+Les formats de sortie possibles sont
+
+    - pdf
+    - gitbook
+    - epub
+  5. Publication (voir section \@ref(publication) )  
+    
+##  Publication du livre sur GitHub  {#publication}
+
+Il existe de nombreuses possiblilités de publication mais nous avons testé la solution github utilisant un répertoire `docs`
+
+Créer un repository git pour y mettre le contenu du `bookproject` 
+
+Nommer le répertoire de sortie `docs` (à la place de `_book`) en ajoutant dans le fichier de configuration `_bookdown.yml` la ligne suivante 
+```
+output_dir: "docs"
+```
+
+Dans le répertoire "docs" ajouter un fichier vide caché nommé `.nojekyll` 
+
+```
+{bash, eval=FALSE, echo=TRUE}
+touch .nojekyll
+git add .nojekyll
+```
+
+
+      
+  
