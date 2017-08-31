@@ -10,16 +10,16 @@ link-citations: yes
 description: "Ceci est le résultat d'une semaine d'auto formation à R."
 ---
 
-# Introduction {-}
+# Introduction 
 
-## Objectif {-}
+## Objectif 
 
 Le groupe State Of The R (SOTR) s'est réuni  à Roscoff du 28 août 2017 au 1$^{\mbox{er}}$ septembre 2017 pour une semaine d'auto-formation autour du logiciel R. Différents sujets ont été abordés durant cette semaine 
 
   - Utilisation de git (surtout GitHub) 
   - Automatisation et reproductibilité du code : ``rmarkdown`` ( Chapitres \@ref(rmarkdown), \@ref(blogdown), \@ref(bookdown)),
   - Manipulation de données :`` tidy`` (Chapitre \@ref(tidyverse))
-  - Programmation orientée objets : ``R6 class`` \@ref(R6),
+  - Programmation orientée objets : ``R6 class`` (Chapitre \@ref(R6)),
   - Aspects techniques : Production de packages, ``Rcpp`` (Chapitre \@ref(packages)). 
 
 
@@ -28,7 +28,7 @@ linux (ubuntu version > 15.04), macosx (Sierra 10.12.6), windows (7).
 
 Ce livre résume les expériences des participants durant l'atelier. 
 
-## Ressources principales {-}
+## Ressources principales 
 
   - [http://rmarkdown.rstudio.com/](R Markdown website)
   - [https://bookdown.org/yihui/blogdown/](blogdown: Creating Websites with R Markdown)
@@ -39,7 +39,7 @@ Ce livre résume les expériences des participants durant l'atelier.
 
 
 
-## Les participants {-}
+## Les participants 
 
   - Christophe Ambroise
   - Julie Aubert
