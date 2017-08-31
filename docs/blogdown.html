@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="packages.html">
-
+<link rel="prev" href="rmarkdown.html">
+<link rel="next" href="bookdown.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -192,14 +192,14 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="7.3.4" data-path="packages.html"><a href="packages.html#exercice-4-1"><i class="fa fa-check"></i><b>7.3.4</b> Exercice 4</a></li>
 <li class="chapter" data-level="7.3.5" data-path="packages.html"><a href="packages.html#exercice-5-1"><i class="fa fa-check"></i><b>7.3.5</b> Exercice 5</a></li>
 </ul></li>
-<<<<<<< HEAD
+<<<<<<< HEAD:docs/blogdown-pour-creer-un-site.html
 <li class="chapter" data-level="7" data-path="programmation-orientee-object-a-laide-de-classe-r6.html"><a href="programmation-orientee-object-a-laide-de-classe-r6.html"><i class="fa fa-check"></i><b>7</b> Programmation orientée object à l’aide de classe R6</a><ul>
 <li class="chapter" data-level="7.1" data-path="programmation-orientee-object-a-laide-de-classe-r6.html"><a href="programmation-orientee-object-a-laide-de-classe-r6.html#principes-et-buts"><i class="fa fa-check"></i><b>7.1</b> Principes et buts</a></li>
 <li class="chapter" data-level="7.2" data-path="programmation-orientee-object-a-laide-de-classe-r6.html"><a href="programmation-orientee-object-a-laide-de-classe-r6.html#exemple-de-classes-pour-le-modele-lineaire-generalise"><i class="fa fa-check"></i><b>7.2</b> Exemple de classes pour le modèle linéaire (généralisé)</a></li>
 <li class="chapter" data-level="7.3" data-path="programmation-orientee-object-a-laide-de-classe-r6.html"><a href="programmation-orientee-object-a-laide-de-classe-r6.html#exercice-1"><i class="fa fa-check"></i><b>7.3</b> Exercice</a></li>
 <li class="chapter" data-level="7.4" data-path="programmation-orientee-object-a-laide-de-classe-r6.html"><a href="programmation-orientee-object-a-laide-de-classe-r6.html#quelques-remarques-supplementaires"><i class="fa fa-check"></i><b>7.4</b> Quelques remarques supplémentaires</a></li>
 =======
->>>>>>> 0f326d6b68bfd754660d10ff1609895e2fc4b55f
+>>>>>>> 0f326d6b68bfd754660d10ff1609895e2fc4b55f:docs/blogdown.html
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
@@ -221,17 +221,110 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="references" class="section level1 unnumbered">
-<h1>References</h1>
+<div id="blogdown" class="section level1">
+<h1><span class="header-section-number">Chapitre 3</span> Blogdown pour créer un site</h1>
+<div id="principes-de-blogdown" class="section level2">
+<h2><span class="header-section-number">3.1</span> Principes de blogdown</h2>
+<p>blogdown permet de gérer un site web à partir de pages statiques en markdown ou Rmarkdown. Le package R utilise le générateur de site <code>Hugo</code>.</p>
+<p>Les fichiers du site sont écrits dans le répertoire <code>content</code> et copiés pour devenir visible dans le répertoire <code>public</code> en passant par le répertoire <code>static</code>.</p>
+</div>
+<div id="mise-en-oeuvre" class="section level2">
+<h2><span class="header-section-number">3.2</span> Mise en oeuvre</h2>
+<div id="preliminaires" class="section level3">
+<h3><span class="header-section-number">3.2.1</span> Préliminaires</h3>
+<div id="remarque-macosx" class="section level4">
+<h4><span class="header-section-number">3.2.1.1</span> Remarque MacOSX</h4>
+<p>Commencer par installer <code>homebrew</code> <a href="https://brew.sh" class="uri">https://brew.sh</a></p>
+</div>
+<div id="outils-de-base" class="section level4">
+<h4><span class="header-section-number">3.2.1.2</span> Outils de base</h4>
+<ul>
+<li>Installer une version supérieure à 1.1.350</li>
+<li>Installer le package <code>blogdown</code> et <code>Hugo</code></li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&#39;blogdown&#39;</span>)
+<span class="kw">library</span>(<span class="st">&#39;blogdown&#39;</span>)
+<span class="kw">install_hugo</span>()</code></pre></div>
+</div>
+</div>
+<div id="creer-le-projet-par-rstudio" class="section level3">
+<h3><span class="header-section-number">3.2.2</span> Créer le projet par RStudio</h3>
+<ul>
+<li>New project &gt; New Directory &gt; Website using blogdown</li>
+<li>Ne pas décocher “install hugo automatically”</li>
+</ul>
+</div>
+<div id="creer-le-post-_index.md" class="section level3">
+<h3><span class="header-section-number">3.2.3</span> Créer le post <code>_index.md</code></h3>
+<ul>
+<li>Le post doit être dans le répertoire principal (dégager “post”). Ce post sera la page d’accueil qui deviendra index.html dans le répertoire <code>public</code></li>
+</ul>
+</div>
+<div id="visualisation-du-site-web" class="section level3">
+<h3><span class="header-section-number">3.2.4</span> Visualisation du site web</h3>
+<ul>
+<li>pour visualiser le site web, nous avons utilisé la commande <code>Server Site</code> du menu <code>Addins</code> proposé par `blogdown</li>
+</ul>
+</div>
+<div id="creer-des-pages-additionnelles" class="section level3">
+<h3><span class="header-section-number">3.2.5</span> Créer des pages additionnelles</h3>
+<ul>
+<li>créer un post dans le répertoire principal</li>
+<li>le nom du fichier ne doit pas comporter de majuscule</li>
+<li>choisir l’extension</li>
+<li>Les hyperliens classiques <code>markdown</code> entre fichiers fonctionnent</li>
+</ul>
+<div id="exemple-1" class="section level4">
+<h4><span class="header-section-number">3.2.5.1</span> Exemple</h4>
+<p>Création d’un lien vers le fichier <code>blogdown-pour-creer-un-site.Rmarkdown</code></p>
+<pre><code>[Notre expérience blogdown](blogdown-pour-creer-un-site)</code></pre>
+</div>
+</div>
+<div id="gestion-des-images" class="section level3">
+<h3><span class="header-section-number">3.2.6</span> Gestion des images</h3>
+<div id="inclusion-dune-images-a-la-taille-voulue" class="section level4">
+<h4><span class="header-section-number">3.2.6.1</span> Inclusion d’une images à la taille voulue</h4>
+<ul>
+<li>les images sont stockées dans un sous répertoire du répertoire <code>static</code>. Dans l’exemple qui suit le répertoire des images est <code>/static/images-markdown/</code></li>
+<li>pour éviter les messages d’erreurs liés à l’édition du markdown, nous avons ajouté un champ <code>resource-files</code>dans le YAML</li>
+</ul>
+</div>
+<div id="exemple-2" class="section level4">
+<h4><span class="header-section-number">3.2.6.2</span> Exemple</h4>
+<pre><code>---
+title: Introduction à Rmarkdown
+author: &#39;&#39;
+date: &#39;2017-08-29&#39;
+resource_files:
+  - ../static/
+slug: introduction-a-rmarkdown
+categories: []
+tags: []
+---</code></pre>
+<p>Les images sont alors incluses comme suit:</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">```{r,  out.width<span class="op">=</span><span class="st">&quot;50px&quot;</span>, echo<span class="op">=</span>TRUE, fig.show<span class="op">=</span><span class="st">&#39;hide&#39;</span>}
+knitr::include_graphics(<span class="st">&quot;/images-markdown/ExempleMdFile.png&quot;</span>, 
+                          auto_pdf <span class="op">=</span> TRUE, dpi <span class="op">=</span> NA)
+```</code></pre></div>
+</div>
+</div>
+<div id="reste-a-faire" class="section level3">
+<h3><span class="header-section-number">3.2.7</span> Reste à faire</h3>
+<ul>
+<li>publication en ligne</li>
+<li>changement de thème ou personnalisation du thème par défaut</li>
+</ul>
 
+</div>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="packages.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="rmarkdown.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="bookdown.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

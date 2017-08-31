@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="packages.html">
-
+<link rel="prev" href="R6.html">
+<link rel="next" href="references.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -192,14 +192,6 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="7.3.4" data-path="packages.html"><a href="packages.html#exercice-4-1"><i class="fa fa-check"></i><b>7.3.4</b> Exercice 4</a></li>
 <li class="chapter" data-level="7.3.5" data-path="packages.html"><a href="packages.html#exercice-5-1"><i class="fa fa-check"></i><b>7.3.5</b> Exercice 5</a></li>
 </ul></li>
-<<<<<<< HEAD
-<li class="chapter" data-level="7" data-path="programmation-orientee-object-a-laide-de-classe-r6.html"><a href="programmation-orientee-object-a-laide-de-classe-r6.html"><i class="fa fa-check"></i><b>7</b> Programmation orientée object à l’aide de classe R6</a><ul>
-<li class="chapter" data-level="7.1" data-path="programmation-orientee-object-a-laide-de-classe-r6.html"><a href="programmation-orientee-object-a-laide-de-classe-r6.html#principes-et-buts"><i class="fa fa-check"></i><b>7.1</b> Principes et buts</a></li>
-<li class="chapter" data-level="7.2" data-path="programmation-orientee-object-a-laide-de-classe-r6.html"><a href="programmation-orientee-object-a-laide-de-classe-r6.html#exemple-de-classes-pour-le-modele-lineaire-generalise"><i class="fa fa-check"></i><b>7.2</b> Exemple de classes pour le modèle linéaire (généralisé)</a></li>
-<li class="chapter" data-level="7.3" data-path="programmation-orientee-object-a-laide-de-classe-r6.html"><a href="programmation-orientee-object-a-laide-de-classe-r6.html#exercice-1"><i class="fa fa-check"></i><b>7.3</b> Exercice</a></li>
-<li class="chapter" data-level="7.4" data-path="programmation-orientee-object-a-laide-de-classe-r6.html"><a href="programmation-orientee-object-a-laide-de-classe-r6.html#quelques-remarques-supplementaires"><i class="fa fa-check"></i><b>7.4</b> Quelques remarques supplémentaires</a></li>
-=======
->>>>>>> 0f326d6b68bfd754660d10ff1609895e2fc4b55f
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
@@ -221,17 +213,154 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="references" class="section level1 unnumbered">
-<h1>References</h1>
+<div id="packages" class="section level1">
+<h1><span class="header-section-number">Chapitre 7</span> Création de package avec Rstudio</h1>
+<div id="introduction-1" class="section level2">
+<h2><span class="header-section-number">7.1</span> Introduction</h2>
+<p>L’objectif de ce petit tutoriel est</p>
+<ol style="list-style-type: decimal">
+<li>de créer un projeet <code>package</code> sous Rstudio,</li>
+<li>de se familiariser avec les outils de documentation,</li>
+<li>d’intégrer un code <code>C++</code>,</li>
+<li>de déposer un package sur github.</li>
+</ol>
+</div>
+<div id="creation-dun-package-rudimentaire" class="section level2">
+<h2><span class="header-section-number">7.2</span> Création d’un package rudimentaire</h2>
+<p>Supposons qu’on dispose de la fonction</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">OLS &lt;-<span class="st"> </span><span class="cf">function</span>(X,y) {
+  beta.hat &lt;-<span class="st"> </span><span class="kw">chol2inv</span>(<span class="kw">chol</span>(<span class="kw">crossprod</span>(X))) <span class="op">%*%</span><span class="st"> </span><span class="kw">crossprod</span>(X,y)
+  beta.hat
+}</code></pre></div>
+<div id="exercice-1-1" class="section level3">
+<h3><span class="header-section-number">7.2.1</span> Exercice 1</h3>
+<p>Créer un projet package via Rstudio:</p>
+<blockquote>
+<p>File -&gt; New Project -&gt; New Directory -&gt; New Package with git repository</p>
+</blockquote>
+<p>Vous pouvez également utiliser directement la commande</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">devtools<span class="op">::</span><span class="kw">create</span>(<span class="st">&quot;OLSfit&quot;</span>)</code></pre></div>
+</div>
+<div id="exercice-2" class="section level3">
+<h3><span class="header-section-number">7.2.2</span> Exercice 2</h3>
+<p>Effacer le fichier <code>hello.R</code>. Créer un fichier <code>OLS.R</code> contenant votre fonction.</p>
+</div>
+<div id="exercice-3" class="section level3">
+<h3><span class="header-section-number">7.2.3</span> Exercice 3</h3>
+<p>Éditer le fichier <code>DESCRIPTION</code> de manière adéquate: modifier le titre, le nom de l’auteur, du mainteneur, la description. Pour le nom de l’auteur, utiliser</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">person</span>(<span class="st">&quot;First&quot;</span>, <span class="st">&quot;Last&quot;</span>, <span class="dt">email =</span> <span class="st">&quot;first.last@example.com&quot;</span>, <span class="dt">role =</span> <span class="kw">c</span>(<span class="st">&quot;aut&quot;</span>, <span class="st">&quot;cre&quot;</span>))</code></pre></div>
+</div>
+<div id="exercice-4" class="section level3">
+<h3><span class="header-section-number">7.2.4</span> Exercice 4</h3>
+<p>Documentez la fonction <code>OLS</code> à l’aide de <code>Roxygen2</code> : pour ce faire, complétez le code suivant et collez-le dans l’entête de votre fichier <code>OLS.R</code>. La balise <code>@export</code> indique que cette fonction doit être rendue public à l’utilisateur. Lors de la compilation de la documentation, le fichier <code>NAMESPACE</code> sera amendé en ce sens.</p>
+<div id="question" class="section level4 unnumbered">
+<h4>Question</h4>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#&#39; Description of the function</span>
+<span class="co">#&#39; </span>
+<span class="co">#&#39; @param  a paramter</span>
+<span class="co">#&#39; @return what is returned</span>
+<span class="co">#&#39; @examples</span>
+<span class="co">#&#39; @export </span>
+OLS &lt;-<span class="st"> </span><span class="cf">function</span>(X,y) {
+  beta.hat &lt;-<span class="st"> </span><span class="kw">chol2inv</span>(<span class="kw">chol</span>(<span class="kw">crossprod</span>(X))) <span class="op">%*%</span><span class="st"> </span><span class="kw">crossprod</span>(X,y)
+  beta.hat
+}</code></pre></div>
+</div>
+<div id="solution-1" class="section level4 unnumbered">
+<h4>Solution</h4>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#&#39; Compute the OLS esstimator</span>
+<span class="co">#&#39; </span>
+<span class="co">#&#39; @param X A matrix</span>
+<span class="co">#&#39; @param y A vector</span>
+<span class="co">#&#39; @return a vector of coefficients</span>
+<span class="co">#&#39; @examples</span>
+<span class="co">#&#39; n &lt;- 100; p &lt;- 10</span>
+<span class="co">#&#39; X &lt;- matrix(rnorm(n*p), n, p)</span>
+<span class="co">#&#39; beta &lt;- runif(p, 1, 2) * sample(c(-1,1), p, rep=TRUE)</span>
+<span class="co">#&#39; y &lt;- X %*% beta + rnorm(n) </span>
+<span class="co">#&#39; OLS(X,y)</span>
+<span class="co">#&#39; @export</span>
+OLS &lt;-<span class="st"> </span><span class="cf">function</span>(X,y) {
+  beta.hat &lt;-<span class="st"> </span><span class="kw">chol2inv</span>(<span class="kw">chol</span>(<span class="kw">crossprod</span>(X))) <span class="op">%*%</span><span class="st"> </span><span class="kw">crossprod</span>(X,y)
+  beta.hat
+}</code></pre></div>
+<p>Effacez le fichier <code>NAMESPACE</code> et lancez la commande</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">devtools<span class="op">::</span><span class="kw">document</span>()</code></pre></div>
+<p>pour générer les fichiers d’aide et mettre à jour le <code>NAMESPACE</code>.</p>
+</div>
+</div>
+<div id="exercice-5" class="section level3">
+<h3><span class="header-section-number">7.2.5</span> Exercice 5</h3>
+<ul>
+<li><p>Contruire le package et l’installer. Lorsqu’on dispose d’un projet Rstudio associé à un package, ceci peut être fait simplement à l’aide du raccourci <code>Ctrl + Shift + B</code> ou du bouton correspondant en haut à droite.</p></li>
+<li><p>Vérifier que le package et le code fonctionnent via l’exemple de votre fonction.</p></li>
+<li><p>Vérifier que votre package est publibale sur <code>CRAN</code> à l’aide du bouton <code>Check</code> ou du raccourci <code>Ctrl + Shift + E</code>.</p></li>
+</ul>
+</div>
+</div>
+<div id="integration-de-code-c" class="section level2">
+<h2><span class="header-section-number">7.3</span> Intégration de code C++</h2>
+<p>On souhaite accélérer le code en réalisant la partie coûteuse des calculs à l’aide d’un code <code>C++</code>.</p>
+<div id="exercice-1-2" class="section level3">
+<h3><span class="header-section-number">7.3.1</span> Exercice 1</h3>
+<p>Spécifiez via Rstudio que vous allez dorénavant utiliser du code C++, à l’aide de la commande</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">devtools<span class="op">::</span><span class="kw">use_rcpp</span>()</code></pre></div>
+<p>Observez les modifications apportées à votre packages. Commentez.</p>
+</div>
+<div id="exercice-2-1" class="section level3">
+<h3><span class="header-section-number">7.3.2</span> Exercice 2</h3>
+<p>Créer un fichier <code>OLS-pkg.R</code> dans lequel vous intégrerez les lignes suivantes. Vous pouvez également compléter ce fichier pour écrire un texte de présentation générale de votre package qui apparaîtra en début de documentation.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#&#39; package OLSfit</span>
+<span class="co">#&#39; </span>
+<span class="co">#&#39; Dans ce package, on trouve les fonctions trucs bidule et muche. Elles font ceci et cela. Les classes d&#39;objets Robert et MItchoum font etc.</span>
+<span class="co">#&#39; </span>
+<span class="co">#&#39; @name OLS-pkg</span>
+<span class="co">#&#39; @docType package</span>
+<span class="co">#&#39;</span>
+<span class="co">#&#39; @useDynLib OLSfit</span>
+<span class="co">#&#39; @importFrom Rcpp sourceCpp</span>
+<span class="ot">NULL</span></code></pre></div>
+</div>
+<div id="exercice-3-1" class="section level3">
+<h3><span class="header-section-number">7.3.3</span> Exercice 3</h3>
+<p>Créez un fichier <code>OLS.cpp</code> dans le répertoire <code>src</code>. À l’aide d’<a href="http://arma.sourceforge.net">armadillo</a>, compléter le fichier suivant:</p>
+<div id="question-1" class="section level4 unnumbered">
+<h4>Question</h4>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#include &quot;RcppArmadillo.h&quot;</span>
+<span class="op">/</span><span class="er">/</span><span class="st"> </span>[[Rcpp<span class="op">::</span><span class="kw">depends</span>(RcppArmadillo)]]
+NumericVector <span class="kw">OLScpp</span>(const arma<span class="op">::</span>mat X, const arma<span class="op">::</span>vec y) {
 
+}</code></pre></div>
+</div>
+<div id="solution-2" class="section level4 unnumbered">
+<h4>Solution</h4>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#include &quot;RcppArmadillo.h&quot;</span>
+<span class="op">/</span><span class="er">/</span><span class="st"> </span>[[Rcpp<span class="op">::</span><span class="kw">depends</span>(RcppArmadillo)]]
+NumericVector <span class="kw">OLScpp</span>(const arma<span class="op">::</span>mat X, const arma<span class="op">::</span>vec y) {
+  return <span class="kw">wrap</span>( <span class="kw">inv_sympd</span>(<span class="kw">X.t</span>() <span class="op">*</span><span class="st"> </span>X) <span class="op">*</span><span class="st"> </span><span class="kw">X.t</span>() <span class="op">*</span><span class="st"> </span>y ) ;
+}</code></pre></div>
+<p>Ajoutez <code>RcppArmadillo</code> au champ <code>LinkingTo</code> du fichier <code>DESCRIPTION</code>.</p>
+<p>Enfin, faites un <code>build and reload</code> de votre package. Constatez les fichiers nouvellement créer. Commentez.</p>
+</div>
+</div>
+<div id="exercice-4-1" class="section level3">
+<h3><span class="header-section-number">7.3.4</span> Exercice 4</h3>
+<p>Ouvrez le ficher <code>RcppExport.R</code>. À l’aide de son contenu, créer une nouvelle fonction <code>OLSfast</code> dans un nouveau fichier. Regénérer les fichiers de doc à l’aide de Roxygen2. Comparer <code>OLS</code> à <code>OLSfast</code> avec microbenchmark.</p>
+</div>
+<div id="exercice-5-1" class="section level3">
+<h3><span class="header-section-number">7.3.5</span> Exercice 5</h3>
+<p>Publiez votre package sur github.</p>
+
+</div>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="packages.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="R6.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

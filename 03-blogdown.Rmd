@@ -1,4 +1,4 @@
-# Blogdown pour créer un site
+# Blogdown pour créer un site {#blogdown}
 
 ## Principes de blogdown
 
@@ -9,7 +9,7 @@ en markdown ou Rmarkdown. Le package R utilise le générateur de site
 Les fichiers du site sont écrits dans le répertoire `content` et copiés 
 pour devenir visible dans le répertoire `public` en passant par le répertoire `static`. 
 
-##  Étapes 
+##  Mise en oeuvre 
 
 ### Préliminaires
 

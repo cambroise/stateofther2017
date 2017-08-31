@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Auto Formation R avancé</title>
+  <meta name="description" content="Ceci est le résultat d’une semaine d’auto formation à R.">
+  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Auto Formation R avancé" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Ceci est le résultat d’une semaine d’auto formation à R." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Auto Formation R avancé" />
+  
+  <meta name="twitter:description" content="Ceci est le résultat d’une semaine d’auto formation à R." />
+  
+
+<meta name="author" content="Le groupe State Of The R in Roscoff">
+
+
+<meta name="date" content="2017-08-31">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="bookdown.html">
+<link rel="next" href="R6.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Une semaine à Roscoff</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#objectif"><i class="fa fa-check"></i><b>1.1</b> Objectif</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#ressources-principales"><i class="fa fa-check"></i><b>1.2</b> Ressources principales</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#les-participants"><i class="fa fa-check"></i><b>1.3</b> Les participants</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="rmarkdown.html"><a href="rmarkdown.html"><i class="fa fa-check"></i><b>2</b> RMarkdown</a><ul>
+<li class="chapter" data-level="2.1" data-path="rmarkdown.html"><a href="rmarkdown.html#pourquoi"><i class="fa fa-check"></i><b>2.1</b> RMarkdown pour quoi faire ?</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="rmarkdown.html"><a href="rmarkdown.html#automatisation-de-la-production-de-document-scientifique"><i class="fa fa-check"></i><b>2.1.1</b> Automatisation de la production de document scientifique</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="rmarkdown.html"><a href="rmarkdown.html#comment-ca-marche"><i class="fa fa-check"></i><b>2.2</b> Comment ça marche</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="rmarkdown.html"><a href="rmarkdown.html#un-exemple-de-fichier-.rmd-ce-document"><i class="fa fa-check"></i><b>2.2.1</b> Un exemple de fichier .Rmd : ce document</a></li>
+<li class="chapter" data-level="2.2.2" data-path="rmarkdown.html"><a href="rmarkdown.html#schema-conceptuel"><i class="fa fa-check"></i><b>2.2.2</b> Schéma conceptuel</a></li>
+<li class="chapter" data-level="2.2.3" data-path="rmarkdown.html"><a href="rmarkdown.html#markdown"><i class="fa fa-check"></i><b>2.2.3</b> Markdown</a></li>
+<li class="chapter" data-level="2.2.4" data-path="rmarkdown.html"><a href="rmarkdown.html#markdown-cheatsheet"><i class="fa fa-check"></i><b>2.2.4</b> Markdown Cheatsheet</a></li>
+<li class="chapter" data-level="2.2.5" data-path="rmarkdown.html"><a href="rmarkdown.html#pandoc"><i class="fa fa-check"></i><b>2.2.5</b> Pandoc</a></li>
+<li class="chapter" data-level="2.2.6" data-path="rmarkdown.html"><a href="rmarkdown.html#rmarkdown"><i class="fa fa-check"></i><b>2.2.6</b> RMarkdown</a></li>
+<li class="chapter" data-level="2.2.7" data-path="rmarkdown.html"><a href="rmarkdown.html#de-rmarkdown-a-un-document-finalise-avec-knitr"><i class="fa fa-check"></i><b>2.2.7</b> De RMarkdown à un document finalisé avec knitr</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="rmarkdown.html"><a href="rmarkdown.html#un-document-rmarkdown-a-la-loupe"><i class="fa fa-check"></i><b>2.3</b> Un document RMarkdown à la loupe</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="rmarkdown.html"><a href="rmarkdown.html#entete-du-document-yaml"><i class="fa fa-check"></i><b>2.3.1</b> Entete du document : YAML</a></li>
+<li class="chapter" data-level="2.3.2" data-path="rmarkdown.html"><a href="rmarkdown.html#options-globales-pour-le-code-r"><i class="fa fa-check"></i><b>2.3.2</b> Options globales pour le code R</a></li>
+<li class="chapter" data-level="2.3.3" data-path="rmarkdown.html"><a href="rmarkdown.html#code-chunk"><i class="fa fa-check"></i><b>2.3.3</b> Code Chunk</a></li>
+<li class="chapter" data-level="2.3.4" data-path="rmarkdown.html"><a href="rmarkdown.html#r-code-chunk-quelques-options-utiles"><i class="fa fa-check"></i><b>2.3.4</b> R Code Chunk, quelques options utiles</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="blogdown.html"><a href="blogdown.html"><i class="fa fa-check"></i><b>3</b> Blogdown pour créer un site</a><ul>
+<li class="chapter" data-level="3.1" data-path="blogdown.html"><a href="blogdown.html#principes-de-blogdown"><i class="fa fa-check"></i><b>3.1</b> Principes de blogdown</a></li>
+<li class="chapter" data-level="3.2" data-path="blogdown.html"><a href="blogdown.html#mise-en-oeuvre"><i class="fa fa-check"></i><b>3.2</b> Mise en oeuvre</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="blogdown.html"><a href="blogdown.html#preliminaires"><i class="fa fa-check"></i><b>3.2.1</b> Préliminaires</a></li>
+<li class="chapter" data-level="3.2.2" data-path="blogdown.html"><a href="blogdown.html#creer-le-projet-par-rstudio"><i class="fa fa-check"></i><b>3.2.2</b> Créer le projet par RStudio</a></li>
+<li class="chapter" data-level="3.2.3" data-path="blogdown.html"><a href="blogdown.html#creer-le-post-_index.md"><i class="fa fa-check"></i><b>3.2.3</b> Créer le post <code>_index.md</code></a></li>
+<li class="chapter" data-level="3.2.4" data-path="blogdown.html"><a href="blogdown.html#visualisation-du-site-web"><i class="fa fa-check"></i><b>3.2.4</b> Visualisation du site web</a></li>
+<li class="chapter" data-level="3.2.5" data-path="blogdown.html"><a href="blogdown.html#creer-des-pages-additionnelles"><i class="fa fa-check"></i><b>3.2.5</b> Créer des pages additionnelles</a></li>
+<li class="chapter" data-level="3.2.6" data-path="blogdown.html"><a href="blogdown.html#gestion-des-images"><i class="fa fa-check"></i><b>3.2.6</b> Gestion des images</a></li>
+<li class="chapter" data-level="3.2.7" data-path="blogdown.html"><a href="blogdown.html#reste-a-faire"><i class="fa fa-check"></i><b>3.2.7</b> Reste à faire</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="bookdown.html"><a href="bookdown.html"><i class="fa fa-check"></i><b>4</b> R Bookdown</a><ul>
+<li class="chapter" data-level="4.1" data-path="bookdown.html"><a href="bookdown.html#mise-en-oeuvre-principe"><i class="fa fa-check"></i><b>4.1</b> Mise en oeuvre principe</a></li>
+<li class="chapter" data-level="4.2" data-path="bookdown.html"><a href="bookdown.html#publication"><i class="fa fa-check"></i><b>4.2</b> Publication du livre sur GitHub</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="tidyverse.html"><a href="tidyverse.html"><i class="fa fa-check"></i><b>5</b> Découverte du tidyVerse</a><ul>
+<li class="chapter" data-level="5.1" data-path="tidyverse.html"><a href="tidyverse.html#motivations"><i class="fa fa-check"></i><b>5.1</b> Motivations</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="tidyverse.html"><a href="tidyverse.html#analyse-de-donnees"><i class="fa fa-check"></i><b>5.1.1</b> Analyse de données</a></li>
+<li class="chapter" data-level="5.1.2" data-path="tidyverse.html"><a href="tidyverse.html#tidy-data"><i class="fa fa-check"></i><b>5.1.2</b> Tidy data</a></li>
+<li class="chapter" data-level="5.1.3" data-path="tidyverse.html"><a href="tidyverse.html#tidy-vs-non-tidy-exemple"><i class="fa fa-check"></i><b>5.1.3</b> Tidy vs non tidy: exemple</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="tidyverse.html"><a href="tidyverse.html#les-packages-du-tidyverse"><i class="fa fa-check"></i><b>5.2</b> Les packages du tidyverse</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="tidyverse.html"><a href="tidyverse.html#readr"><i class="fa fa-check"></i><b>5.2.1</b> readr</a></li>
+<li class="chapter" data-level="5.2.2" data-path="tidyverse.html"><a href="tidyverse.html#tidyr"><i class="fa fa-check"></i><b>5.2.2</b> tidyr</a></li>
+<li class="chapter" data-level="5.2.3" data-path="tidyverse.html"><a href="tidyverse.html#dplyr"><i class="fa fa-check"></i><b>5.2.3</b> dplyr</a></li>
+<li class="chapter" data-level="5.2.4" data-path="tidyverse.html"><a href="tidyverse.html#purrr"><i class="fa fa-check"></i><b>5.2.4</b> purrr</a></li>
+<li class="chapter" data-level="5.2.5" data-path="tidyverse.html"><a href="tidyverse.html#ggplot2"><i class="fa fa-check"></i><b>5.2.5</b> ggplot2</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="tidyverse.html"><a href="tidyverse.html#exercice"><i class="fa fa-check"></i><b>5.3</b> Exercice</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="tidyverse.html"><a href="tidyverse.html#solution"><i class="fa fa-check"></i><b>5.3.1</b> Solution</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="R6.html"><a href="R6.html"><i class="fa fa-check"></i><b>6</b> Programmation orientée object à l’aide de classe R6</a><ul>
+<li class="chapter" data-level="6.1" data-path="R6.html"><a href="R6.html#principes-et-buts"><i class="fa fa-check"></i><b>6.1</b> Principes et buts</a></li>
+<li class="chapter" data-level="6.2" data-path="R6.html"><a href="R6.html#structure-dune-classe"><i class="fa fa-check"></i><b>6.2</b> Structure d’une classe</a></li>
+<li class="chapter" data-level="6.3" data-path="R6.html"><a href="R6.html#un-exemple-destimation-de-modele-lineaire"><i class="fa fa-check"></i><b>6.3</b> Un exemple d’estimation de modèle linéaire</a></li>
+<li class="chapter" data-level="6.4" data-path="R6.html"><a href="R6.html#un-exemple-destimation-de-modele-lineaire-sous-classes"><i class="fa fa-check"></i><b>6.4</b> Un exemple d’estimation de modèle linéaire, sous-classes</a></li>
+<li class="chapter" data-level="6.5" data-path="R6.html"><a href="R6.html#exemple-dutilisation"><i class="fa fa-check"></i><b>6.5</b> Exemple d’utilisation</a></li>
+<li class="chapter" data-level="6.6" data-path="R6.html"><a href="R6.html#autre-paradigme"><i class="fa fa-check"></i><b>6.6</b> Autre paradigme</a></li>
+<li class="chapter" data-level="6.7" data-path="R6.html"><a href="R6.html#code"><i class="fa fa-check"></i><b>6.7</b> Code</a></li>
+<li class="chapter" data-level="6.8" data-path="R6.html"><a href="R6.html#code-2"><i class="fa fa-check"></i><b>6.8</b> Code (2)</a></li>
+<li class="chapter" data-level="6.9" data-path="R6.html"><a href="R6.html#pour-aboutir-a-un-consensus"><i class="fa fa-check"></i><b>6.9</b> Pour aboutir à un consensus</a></li>
+<li class="chapter" data-level="6.10" data-path="R6.html"><a href="R6.html#quelques-remarques-et-pour-aller-plus-loin"><i class="fa fa-check"></i><b>6.10</b> Quelques remarques et pour aller plus loin</a></li>
+<li class="chapter" data-level="6.11" data-path="R6.html"><a href="R6.html#exercice-1"><i class="fa fa-check"></i><b>6.11</b> Exercice</a></li>
+<li class="chapter" data-level="6.12" data-path="R6.html"><a href="R6.html#quelques-elements"><i class="fa fa-check"></i><b>6.12</b> Quelques éléments</a></li>
+<li class="chapter" data-level="6.13" data-path="R6.html"><a href="R6.html#presentation-julien"><i class="fa fa-check"></i><b>6.13</b> Présentation Julien</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="packages.html"><a href="packages.html"><i class="fa fa-check"></i><b>7</b> Création de package avec Rstudio</a><ul>
+<li class="chapter" data-level="7.1" data-path="packages.html"><a href="packages.html#introduction-1"><i class="fa fa-check"></i><b>7.1</b> Introduction</a></li>
+<li class="chapter" data-level="7.2" data-path="packages.html"><a href="packages.html#creation-dun-package-rudimentaire"><i class="fa fa-check"></i><b>7.2</b> Création d’un package rudimentaire</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="packages.html"><a href="packages.html#exercice-1-1"><i class="fa fa-check"></i><b>7.2.1</b> Exercice 1</a></li>
+<li class="chapter" data-level="7.2.2" data-path="packages.html"><a href="packages.html#exercice-2"><i class="fa fa-check"></i><b>7.2.2</b> Exercice 2</a></li>
+<li class="chapter" data-level="7.2.3" data-path="packages.html"><a href="packages.html#exercice-3"><i class="fa fa-check"></i><b>7.2.3</b> Exercice 3</a></li>
+<li class="chapter" data-level="7.2.4" data-path="packages.html"><a href="packages.html#exercice-4"><i class="fa fa-check"></i><b>7.2.4</b> Exercice 4</a></li>
+<li class="chapter" data-level="7.2.5" data-path="packages.html"><a href="packages.html#exercice-5"><i class="fa fa-check"></i><b>7.2.5</b> Exercice 5</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="packages.html"><a href="packages.html#integration-de-code-c"><i class="fa fa-check"></i><b>7.3</b> Intégration de code C++</a><ul>
+<li class="chapter" data-level="7.3.1" data-path="packages.html"><a href="packages.html#exercice-1-2"><i class="fa fa-check"></i><b>7.3.1</b> Exercice 1</a></li>
+<li class="chapter" data-level="7.3.2" data-path="packages.html"><a href="packages.html#exercice-2-1"><i class="fa fa-check"></i><b>7.3.2</b> Exercice 2</a></li>
+<li class="chapter" data-level="7.3.3" data-path="packages.html"><a href="packages.html#exercice-3-1"><i class="fa fa-check"></i><b>7.3.3</b> Exercice 3</a></li>
+<li class="chapter" data-level="7.3.4" data-path="packages.html"><a href="packages.html#exercice-4-1"><i class="fa fa-check"></i><b>7.3.4</b> Exercice 4</a></li>
+<li class="chapter" data-level="7.3.5" data-path="packages.html"><a href="packages.html#exercice-5-1"><i class="fa fa-check"></i><b>7.3.5</b> Exercice 5</a></li>
+</ul></li>
+<<<<<<< HEAD:docs/tidyVerse.html
+<li class="chapter" data-level="7" data-path="programmation-orientee-object-a-laide-de-classe-r6.html"><a href="programmation-orientee-object-a-laide-de-classe-r6.html"><i class="fa fa-check"></i><b>7</b> Programmation orientée object à l’aide de classe R6</a><ul>
+<li class="chapter" data-level="7.1" data-path="programmation-orientee-object-a-laide-de-classe-r6.html"><a href="programmation-orientee-object-a-laide-de-classe-r6.html#principes-et-buts"><i class="fa fa-check"></i><b>7.1</b> Principes et buts</a></li>
+<li class="chapter" data-level="7.2" data-path="programmation-orientee-object-a-laide-de-classe-r6.html"><a href="programmation-orientee-object-a-laide-de-classe-r6.html#exemple-de-classes-pour-le-modele-lineaire-generalise"><i class="fa fa-check"></i><b>7.2</b> Exemple de classes pour le modèle linéaire (généralisé)</a></li>
+<li class="chapter" data-level="7.3" data-path="programmation-orientee-object-a-laide-de-classe-r6.html"><a href="programmation-orientee-object-a-laide-de-classe-r6.html#exercice-1"><i class="fa fa-check"></i><b>7.3</b> Exercice</a></li>
+<li class="chapter" data-level="7.4" data-path="programmation-orientee-object-a-laide-de-classe-r6.html"><a href="programmation-orientee-object-a-laide-de-classe-r6.html#quelques-remarques-supplementaires"><i class="fa fa-check"></i><b>7.4</b> Quelques remarques supplémentaires</a></li>
+=======
+>>>>>>> 0f326d6b68bfd754660d10ff1609895e2fc4b55f:docs/tidyverse.html
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Auto Formation R avancé</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="tidyverse" class="section level1">
+<h1><span class="header-section-number">Chapitre 5</span> Découverte du tidyVerse</h1>
+<div id="motivations" class="section level2">
+<h2><span class="header-section-number">5.1</span> Motivations</h2>
+<div id="analyse-de-donnees" class="section level3">
+<h3><span class="header-section-number">5.1.1</span> Analyse de données</h3>
+<div class="figure">
+<img src="images/data-science.png" alt="processus d’analyse" />
+<p class="caption">processus d’analyse</p>
+</div>
+<ul>
+<li><strong>import:</strong> récupération des données<br />
+</li>
+<li><strong>tidy:</strong> mise en forme (tableau individus variables)</li>
+<li><strong>transform:</strong> suppression/création/filtrage de variables/individus</li>
+<li><strong>visualization:</strong> représentation des données et validation/illustration de l’analyse</li>
+<li><strong>model</strong>: ajustement statistique</li>
+<li><strong>communication</strong>: diffusion des résultats (page web / présentation / article)</li>
+</ul>
+</div>
+<div id="tidy-data" class="section level3">
+<h3><span class="header-section-number">5.1.2</span> Tidy data</h3>
+<p>Les données collectées ne sont (jamais) sous forme canonique pour le statisticiens.</p>
+<blockquote>
+<p>“Happy families are all alike; every unhappy family is unhappy in its own way.” –– Leo Tolstoy</p>
+</blockquote>
+<blockquote>
+<p>“Tidy datasets are all alike, but every messy dataset is messy in its own way.” –– Hadley Wickham</p>
+</blockquote>
+<p><img src="images/tidy-1.png" alt="Tidy data" /> Intérêt</p>
+<ul>
+<li>facilite la manipulation, la visualisation et la modélisation</li>
+<li>une structure commune, utilisée par les packages du tydiverse</li>
+<li>Philosophie de représentation des données (indépendante de R)</li>
+</ul>
+</div>
+<div id="tidy-vs-non-tidy-exemple" class="section level3">
+<h3><span class="header-section-number">5.1.3</span> Tidy vs non tidy: exemple</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">table2</code></pre></div>
+<pre><code>## # A tibble: 12 x 4
+##        country  year       type      count
+##          &lt;chr&gt; &lt;int&gt;      &lt;chr&gt;      &lt;int&gt;
+##  1 Afghanistan  1999      cases        745
+##  2 Afghanistan  1999 population   19987071
+##  3 Afghanistan  2000      cases       2666
+##  4 Afghanistan  2000 population   20595360
+##  5      Brazil  1999      cases      37737
+##  6      Brazil  1999 population  172006362
+##  7      Brazil  2000      cases      80488
+##  8      Brazil  2000 population  174504898
+##  9       China  1999      cases     212258
+## 10       China  1999 population 1272915272
+## 11       China  2000      cases     213766
+## 12       China  2000 population 1280428583</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">table1</code></pre></div>
+<pre><code>## # A tibble: 6 x 4
+##       country  year  cases population
+##         &lt;chr&gt; &lt;int&gt;  &lt;int&gt;      &lt;int&gt;
+## 1 Afghanistan  1999    745   19987071
+## 2 Afghanistan  2000   2666   20595360
+## 3      Brazil  1999  37737  172006362
+## 4      Brazil  2000  80488  174504898
+## 5       China  1999 212258 1272915272
+## 6       China  2000 213766 1280428583</code></pre>
+</div>
+</div>
+<div id="les-packages-du-tidyverse" class="section level2">
+<h2><span class="header-section-number">5.2</span> Les packages du tidyverse</h2>
+<ul>
+<li><code>tibble</code>: structure de données</li>
+<li><code>readr</code>: lecture de données</li>
+<li><code>tidyr</code>: tidyfication</li>
+<li><code>dplyr</code>: transformation/ “wrangling”</li>
+<li><code>purrr</code>: programmation fonctionnelle / traitement successif</li>
+<li><code>ggplot2</code> : visualisation</li>
+</ul>
+<div id="readr" class="section level3">
+<h3><span class="header-section-number">5.2.1</span> readr</h3>
+<p>Import de données et création de <code>tibble</code>, version amélioré des <code>data.frame</code> (+ performant que les fonction de <code>base</code>)</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">iris &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/iris.csv&quot;</span>)
+<span class="kw">head</span>(iris)</code></pre></div>
+<pre><code>##   sepal_length sepal_width petal_length petal_width species
+## 1          5.1         3.5          1.4         0.2  setosa
+## 2          4.9         3.0          1.4         0.2  setosa
+## 3          4.7         3.2          1.3         0.2  setosa
+## 4          4.6         3.1          1.5         0.2  setosa
+## 5          5.0         3.6          1.4         0.2  setosa
+## 6          5.4         3.9          1.7         0.4  setosa</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">iris &lt;-<span class="st"> </span>readr<span class="op">::</span><span class="kw">read_csv</span>(<span class="st">&quot;data/iris.csv&quot;</span>)
+iris</code></pre></div>
+<pre><code>## # A tibble: 150 x 5
+##    sepal_length sepal_width petal_length petal_width species
+##           &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt;   &lt;chr&gt;
+##  1          5.1         3.5          1.4         0.2  setosa
+##  2          4.9         3.0          1.4         0.2  setosa
+##  3          4.7         3.2          1.3         0.2  setosa
+##  4          4.6         3.1          1.5         0.2  setosa
+##  5          5.0         3.6          1.4         0.2  setosa
+##  6          5.4         3.9          1.7         0.4  setosa
+##  7          4.6         3.4          1.4         0.3  setosa
+##  8          5.0         3.4          1.5         0.2  setosa
+##  9          4.4         2.9          1.4         0.2  setosa
+## 10          4.9         3.1          1.5         0.1  setosa
+## # ... with 140 more rows</code></pre>
+</div>
+<div id="tidyr" class="section level3">
+<h3><span class="header-section-number">5.2.2</span> tidyr</h3>
+<p>Fonctions de mise au format <code>tidy</code></p>
+<p>Évolution des fonctions classiques type <code>reshape</code></p>
+<ul>
+<li>fonctions <code>spread</code>, <code>gather</code>, <code>unite</code>, <code>separate</code></li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">iris_sepal &lt;-<span class="st"> </span><span class="kw">add_column</span>(iris, <span class="dt">ind =</span> <span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(iris))
+iris_sepal &lt;-<span class="st"> </span><span class="kw">select</span>(iris_sepal, ind, sepal_length, sepal_width, species)
+iris_sepal &lt;-<span class="st"> </span><span class="kw">gather</span>(iris_sepal, <span class="dt">key=</span><span class="st">&quot;attribute&quot;</span>, <span class="dt">value=</span><span class="st">&quot;measure&quot;</span>, <span class="op">-</span>species, <span class="op">-</span>ind)
+iris_sepal &lt;-<span class="st"> </span><span class="kw">arrange</span>(iris_sepal, ind)
+iris_sepal</code></pre></div>
+<pre><code>## # A tibble: 300 x 4
+##      ind species    attribute measure
+##    &lt;int&gt;   &lt;chr&gt;        &lt;chr&gt;   &lt;dbl&gt;
+##  1     1  setosa sepal_length     5.1
+##  2     1  setosa  sepal_width     3.5
+##  3     2  setosa sepal_length     4.9
+##  4     2  setosa  sepal_width     3.0
+##  5     3  setosa sepal_length     4.7
+##  6     3  setosa  sepal_width     3.2
+##  7     4  setosa sepal_length     4.6
+##  8     4  setosa  sepal_width     3.1
+##  9     5  setosa sepal_length     5.0
+## 10     5  setosa  sepal_width     3.6
+## # ... with 290 more rows</code></pre>
+</div>
+<div id="dplyr" class="section level3">
+<h3><span class="header-section-number">5.2.3</span> dplyr</h3>
+<p>Fonctions de transformation et manipulation de données</p>
+<ul>
+<li><code>select</code>: sélection variables</li>
+<li><code>filter</code> : sélection d’observations</li>
+<li><code>arrange</code> : réordonner les observations</li>
+<li><code>mutate</code> : créer de nouvelles variables à partir d’existante</li>
+<li><code>summarize</code>: résumé de plusieurs variables</li>
+</ul>
+<p>et aussi <code>rename</code>, <code>group_by</code></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">by_species &lt;-<span class="st"> </span><span class="kw">group_by</span>(iris, species)
+dplyr<span class="op">::</span><span class="kw">summarize</span>(by_species, <span class="dt">moyenne =</span> <span class="kw">mean</span>(sepal_length))</code></pre></div>
+<pre><code>## # A tibble: 3 x 2
+##      species moyenne
+##        &lt;chr&gt;   &lt;dbl&gt;
+## 1     setosa   5.006
+## 2 versicolor   5.936
+## 3  virginica   6.588</code></pre>
+</div>
+<div id="purrr" class="section level3">
+<h3><span class="header-section-number">5.2.4</span> purrr</h3>
+<ul>
+<li>Définition de l’opérateur pipe <code>%&gt;%</code> pour “enchaîner” les traitement sur un <code>tibble</code></li>
+<li>Force à la programmation fonctionnelle (une fonction = un argument, une sortie)</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">iris_sepal &lt;-<span class="st"> </span>iris <span class="op">%&gt;%</span><span class="st">  </span><span class="kw">add_column</span>(<span class="dt">ind =</span> <span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(iris)) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">select</span>(ind, sepal_length, sepal_width, species) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">gather</span>(<span class="dt">key=</span><span class="st">&quot;attribute&quot;</span>, <span class="dt">value=</span><span class="st">&quot;measure&quot;</span>, <span class="op">-</span>species, <span class="op">-</span>ind) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">arrange</span>(ind)
+iris_sepal</code></pre></div>
+<pre><code>## # A tibble: 300 x 4
+##      ind species    attribute measure
+##    &lt;int&gt;   &lt;chr&gt;        &lt;chr&gt;   &lt;dbl&gt;
+##  1     1  setosa sepal_length     5.1
+##  2     1  setosa  sepal_width     3.5
+##  3     2  setosa sepal_length     4.9
+##  4     2  setosa  sepal_width     3.0
+##  5     3  setosa sepal_length     4.7
+##  6     3  setosa  sepal_width     3.2
+##  7     4  setosa sepal_length     4.6
+##  8     4  setosa  sepal_width     3.1
+##  9     5  setosa sepal_length     5.0
+## 10     5  setosa  sepal_width     3.6
+## # ... with 290 more rows</code></pre>
+</div>
+<div id="ggplot2" class="section level3">
+<h3><span class="header-section-number">5.2.5</span> ggplot2</h3>
+<p>Outil de visualisation</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(iris, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x=</span> species, <span class="dt">y=</span>sepal_length)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_boxplot</span>()</code></pre></div>
+<p><img src="my-first-book_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(iris, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x=</span> species, <span class="dt">y=</span>sepal_length, <span class="dt">color =</span> species)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_jitter</span>()</code></pre></div>
+<p><img src="my-first-book_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(iris, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x=</span> species, <span class="dt">y=</span>sepal_length, <span class="dt">colour=</span>species)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_boxplot</span>() <span class="op">+</span><span class="st"> </span><span class="kw">geom_jitter</span>(<span class="dt">alpha=</span><span class="fl">0.5</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">labs</span>(<span class="dt">title=</span><span class="st">&quot;un très beau graphe&quot;</span>, <span class="dt">x=</span><span class="st">&quot;espèce&quot;</span>, <span class="dt">y=</span><span class="st">&quot;longueur de sépale&quot;</span>)</code></pre></div>
+<p><img src="my-first-book_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(iris, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x=</span> species, <span class="dt">fill=</span>species)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_bar</span>() <span class="op">+</span><span class="st"> </span><span class="kw">coord_polar</span>() <span class="op">+</span><span class="st"> </span><span class="kw">theme_bw</span>()</code></pre></div>
+<p><img src="my-first-book_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">by_attr &lt;-<span class="st"> </span><span class="kw">gather</span>(iris, <span class="dt">key =</span> <span class="st">&quot;attribut&quot;</span>, <span class="dt">value=</span><span class="st">&quot;measurement&quot;</span>,
+       sepal_length,sepal_width, petal_length,petal_width)
+<span class="kw">head</span>(attr)</code></pre></div>
+<pre><code>##                     
+## 1 .Primitive(&quot;attr&quot;)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(by_attr, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x=</span>attribut, <span class="dt">y=</span>measurement, <span class="dt">fill=</span>species)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_boxplot</span>() </code></pre></div>
+<p><img src="my-first-book_files/figure-html/unnamed-chunk-20-1.png" width="672" /> ```</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(by_attr, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x=</span>attribut, <span class="dt">y=</span>measurement)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_boxplot</span>() <span class="op">+</span><span class="st"> </span><span class="kw">facet_grid</span>(<span class="op">~</span>species)</code></pre></div>
+<p><img src="my-first-book_files/figure-html/unnamed-chunk-21-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(by_species, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x=</span>sepal_width, <span class="dt">y=</span>sepal_length, <span class="dt">group=</span>species, <span class="dt">colour=</span>species)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method=</span>lm) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>()</code></pre></div>
+<p><img src="my-first-book_files/figure-html/unnamed-chunk-22-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(by_species, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x=</span>sepal_width, <span class="dt">y=</span>sepal_length, <span class="dt">group=</span>species, <span class="dt">colour=</span>species)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method=</span>loess) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>()</code></pre></div>
+<p><img src="my-first-book_files/figure-html/unnamed-chunk-23-1.png" width="672" /></p>
+</div>
+</div>
+<div id="exercice" class="section level2">
+<h2><span class="header-section-number">5.3</span> Exercice</h2>
+<p>Lisez les données suivantes à l’adresse <a href="http://stat405.had.co.nz/data/pew.txt" class="uri" title="messy data">http://stat405.had.co.nz/data/pew.txt</a></p>
+<ul>
+<li>Transformez en une <code>tibble</code> à trois colonnes <code>religion</code> <code>income</code> <code>effectif</code></li>
+<li>Pour les durs: calculez le salaire moyen par religion (après conversion en numerique du salaire)</li>
+</ul>
+<p>Pour vous aider :</p>
+<p><a href="http://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf" class="uri">http://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf</a></p>
+<div id="solution" class="section level3">
+<h3><span class="header-section-number">5.3.1</span> Solution</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">pew &lt;-<span class="st"> </span>readr<span class="op">::</span><span class="kw">read_delim</span>(<span class="dt">file=</span><span class="st">&quot;http://stat405.had.co.nz/data/pew.txt&quot;</span>, <span class="dt">delim=</span><span class="st">&quot;</span><span class="ch">\t</span><span class="st">&quot;</span>)</code></pre></div>
+<pre><code>## Parsed with column specification:
+## cols(
+##   religion = col_character(),
+##   `&lt;$10k` = col_integer(),
+##   `$10-20k` = col_integer(),
+##   `$20-30k` = col_integer(),
+##   `$30-40k` = col_integer(),
+##   `$40-50k` = col_integer(),
+##   `$50-75k` = col_integer(),
+##   `$75-100k` = col_integer(),
+##   `$100-150k` = col_integer(),
+##   `&gt;150k` = col_integer(),
+##   `Don&#39;t know/refused` = col_integer()
+## )</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">pew &lt;-<span class="st"> </span><span class="kw">read_tsv</span>(<span class="dt">file=</span><span class="st">&quot;http://stat405.had.co.nz/data/pew.txt&quot;</span>)</code></pre></div>
+<pre><code>## Parsed with column specification:
+## cols(
+##   religion = col_character(),
+##   `&lt;$10k` = col_integer(),
+##   `$10-20k` = col_integer(),
+##   `$20-30k` = col_integer(),
+##   `$30-40k` = col_integer(),
+##   `$40-50k` = col_integer(),
+##   `$50-75k` = col_integer(),
+##   `$75-100k` = col_integer(),
+##   `$100-150k` = col_integer(),
+##   `&gt;150k` = col_integer(),
+##   `Don&#39;t know/refused` = col_integer()
+## )</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tidy_pew &lt;-<span class="st"> </span>pew  <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">gather</span>(<span class="dt">key=</span><span class="st">&quot;income&quot;</span>, <span class="dt">value=</span><span class="st">&quot;effectif&quot;</span>, <span class="op">-</span>religion)
+
+convert &lt;-<span class="st"> </span><span class="cf">function</span>(income) {
+  convert.one &lt;-<span class="st"> </span><span class="cf">function</span>(x) {
+    <span class="cf">switch</span>(x, 
+    <span class="st">&quot;&lt;$10k&quot;</span> =<span class="st"> </span><span class="dv">5000</span>,
+    <span class="st">&quot;$10-20k&quot;</span> =<span class="st"> </span><span class="dv">15000</span>,
+    <span class="st">&quot;$20-30k&quot;</span> =<span class="st"> </span><span class="dv">25000</span>,
+    <span class="st">&quot;$30-40k&quot;</span> =<span class="st"> </span><span class="dv">35000</span>,
+    <span class="st">&quot;$40-50k&quot;</span> =<span class="st"> </span><span class="dv">45000</span>,
+    <span class="st">&quot;$50-75k&quot;</span> =<span class="st"> </span><span class="dv">62500</span>,
+    <span class="st">&quot;$75-100k&quot;</span>=<span class="st"> </span><span class="dv">87250</span>, 
+    <span class="st">&quot;$100-150k&quot;</span> =<span class="st"> </span><span class="dv">125000</span>,          
+    <span class="st">&quot;&gt;150k&quot;</span> =<span class="st"> </span><span class="dv">200000</span>,
+    <span class="ot">NA</span>
+    )
+  }
+  <span class="kw">sapply</span>(income, convert.one)
+}
+
+tidy_pew <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">income.numeric =</span> <span class="kw">convert</span>(income)) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="kw">group_by</span>(religion) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">summarise</span>(<span class="dt">mean.income =</span> <span class="kw">weighted.mean</span>(income.numeric, effectif, <span class="dt">na.rm=</span><span class="ot">TRUE</span>)) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">arrange</span>(<span class="kw">desc</span>(mean.income))</code></pre></div>
+<pre><code>## # A tibble: 18 x 2
+##                   religion mean.income
+##                      &lt;chr&gt;       &lt;dbl&gt;
+##  1                   Hindu   109776.14
+##  2                  Jewish   108197.60
+##  3                 Atheist    85886.67
+##  4                Orthodox    83303.45
+##  5                Buddhist    79508.40
+##  6                Agnostic    79495.89
+##  7           Mainline Prot    73038.95
+##  8         Other Christian    72617.12
+##  9      Don’t know/refused    72049.68
+## 10            Other Faiths    70267.20
+## 11                Catholic    70061.73
+## 12   Other World Religions    69389.71
+## 13                  Mormon    68732.91
+## 14                  Muslim    65409.57
+## 15            Unaffiliated    65361.98
+## 16        Evangelical Prot    58589.36
+## 17       Jehovah&#39;s Witness    48588.48
+## 18 Historically Black Prot    47697.61</code></pre>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="bookdown.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="R6.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": ["my-first-book.pdf"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(script.src))
+      script.src  = script.src.replace(/^https?:/, '');
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

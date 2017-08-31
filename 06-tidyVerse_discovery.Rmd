@@ -1,4 +1,4 @@
-# Découverte du tidyVerse {#tidyVerse}
+# Découverte du tidyVerse {#tidyverse}
 
 ```{r setup-tidy, include=FALSE}
 library(tidyverse)
