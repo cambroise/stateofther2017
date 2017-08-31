@@ -1,4 +1,4 @@
-# RMarkdown {#RMarkdown}
+# RMarkdown {#rmarkdown}
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, background = 'gray', cache=TRUE, include=TRUE, eval=TRUE)

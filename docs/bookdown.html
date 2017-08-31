@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="bookdown.html">
-<link rel="next" href="tidyverse.html">
+<link rel="prev" href="blogdown.html">
+<link rel="next" href="final-words.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -198,18 +198,51 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="final-words" class="section level1">
-<h1><span class="header-section-number">Chapitre 4</span> Final Words</h1>
-<p>We have finished a nice book.</p>
+<div id="bookdown" class="section level1">
+<h1><span class="header-section-number">Chapitre 3</span> R Bookdown</h1>
+<p>Bookdown est un package R développé par Yihui Xe qui permet d’écrire des livres en format Rmarkdown pour les publier en pdf (via latex), epub, gitbook. Le principe de base consiste à utiliser un fichier Rmarkdown par chapitre.</p>
+<p>Une documentation assez exhaustive écrite pour l’auteur est disponible</p>
+<p><a href="https://bookdown.org/yihui/bookdown/" class="uri">https://bookdown.org/yihui/bookdown/</a></p>
+<p>Ce chapitre vise simplement à décrire notre expérience du l’utilisation du package.</p>
+<div id="mise-en-oeuvre-principe" class="section level2">
+<h2><span class="header-section-number">3.1</span> Mise en oeuvre principe</h2>
+<p>1 . Installer le package <code>bookdown</code> via la CRAN ou bien via devtools</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;devtools&quot;</span>)
+devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">&quot;rstudio/bookdown&quot;</span>)</code></pre></div>
+<ol start="2" style="list-style-type: decimal">
+<li>Utiliser RStudio pour créer un répertoire “bookproject”</li>
+<li>Par défaut les fichiers RMarkdown du répertoire du “bookproject” deviendront des chapitres, ordonnés ordres alphanumériques. Il est possible d’utiliser le fichier <code>_bookdown.yml</code> pour changer l’ordre des chapitres.</li>
+<li>La compilation peut être effectué pour un clic sur <code>Build Book</code> ou par la ligne</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">rmarkdown<span class="op">::</span><span class="kw">render_site</span>(<span class="dt">output_format =</span> <span class="st">&#39;bookdown::gitbook&#39;</span>, <span class="dt">encoding =</span> <span class="st">&#39;UTF-8&#39;</span>)</code></pre></div>
+<p>Les formats de sortie possibles sont</p>
+<pre><code>- pdf
+- gitbook
+- epub</code></pre>
+<ol start="5" style="list-style-type: decimal">
+<li>Publication (voir section <a href="bookdown.html#publication">3.2</a> )</li>
+</ol>
+</div>
+<div id="publication" class="section level2">
+<h2><span class="header-section-number">3.2</span> Publication du livre sur GitHub</h2>
+<p>Il existe de nombreuses possiblilités de publication mais nous avons testé la solution github utilisant un répertoire <code>docs</code></p>
+<p>Créer un repository git pour y mettre le contenu du <code>bookproject</code></p>
+<p>Nommer le répertoire de sortie <code>docs</code> (à la place de <code>_book</code>) en ajoutant dans le fichier de configuration <code>_bookdown.yml</code> la ligne suivante</p>
+<pre><code>output_dir: &quot;docs&quot;</code></pre>
+<p>Dans le répertoire “docs” ajouter un fichier vide caché nommé <code>.nojekyll</code></p>
+<pre><code>{bash, eval=FALSE, echo=TRUE}
+touch .nojekyll
+git add .nojekyll</code></pre>
 
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="bookdown.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="tidyverse.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="blogdown.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="final-words.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

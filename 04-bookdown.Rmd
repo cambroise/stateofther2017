@@ -1,4 +1,4 @@
-# R Bookdown
+# R Bookdown {#bookdown}
 
 Bookdown est un package R développé par Yihui Xe qui permet d'écrire des livres en format Rmarkdown pour les publier en pdf (via latex), epub, gitbook. Le principe de base consiste à utiliser un fichier Rmarkdown par chapitre. 
 

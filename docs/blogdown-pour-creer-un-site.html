@@ -103,7 +103,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li><a href="./">A Minimal Book Example</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#ressources-principales"><i class="fa fa-check"></i><b>1.1</b> Ressources principales</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#les-participants"><i class="fa fa-check"></i><b>1.2</b> Les participants</a></li>
+</ul></li>
 <li class="chapter" data-level="2" data-path="RMarkdown.html"><a href="RMarkdown.html"><i class="fa fa-check"></i><b>2</b> RMarkdown</a><ul>
 <li class="chapter" data-level="2.1" data-path="RMarkdown.html"><a href="RMarkdown.html#pourquoi"><i class="fa fa-check"></i><b>2.1</b> RMarkdown pour quoi faire ?</a><ul>
 <li class="chapter" data-level="2.1.1" data-path="RMarkdown.html"><a href="RMarkdown.html#automatisation-de-la-production-de-document-scientifique"><i class="fa fa-check"></i><b>2.1.1</b> Automatisation de la production de document scientifique</a></li>
@@ -135,6 +138,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="3.2.6" data-path="blogdown-pour-creer-un-site.html"><a href="blogdown-pour-creer-un-site.html#gestion-des-images"><i class="fa fa-check"></i><b>3.2.6</b> Gestion des images</a></li>
 <li class="chapter" data-level="3.2.7" data-path="blogdown-pour-creer-un-site.html"><a href="blogdown-pour-creer-un-site.html#reste-a-faire"><i class="fa fa-check"></i><b>3.2.7</b> Reste à faire</a></li>
 </ul></li>
+<li class="chapter" data-level="3.3" data-path="blogdown-pour-creer-un-site.html"><a href="blogdown-pour-creer-un-site.html#ressources-specifiques"><i class="fa fa-check"></i><b>3.3</b> Ressources spécifiques</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="r-bookdown.html"><a href="r-bookdown.html"><i class="fa fa-check"></i><b>4</b> R Bookdown</a><ul>
 <li class="chapter" data-level="4.1" data-path="r-bookdown.html"><a href="r-bookdown.html#mise-en-oeuvre-principe"><i class="fa fa-check"></i><b>4.1</b> Mise en oeuvre principe</a></li>
@@ -197,7 +201,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h1><span class="header-section-number">Chapitre 3</span> Blogdown pour créer un site</h1>
 <div id="principes-de-blogdown" class="section level2">
 <h2><span class="header-section-number">3.1</span> Principes de blogdown</h2>
-<p>blogdown permet de gérer un site web à partir de pages statiques en markdown ou Rmarkdown. Le package R utilise le générateur de site <code>Hugo</code>.</p>
+<p>Blogdown permet de gérer un site web à partir de pages statiques en markdown ou Rmarkdown. Le package R utilise le générateur de site <code>Hugo</code>.</p>
 <p>Les fichiers du site sont écrits dans le répertoire <code>content</code> et copiés pour devenir visible dans le répertoire <code>public</code> en passant par le répertoire <code>static</code>.</p>
 </div>
 <div id="etapes" class="section level2">
@@ -286,8 +290,15 @@ knitr::include_graphics(<span class="st">&quot;/images-markdown/ExempleMdFile.pn
 <li>publication en ligne</li>
 <li>changement de thème ou personnalisation du thème par défaut</li>
 </ul>
-
 </div>
+</div>
+<div id="ressources-specifiques" class="section level2">
+<h2><span class="header-section-number">3.3</span> Ressources spécifiques</h2>
+<ul>
+<li><a href="Démarrer%20un%20blog%20avec%20blogdown">https://talesofr.wordpress.com/2017/08/18/starting-a-rmarkdown-blog-with-bookdown-hugo-github/</a></li>
+<li><a href="Créer%20un%20site%20web%20avec%20blogdown">https://proquestionasker.github.io/blog/Making_Site/#installing-necessary-packages-and-software</a></li>
+</ul>
+
 </div>
 </div>
             </section>
