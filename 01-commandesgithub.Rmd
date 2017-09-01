@@ -1,0 +1,113 @@
+---
+title: "Commandes Github"
+author: "Julien, Jessica, Séverine"
+date: '31-08-2017'
+output: html_document 
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+
+## A. Charger un dossier d'un collaborateur depuis "GitHub.com" vers son espace local "GitHub Desktop" pour modification
+
+- Dans "Github.com", aller sur le dossier à copier sur son espace local, 
+
+- cliquer sur **"clone or download"** ; cela ouvre une fenêtre avec l'adresse HTTPS ou SSH ; 3 solutions sont possibles : 
+
+1. copier l'adresse HTTPS ``https://github.com/username/my_repository.git`` ou SSH ``git@github.com:username/my_repository.git``. 
+
+Dans **GitHub Desktop**  aller sur file -> clone repository -> coller l'adresse HTTPS ou SSH
+
+2. Cliquer sur **Open in Desktop** (indiquer l'éxécutable GitHub.exe à la 1ère utilisation)
+
+3. en ligne de commande depuis le **Git Shell** de **GitHub Desktop**, se placer dans le répertoire souhaité ``$ cd path`` et taper la commande ``$ git clone https://github.com/username/my_repository.git`` ou ``$ git clone git@github.com:username/my_repository.git``
+
+
+- modifier le fichier en l'ouvrant comme classiquement et enregistrer ; la modification est prise en compte automatiquement dans le **GitHub desktop**
+
+
+## B. Renvoyer les fichiers modifiés de son espace "GitHub Desktop" vers le repository d'origine sur  "GitHub.com" 
+
+### Cas où les modifications ne sont pas en conflit avec la version courante
+
+1. Dans **GitHub Desktop**, 
+
+- mettre un commentaire court sur la modification dans cadre **summary**, commentaire plus long dans **description** éventuellement, 
+
+- cliquer sur **Commit to master** pour valider localement les modifications
+
+- cliquer ensuite sur **Push Origin** pour renvoyer vers le répertoire source situé dans "GitHub.com"
+
+
+2. Dans **GitHub shell**, se placer dans le répertoire souhaité  et taper les commandes
+
+``$ git add modified_file.ext`` 
+
+``$ git commit  -m "[descriptive message]``
+
+``$ git push``
+
+
+### Cas où les modifications sont en conflit avec la version courante et les modifications sont mineures
+
+Il y a conflit lorsque un même fichier a été chargé par 2 collaborateurs qui ont fait des modifications et veulent valider (commit + push) leurs modifications pour renvoyer sur "GitHub.com".
+
+Dans ce cas, le ``commit`` est possible mais pas le ``push``.
+Il faut gérer le conflit :
+
+- en faisant un ``pull`` (= permet de récupérer la version courante pour faire apparaitre les modifications des 2 collaborateurs) dans "GitHub Desktop" en cliquant sur ``Pull Origin``
+
+- en ouvrant le fichier en local pour sélectionner les modifications à conserver et supprimer les balises ( ``<<<<<<< HEAD``, ``======``, ``>>>>>>> xxxxxxxx``).
+
+Le conflit étant résolu, le ``commit`` et ``push`` sont désormais possibles en cliquant sur ``Push Origin`` dans "GitHub Desktop". 
+
+
+
+### Cas où les modifications sont en conflit avec la version courante et les modifications sont majeures
+
+Dans le cas où les modifications des utilisateurs sont trop importantes, on peut faire le choix de créer 2 versions du fichier en créant une nouvelle branche. 
+
+On obtient l'organisation suivante :
+
+
+![Affichage de l'arborescence sous GitHub.com](images/fork.PNG)
+
+#### Pour manipuler les branches :
+
+- Sous **GitHub Desktop**:
+
+Pour créer une nouvelle branche, ``Branch``  -> ``new branch`` , saisir un nom *branch_name_to_create* et cliquer sur ``Create branch`` puis sur l'icône ``Publish branch`` et faire ``commit to "branch_name_to_create"`` et ``push`` du fichier à mettre dans la nouvelle branche.
+
+Pour changer de branche, cliquer sur l'icône ``current branch`` et sélectionner la branche souhaitée.
+
+
+Pour toutes opérations sur les branches, sélectionnner la branche à manipuler et cliquer dans le menu **Branch**
+
+
+- Sous **GitHub Shell**, se placer dans le répertoire souhaité et taper les commandes
+
+``$ git branch [branch_name_to_create]`` 
+
+``$ git add modified_file.ext`` 
+
+``$ git commit  -m "[descriptive message]``
+
+``$ git push``
+
+Pour changer de branche, ``$ git checkout [branch_name]`` 
+
+Pour lister les branches de l'arborescence, ``$ git branch`` 
+
+Pour afficher l'état du repository, ``$ git status`` (fichier modifié, ajouté, ...)
+
+Pour supprimer une branche, ``$ git branch -d branch_name`` 
+
+
+
+## C. Références
+Aide mémoire des commandes Git :
+https://services.github.com/on-demand/downloads/github-git-cheat-sheet.pdf
+
+
