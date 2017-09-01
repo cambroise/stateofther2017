@@ -6,7 +6,7 @@ site: bookdown::bookdown_site
 documentclass: book
 bibliography: [book.bib, packages.bib]
 biblio-style: apalike
-link-citations: true
+link-citations: yes
 description: "Ceci est le résultat d'une semaine d'auto formation à R."
 ---
 
@@ -53,3 +53,8 @@ Ce livre résume les expériences des participants durant l'atelier.
   - Marie Perrot-Dockes
   - Timothée Tabouy
 
+
+```{r include=FALSE}
+# automatically create a bib database for R packages
+knitr::write_bib(c('base'),file='packages.bib')
+```
