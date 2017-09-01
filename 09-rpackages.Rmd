@@ -48,7 +48,7 @@ person("First", "Last", email = "first.last@example.com", role = c("aut", "cre")
 
 ### Exercice 4
 
-Documentez la fonction `OLS` à l'aide de `Roxygen2` : pour ce faire, complétez le code suivant et collez-le dans l'entête de votre fichier `OLS.R`. La balise `@export` indique que cette fonction doit être rendue public à l'utilisateur. Lors de la compilation de la documentation, le fichier `NAMESPACE` sera amendé en ce sens.
+Documentez la fonction `OLS` à l'aide de `Roxygen2` [@R-roxygen2] : pour ce faire, complétez le code suivant et collez-le dans l'entête de votre fichier `OLS.R`. La balise `@export` indique que cette fonction doit être rendue public à l'utilisateur. Lors de la compilation de la documentation, le fichier `NAMESPACE` sera amendé en ce sens.
 
 #### Question {-}
 

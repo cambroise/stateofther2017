@@ -5,7 +5,11 @@ Bookdown [@R-bookdown] est un package R développé par Yihui Xe qui permet d'é
 
 Une documentation assez exhaustive écrite pour l'auteur est disponible 
 
-https://bookdown.org/yihui/bookdown/
+https://bookdown.org/yihui/bookdown/.
+
+Et une anti-sèche est disponible
+
+http://www.pzhao.org/en/post/bookdown-cheatsheet/.
 
 Ce chapitre vise simplement à décrire notre expérience du l'utilisation du package. 
 

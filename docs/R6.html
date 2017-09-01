@@ -342,17 +342,18 @@ modgauss$beta</code></pre></div>
 <pre><code>## [1] -2  6</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># on peut utiliser les fonctions pour simuler aux points du meme design</span>
 modgauss$<span class="kw">sim</span>()</code></pre></div>
-<pre><code>##  [1] 28.379919 19.870595  3.397563 21.925739 -1.925194 17.758968 14.309104
-##  [8] -4.967995 -2.483482  1.113851 29.745878 -3.127554 -1.624085  8.826986
-## [15] 22.139810 23.247665 -2.647686 20.253213 14.702293 25.971069 26.609521
-## [22] 26.079295 15.884255 33.393025 21.406831 -2.014760 28.412367 14.190883
-## [29]  4.772673 38.559864  4.463545  8.674841 17.515216 29.810023  4.509207
-## [36] 14.768583 33.028880  3.472350 -1.562293  3.482213 17.680056 30.134698
-## [43] 23.788398 -2.608748 20.920416 30.334406 15.013098 18.836527 23.011891
-## [50]  4.554380</code></pre>
+<pre><code>##  [1] 23.5902712  9.5105441  4.8196274  2.7872644  7.0449607 23.8001396
+##  [7] 15.7917144  6.4212625 14.6423833 26.5364711 11.3224141 15.8522607
+## [13] -2.5809675  9.9472137  6.5545494  4.9566345  5.6323663 17.0560801
+## [19]  8.9812249 16.8697024 18.4694368 15.8940070  3.6040410 13.0845932
+## [25] 25.9983119  1.6529640 19.1966083 29.4514539 19.7328068  1.8315302
+## [31]  4.0532641 -0.1746863 13.6009187 14.5783810  2.6953828 10.1812608
+## [37] 32.6515757 28.1083848 11.2684700 17.6140444  0.5710820 20.3017900
+## [43] 11.6055440 10.2442652 23.1552852 14.9924909 23.7793399 17.7908180
+## [49] -1.7154344 20.4720244</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># on peut utiliser la meme fonction pour simuler aux points d&#39;un autre design</span>
 modgauss$<span class="kw">sim</span>(<span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">2</span>),<span class="dv">1</span>,<span class="dv">2</span>))</code></pre></div>
-<pre><code>## [1] 10.37227</code></pre>
+<pre><code>## [1] 9.589503</code></pre>
 <p>On crée à présent les classes permettant de recevoir les données. Une fonction <code>estime</code> au sein de ces classes aura pour sortie un modèle ajusté.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">don=<span class="kw">R6Class</span>(<span class="st">&quot;don&quot;</span>,
     <span class="dt">public=</span><span class="kw">list</span>(
@@ -397,11 +398,11 @@ ex=poisdon$<span class="kw">new</span>(X,Y)
 <span class="co">#on estime</span>
 est=ex$<span class="kw">estime</span>()
 est$beta</code></pre></div>
-<pre><code>## [1] 0.9800452 2.0123753</code></pre>
+<pre><code>## [1] 0.9883106 1.9778900</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#on peut prédire selon le modèle</span>
 est$<span class="kw">pred</span>(<span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>),<span class="dv">1</span>,<span class="dv">2</span>))</code></pre></div>
 <pre><code>##          [,1]
-## [1,] 149.1266</code></pre>
+## [1,] 140.3432</code></pre>
 <p>On fait de même pour les données censées suivre une loi gaussienne en ajoutant la fonction à la suite de la définition de la classe. Ceci est utile lorsque les fonctions sont trop volumineuses.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gaussdon=<span class="kw">R6Class</span>(<span class="st">&quot;gaussdon&quot;</span>,
                  <span class="dt">inherit =</span> don)
@@ -421,9 +422,9 @@ Y=modgauss$<span class="kw">sim</span>()
 exx=gaussdon$<span class="kw">new</span>(X,Y)
 estt=exx$<span class="kw">estime</span>()
 estt$beta</code></pre></div>
-<pre><code>## [1] -2.179043  6.128144</code></pre>
+<pre><code>## [1] -1.973495  5.846230</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">estt$sigma2</code></pre></div>
-<pre><code>## [1] 2.526758</code></pre>
+<pre><code>## [1] 4.20469</code></pre>
 <p>Si on s’était trompé sur les dimensions.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">modgauss=gauss_modlin_ajuste$<span class="kw">new</span>(<span class="kw">matrix</span>(<span class="kw">runif</span>(<span class="dv">100</span>,<span class="dv">1</span>,<span class="dv">7</span>),<span class="dv">50</span>,<span class="dv">2</span>),<span class="kw">c</span>(-<span class="dv">2</span>,<span class="dv">6</span>),<span class="dv">3</span>)
 X=modgauss$X

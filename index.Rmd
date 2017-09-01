@@ -56,5 +56,5 @@ Ce livre résume les expériences des participants durant l'atelier.
 
 ```{r include=FALSE}
 # automatically create a bib database for R packages
-knitr::write_bib(c('base'),file='packages.bib')
+knitr::write_bib(c('base', 'rmarkdown', 'blogdown', 'knitr', 'devtools', 'tidyverse', 'tidyr', 'dplyr', 'purrr', 'ggplot2', 'R6', 'roxygen2'),file='packages.bib')
 ```

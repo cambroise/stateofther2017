@@ -387,17 +387,17 @@ iris_sepal</code></pre></div>
 <p>Outil de visualisation</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(iris, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x=</span> species, <span class="dt">y=</span>sepal_length)) +<span class="st"> </span>
 <span class="st">  </span><span class="kw">geom_boxplot</span>()</code></pre></div>
-<p><img src="my-first-book_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
+<p><img src="my-first-book_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(iris, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x=</span> species, <span class="dt">y=</span>sepal_length, <span class="dt">color =</span> species)) +<span class="st"> </span>
 <span class="st">  </span><span class="kw">geom_jitter</span>()</code></pre></div>
-<p><img src="my-first-book_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
+<p><img src="my-first-book_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(iris, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x=</span> species, <span class="dt">y=</span>sepal_length, <span class="dt">colour=</span>species)) +<span class="st"> </span>
 <span class="st">  </span><span class="kw">geom_boxplot</span>() +<span class="st"> </span><span class="kw">geom_jitter</span>(<span class="dt">alpha=</span><span class="fl">0.5</span>) +
 <span class="st">  </span><span class="kw">labs</span>(<span class="dt">title=</span><span class="st">&quot;un très beau graphe&quot;</span>, <span class="dt">x=</span><span class="st">&quot;espèce&quot;</span>, <span class="dt">y=</span><span class="st">&quot;longueur de sépale&quot;</span>)</code></pre></div>
-<p><img src="my-first-book_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
+<p><img src="my-first-book_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(iris, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x=</span> species, <span class="dt">fill=</span>species)) +<span class="st"> </span>
 <span class="st">  </span><span class="kw">geom_bar</span>() +<span class="st"> </span><span class="kw">coord_polar</span>() +<span class="st"> </span><span class="kw">theme_bw</span>()</code></pre></div>
-<p><img src="my-first-book_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
+<p><img src="my-first-book_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">by_attr &lt;-<span class="st"> </span><span class="kw">gather</span>(iris, <span class="dt">key =</span> <span class="st">&quot;attribut&quot;</span>, <span class="dt">value=</span><span class="st">&quot;measurement&quot;</span>,
        sepal_length,sepal_width, petal_length,petal_width)
 <span class="kw">head</span>(attr)</code></pre></div>
@@ -405,16 +405,16 @@ iris_sepal</code></pre></div>
 ## 1 .Primitive(&quot;attr&quot;)</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(by_attr, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x=</span>attribut, <span class="dt">y=</span>measurement, <span class="dt">fill=</span>species)) +<span class="st"> </span>
 <span class="st">  </span><span class="kw">geom_boxplot</span>() </code></pre></div>
-<p><img src="my-first-book_files/figure-html/unnamed-chunk-20-1.png" width="672" /> ```</p>
+<p><img src="my-first-book_files/figure-html/unnamed-chunk-21-1.png" width="672" /> ```</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(by_attr, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x=</span>attribut, <span class="dt">y=</span>measurement)) +<span class="st"> </span>
 <span class="st">  </span><span class="kw">geom_boxplot</span>() +<span class="st"> </span><span class="kw">facet_grid</span>(~species)</code></pre></div>
-<p><img src="my-first-book_files/figure-html/unnamed-chunk-21-1.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(by_species, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x=</span>sepal_width, <span class="dt">y=</span>sepal_length, <span class="dt">group=</span>species, <span class="dt">colour=</span>species)) +<span class="st"> </span>
-<span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method=</span>lm) +<span class="st"> </span><span class="kw">geom_point</span>()</code></pre></div>
 <p><img src="my-first-book_files/figure-html/unnamed-chunk-22-1.png" width="672" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(by_species, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x=</span>sepal_width, <span class="dt">y=</span>sepal_length, <span class="dt">group=</span>species, <span class="dt">colour=</span>species)) +<span class="st"> </span>
-<span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method=</span>loess) +<span class="st"> </span><span class="kw">geom_point</span>()</code></pre></div>
+<span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method=</span>lm) +<span class="st"> </span><span class="kw">geom_point</span>()</code></pre></div>
 <p><img src="my-first-book_files/figure-html/unnamed-chunk-23-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(by_species, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x=</span>sepal_width, <span class="dt">y=</span>sepal_length, <span class="dt">group=</span>species, <span class="dt">colour=</span>species)) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method=</span>loess) +<span class="st"> </span><span class="kw">geom_point</span>()</code></pre></div>
+<p><img src="my-first-book_files/figure-html/unnamed-chunk-24-1.png" width="672" /></p>
 </div>
 </div>
 <div id="exercice" class="section level2">

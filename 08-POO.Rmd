@@ -24,7 +24,7 @@ Intérêt :
   - plus lisible pour la diffusion,
   - coder à plusieurs.
 
-Structure d'une classe
+Structure d'une classe R6 [@R-R6]
 
 ```{r,eval=FALSE}
 library(R6)
