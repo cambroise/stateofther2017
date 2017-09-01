@@ -450,18 +450,18 @@ a=<span class="kw">try</span>(gaussdon$<span class="kw">new</span>(X,Y))
 </div>
 <div id="quelques-remarques-supplementaires" class="section level2">
 <h2><span class="header-section-number">6.4</span> Quelques remarques supplémentaires</h2>
-<p>Pour diffuser un code, certains (dont JC) pensent qu’il vaut mieux refaire une surcouche qui s’appelle de maniere classique avec une fonction et des options.</p>
+<p>Pour diffuser un code, certains (dont JC) pensent qu’il vaut mieux refaire une surcouche qui s’appelle de manière classique avec une fonction et des options.</p>
 <p>Exemple</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">fitmod=function(X,Y,loi)
 {
   switch(loi, 
          <span class="dt">poisson=</span>{
-           obj=<span class="kw">poisdon</span>(X,Y)
+           obj=poisdon$<span class="kw">new</span>(X,Y)
            res=obj$<span class="kw">estime</span>()
            <span class="kw">return</span>(res$beta)
          },
          <span class="dt">gaussien=</span>{
-           obj=<span class="kw">gaussdon</span>(X,Y)
+           obj=gaussdon$<span class="kw">new</span>(X,Y)
            res=obj$<span class="kw">estime</span>()
            <span class="kw">return</span>(<span class="kw">list</span>(res$beta,res$sigma2))
          }  
