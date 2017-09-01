@@ -6,7 +6,7 @@
 
 L'objectif de ce petit tutoriel est 
 
-1. de créer un projeet `package` sous Rstudio,
+1. de créer un projeet `package` sous Rstudio (avec le package `devtools` [@R-devtools]),
 2. de se familiariser avec les outils de documentation, 
 3. d'intégrer un code `C++`,
 4. de déposer un package sur github.

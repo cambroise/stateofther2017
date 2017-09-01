@@ -5,7 +5,7 @@ date: '31-08-2017'
 output: html_document 
 ---
 
-# Git via GitHub
+# Git via GitHub {#github}
 
 
 ```{r setup-git, include=FALSE}
@@ -13,7 +13,7 @@ knitr::opts_chunk$set(echo = FALSE)
 ```
 
 
-## A. Charger un dossier d'un collaborateur depuis "GitHub.com" vers son espace local "GitHub Desktop" pour modification
+## Charger un dossier d'un collaborateur depuis "GitHub.com" vers son espace local "GitHub Desktop" pour modification
 
 - Dans "Github.com", aller sur le dossier à copier sur son espace local, 
 
@@ -31,7 +31,7 @@ Dans **GitHub Desktop**  aller sur file -> clone repository -> coller l'adresse 
 - modifier le fichier en l'ouvrant comme classiquement et enregistrer ; la modification est prise en compte automatiquement dans le **GitHub desktop**
 
 
-## B. Renvoyer les fichiers modifiés de son espace "GitHub Desktop" vers le repository d'origine sur  "GitHub.com" 
+## Renvoyer les fichiers modifiés de son espace "GitHub Desktop" vers le repository d'origine sur  "GitHub.com" 
 
 ### Cas où les modifications ne sont pas en conflit avec la version courante
 
@@ -109,7 +109,7 @@ Pour supprimer une branche, ``$ git branch -d branch_name``
 
 
 
-## C. Références
+##  Références
 Aide mémoire des commandes Git :
 https://services.github.com/on-demand/downloads/github-git-cheat-sheet.pdf
 

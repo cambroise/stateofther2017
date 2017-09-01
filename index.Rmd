@@ -16,7 +16,7 @@ description: "Ceci est le résultat d'une semaine d'auto formation à R."
 
 Le groupe State Of The R (SOTR) s'est réuni  à Roscoff du 28 août 2017 au 1$^{\mbox{er}}$ septembre 2017 pour une semaine d'auto-formation autour du logiciel R. Différents sujets ont été abordés durant cette semaine 
 
-  - Utilisation de git (surtout GitHub) 
+  - Utilisation de git (surtout GitHub, Chaptire \@ref(github) ) 
   - Automatisation et reproductibilité du code : ``rmarkdown`` ( Chapitres \@ref(rmarkdown), \@ref(blogdown), \@ref(bookdown)),
   - Manipulation de données :`` tidy`` (Chapitre \@ref(tidyverse))
   - Programmation orientée objets : ``R6 class`` (Chapitre \@ref(R6)),
@@ -56,5 +56,5 @@ Ce livre résume les expériences des participants durant l'atelier.
 
 ```{r, include=FALSE, eval=TRUE}
 # automatically create a bib database for R packages
-knitr::write_bib(c('base', 'rmarkdown', 'blogdown', 'knitr', 'devtools', 'tidyverse', 'tidyr', 'dplyr', 'purrr', 'ggplot2', 'R6', 'roxygen2'),file='packages.bib')
+knitr::write_bib(c('base', 'rmarkdown', 'blogdown', 'bookdown', 'knitr', 'devtools', 'tidyverse', 'tidyr', 'dplyr', 'purrr', 'ggplot2', 'R6', 'roxygen2'),file='packages.bib')
 ```

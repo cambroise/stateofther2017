@@ -61,13 +61,13 @@ De fait il peut passer d'un format x à un format y
 
 <https://pandoc.org/MANUAL.pdf>
 
-### RMarkdown
+### RMarkdown [@R-rmarkdown]
 
 C'est un document pandoc avec des balises spécifiques R. 
 <http://rmarkdown.rstudio.com/lesson-1.html>
 
 
-### De RMarkdown à un document finalisé avec knitr
+### De RMarkdown à un document finalisé avec knitr [@R-knitr]
 
 Le bouton knit effectue les opérations suivantes :
 
@@ -121,6 +121,6 @@ with(cars, plot(speed~dist))
 
 
 
-La vitesse moyenne est \`\` `` r m `` \`\`. 
+La vitesse moyenne est `r m`. 
 
 

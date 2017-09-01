@@ -53,6 +53,11 @@ touch .nojekyll
 git add .nojekyll
 ```
 
+Le livre est alors accessible à l'adresse
 
-      
+https://user.github.io/project/
+
+dans notre cas 
+
+https://cambroise.github.io/stateofther2017/
   

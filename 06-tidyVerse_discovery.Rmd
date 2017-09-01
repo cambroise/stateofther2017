@@ -42,14 +42,14 @@ table2
 table1
 ```
 
-## Les packages du tidyverse
+## Les packages du tidyverse [@R-tidyverse]
 
   * `tibble`: structure de données
   * `readr`: lecture de données
-  * `tidyr`: tidyfication
-  * `dplyr`: transformation/ "wrangling"
+  * `tidyr` [@R-tidyr]: tidyfication
+  * `dplyr` [@R-dplyr] : transformation/ "wrangling"
   * `purrr`: programmation fonctionnelle / traitement successif
-  * `ggplot2` : visualisation
+  * `ggplot2` [@R-ggplot2] : visualisation
 
 ### readr 
 

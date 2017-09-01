@@ -1,8 +1,10 @@
 # Blogdown pour créer un site {#blogdown}
 
+Le test de `blogdown` n'a pas été concluant car nous avons constaté de nombreuses instabilités dès que l'on sort de l'exemple proposé [@R-blogdown]. 
+
 ## Principes de blogdown
 
-blogdown permet de gérer un site web à partir de pages statiques 
+Blogdown permet de gérer un site web à partir de pages statiques 
 en markdown ou Rmarkdown. Le package R utilise le générateur de site 
 `Hugo`. 
 
