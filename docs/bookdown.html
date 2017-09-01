@@ -25,7 +25,7 @@
 <meta name="author" content="Le groupe State Of The R in Roscoff">
 
 
-<meta name="date" content="2017-08-31">
+<meta name="date" content="2017-09-01">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -214,13 +214,13 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h2><span class="header-section-number">4.1</span> Mise en oeuvre principe</h2>
 <p>1 . Installer le package <code>bookdown</code> via la CRAN ou bien via devtools</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;devtools&quot;</span>)
-devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">&quot;rstudio/bookdown&quot;</span>)</code></pre></div>
+devtools::<span class="kw">install_github</span>(<span class="st">&quot;rstudio/bookdown&quot;</span>)</code></pre></div>
 <ol start="2" style="list-style-type: decimal">
 <li>Utiliser RStudio pour créer un répertoire “bookproject”</li>
 <li>Par défaut les fichiers RMarkdown du répertoire du “bookproject” deviendront des chapitres, ordonnés ordres alphanumériques. Il est possible d’utiliser le fichier <code>_bookdown.yml</code> pour changer l’ordre des chapitres.</li>
 <li>La compilation peut être effectué pour un clic sur <code>Build Book</code> ou par la ligne</li>
 </ol>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">rmarkdown<span class="op">::</span><span class="kw">render_site</span>(<span class="dt">output_format =</span> <span class="st">&#39;bookdown::gitbook&#39;</span>, <span class="dt">encoding =</span> <span class="st">&#39;UTF-8&#39;</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">rmarkdown::<span class="kw">render_site</span>(<span class="dt">output_format =</span> <span class="st">&#39;bookdown::gitbook&#39;</span>, <span class="dt">encoding =</span> <span class="st">&#39;UTF-8&#39;</span>)</code></pre></div>
 <p>Les formats de sortie possibles sont</p>
 <pre><code>- pdf
 - gitbook

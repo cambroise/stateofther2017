@@ -9,7 +9,7 @@ Un objet est une sorte de liste mieux structurée.
 Principe :
 
 - créer de nouvelles classes avec des attributs/champs (variables) définis et des méthodes (fonctions propres)
-- un objet est alors intancié à partir d'une classe,
+- un objet est alors instancié à partir d'une classe,
 - créer des classes générales et des classes plus spécifiques qui héritent des clases générales.
 
 
@@ -22,7 +22,7 @@ Intérêt :
   - éviter de dupliquer le code,
   - plus facile à débugger, plus robuste,
   - plus lisible pour la diffusion,
-  - code à plusieurs.
+  - coder à plusieurs.
 
 Structure d'une classe
 
@@ -58,7 +58,7 @@ maclasse=R6class("maclasse",
 
 
 - ``self$...`` permet d'appeler (dans la définition de la classe) les champs et les méthodes propres à la classe déclarés en public.
-- ``private$`` permet d'appeler (dans la définition de la classe) les champes et les méthodes propres à la classe déclarés en private.
+- ``private$`` permet d'appeler (dans la définition de la classe) les champs et les méthodes propres à la classe déclarés en private.
 - on crée/instancie un objet de la classe en tapant ``obj=maclasse$new(a1,a2)``.
 - on appelle les méthodes de la classe en tapant ``maclasse$somme()``.
 - on peut créer des sous-classes qui hériteront d'une classe supérieure. 
@@ -277,7 +277,7 @@ print(a)
 
 ## Quelques remarques supplémentaires
 
-Pour diffuser un code, certains (dont JC) pensent qu'il vaut mieux refaire une surcouche qui s'appelle de maniere classique avec une fonction et des options.
+Pour diffuser un code, certains (dont JC) pensent qu'il vaut mieux refaire une surcouche qui s'appelle de manière classique avec une fonction et des options.
 
 Exemple 
 ```{r,eval=FALSE}
@@ -285,12 +285,12 @@ fitmod=function(X,Y,loi)
 {
   switch(loi, 
          poisson={
-           obj=poisdon(X,Y)
+           obj=poisdon$new(X,Y)
            res=obj$estime()
            return(res$beta)
          },
          gaussien={
-           obj=gaussdon(X,Y)
+           obj=gaussdon$new(X,Y)
            res=obj$estime()
            return(list(res$beta,res$sigma2))
          }  

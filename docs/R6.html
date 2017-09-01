@@ -25,7 +25,7 @@
 <meta name="author" content="Le groupe State Of The R in Roscoff">
 
 
-<meta name="date" content="2017-08-31">
+<meta name="date" content="2017-09-01">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -212,17 +212,17 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>Principe :</p>
 <ul>
 <li>créer de nouvelles classes avec des attributs/champs (variables) définis et des méthodes (fonctions propres)</li>
-<li>un objet est alors intancié à partir d’une classe,</li>
+<li>un objet est alors instancié à partir d’une classe,</li>
 <li>créer des classes générales et des classes plus spécifiques qui héritent des clases générales.</li>
 </ul>
-
+<p></p>
 <p>Intérêt :</p>
 <ul>
 <li>structurer le code,</li>
 <li>éviter de dupliquer le code,</li>
 <li>plus facile à débugger, plus robuste,</li>
 <li>plus lisible pour la diffusion,</li>
-<li>code à plusieurs.</li>
+<li>coder à plusieurs.</li>
 </ul>
 <p>Structure d’une classe</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(R6)
@@ -231,30 +231,30 @@ maclasse=<span class="kw">R6class</span>(<span class="st">&quot;maclasse&quot;</
                   <span class="dt">attr1=</span><span class="ot">NULL</span>,
                   <span class="dt">attr2=</span><span class="ot">NULL</span>,
                   <span class="dt">attr3=</span><span class="ot">NULL</span>,
-                  <span class="dt">initialize=</span><span class="cf">function</span>(<span class="dt">attr1=</span><span class="ot">NA</span>,<span class="dt">attr2=</span><span class="ot">NA</span>)
+                  <span class="dt">initialize=</span>function(<span class="dt">attr1=</span><span class="ot">NA</span>,<span class="dt">attr2=</span><span class="ot">NA</span>)
                   {
-                    self<span class="op">$</span>attr1=attr1
-                    self<span class="op">$</span>attr2=attr2
-                    private<span class="op">$</span><span class="kw">check</span>()
-                    private<span class="op">$</span>attr4=attr1<span class="op">+</span>attr2
+                    self$attr1=attr1
+                    self$attr2=attr2
+                    private$<span class="kw">check</span>()
+                    private$attr4=attr1+attr2
                   },
-                  <span class="dt">somme=</span><span class="cf">function</span>()
+                  <span class="dt">somme=</span>function()
                   {
-                    <span class="kw">return</span>(private<span class="op">$</span>attr4)
+                    <span class="kw">return</span>(private$attr4)
                   }
                   ),
                   <span class="dt">private=</span><span class="kw">list</span>(
                   <span class="dt">attr4=</span><span class="ot">NULL</span>,
-                  <span class="dt">check=</span><span class="cf">function</span>()
+                  <span class="dt">check=</span>function()
                   {
-                    <span class="cf">if</span> (self<span class="op">$</span>attr1<span class="op">&lt;</span><span class="dv">0</span>) 
+                    if (self$attr1&lt;<span class="dv">0</span>) 
                       <span class="kw">stop</span>(<span class="st">&quot;attr1 must be positive&quot;</span>)
                   }
                  )
                  )</code></pre></div>
 <ul>
 <li><code>self$...</code> permet d’appeler (dans la définition de la classe) les champs et les méthodes propres à la classe déclarés en public.</li>
-<li><code>private$</code> permet d’appeler (dans la définition de la classe) les champes et les méthodes propres à la classe déclarés en private.</li>
+<li><code>private$</code> permet d’appeler (dans la définition de la classe) les champs et les méthodes propres à la classe déclarés en private.</li>
 <li>on crée/instancie un objet de la classe en tapant <code>obj=maclasse$new(a1,a2)</code>.</li>
 <li>on appelle les méthodes de la classe en tapant <code>maclasse$somme()</code>.</li>
 <li>on peut créer des sous-classes qui hériteront d’une classe supérieure.</li>
@@ -268,10 +268,10 @@ modlin_ajuste=<span class="kw">R6Class</span>(<span class="st">&quot;modlin_ajus
         <span class="dt">public =</span> <span class="kw">list</span>(
           <span class="dt">X=</span><span class="ot">NULL</span>,
           <span class="dt">beta=</span><span class="ot">NULL</span>,
-          <span class="dt">initialize=</span><span class="cf">function</span>(X,beta)
+          <span class="dt">initialize=</span>function(X,beta)
           {
-             self<span class="op">$</span>X=X
-             self<span class="op">$</span>beta=beta
+             self$X=X
+             self$beta=beta
           }
         )
 )</code></pre></div>
@@ -279,23 +279,23 @@ modlin_ajuste=<span class="kw">R6Class</span>(<span class="st">&quot;modlin_ajus
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">poiss_modlin_ajuste=<span class="kw">R6Class</span>(<span class="st">&quot;poiss_modlin_ajuste&quot;</span>,
           <span class="dt">inherit =</span> modlin_ajuste,
           <span class="dt">public =</span> <span class="kw">list</span>(
-             <span class="dt">pred=</span><span class="cf">function</span>(<span class="dt">Xnew=</span><span class="ot">NULL</span>)
+             <span class="dt">pred=</span>function(<span class="dt">Xnew=</span><span class="ot">NULL</span>)
              {
-               <span class="cf">if</span> (<span class="kw">is.null</span>(Xnew))
+               if (<span class="kw">is.null</span>(Xnew))
                  {
-                   <span class="kw">return</span>(<span class="kw">exp</span>(self<span class="op">$</span>X<span class="op">%*%</span>self<span class="op">$</span>beta))
+                   <span class="kw">return</span>(<span class="kw">exp</span>(self$X%*%self$beta))
                }
-               <span class="cf">else</span>
-                 <span class="kw">return</span>(<span class="kw">exp</span>(Xnew<span class="op">%*%</span>self<span class="op">$</span>beta))
+               else
+                 <span class="kw">return</span>(<span class="kw">exp</span>(Xnew%*%self$beta))
              },
-             <span class="dt">sim=</span><span class="cf">function</span>(<span class="dt">Xnew=</span><span class="ot">NULL</span>)
+             <span class="dt">sim=</span>function(<span class="dt">Xnew=</span><span class="ot">NULL</span>)
              {
-               <span class="cf">if</span> (<span class="kw">is.null</span>(Xnew))
+               if (<span class="kw">is.null</span>(Xnew))
                {
-                 <span class="kw">return</span>(<span class="kw">rpois</span>(<span class="kw">nrow</span>(self<span class="op">$</span>X),self<span class="op">$</span><span class="kw">pred</span>()))
+                 <span class="kw">return</span>(<span class="kw">rpois</span>(<span class="kw">nrow</span>(self$X),self$<span class="kw">pred</span>()))
                }
-               <span class="cf">else</span> 
-                 <span class="kw">return</span>(<span class="kw">rpois</span>(<span class="kw">nrow</span>(Xnew),self<span class="op">$</span><span class="kw">pred</span>(Xnew)))
+               else 
+                 <span class="kw">return</span>(<span class="kw">rpois</span>(<span class="kw">nrow</span>(Xnew),self$<span class="kw">pred</span>(Xnew)))
              }
           )
 )</code></pre></div>
@@ -303,73 +303,72 @@ modlin_ajuste=<span class="kw">R6Class</span>(<span class="st">&quot;modlin_ajus
           <span class="dt">inherit =</span> modlin_ajuste,
           <span class="dt">public =</span> <span class="kw">list</span>(
             <span class="dt">sigma2=</span><span class="ot">NULL</span>,
-            <span class="dt">initialize=</span><span class="cf">function</span>(X,beta,sig2)
+            <span class="dt">initialize=</span>function(X,beta,sig2)
             {
-               super<span class="op">$</span><span class="kw">initialize</span>(X,beta)
-               self<span class="op">$</span>sigma2=sig2
-               private<span class="op">$</span><span class="kw">check</span>()
+               super$<span class="kw">initialize</span>(X,beta)
+               self$sigma2=sig2
+               private$<span class="kw">check</span>()
             },
-            <span class="dt">pred=</span><span class="cf">function</span>(<span class="dt">Xnew=</span><span class="ot">NULL</span>)
+            <span class="dt">pred=</span>function(<span class="dt">Xnew=</span><span class="ot">NULL</span>)
             {
-              <span class="cf">if</span> (<span class="kw">is.null</span>(Xnew))
+              if (<span class="kw">is.null</span>(Xnew))
               {
-                 <span class="kw">return</span>(self<span class="op">$</span>X<span class="op">%*%</span>self<span class="op">$</span>beta)  
+                 <span class="kw">return</span>(self$X%*%self$beta)  
               }
-              <span class="cf">else</span> 
-                  <span class="kw">return</span>(Xnew<span class="op">%*%</span>self<span class="op">$</span>beta)
+              else 
+                  <span class="kw">return</span>(Xnew%*%self$beta)
             },
-            <span class="dt">sim=</span><span class="cf">function</span>(<span class="dt">Xnew=</span><span class="ot">NULL</span>)
+            <span class="dt">sim=</span>function(<span class="dt">Xnew=</span><span class="ot">NULL</span>)
             { 
-              <span class="cf">if</span> (<span class="kw">is.null</span>(Xnew))
+              if (<span class="kw">is.null</span>(Xnew))
               {
-                <span class="kw">return</span>(<span class="kw">rnorm</span>(<span class="kw">nrow</span>(self<span class="op">$</span>X),self<span class="op">$</span><span class="kw">pred</span>(),<span class="kw">sqrt</span>(self<span class="op">$</span>sigma2)))
+                <span class="kw">return</span>(<span class="kw">rnorm</span>(<span class="kw">nrow</span>(self$X),self$<span class="kw">pred</span>(),<span class="kw">sqrt</span>(self$sigma2)))
               }
-              <span class="cf">else</span> 
-                 <span class="kw">return</span>(<span class="kw">rnorm</span>(<span class="kw">nrow</span>(Xnew),self<span class="op">$</span><span class="kw">pred</span>(Xnew),<span class="kw">sqrt</span>(self<span class="op">$</span>sigma2)))
+              else 
+                 <span class="kw">return</span>(<span class="kw">rnorm</span>(<span class="kw">nrow</span>(Xnew),self$<span class="kw">pred</span>(Xnew),<span class="kw">sqrt</span>(self$sigma2)))
             }
           ),
           <span class="dt">private =</span> <span class="kw">list</span>(
-            <span class="dt">check=</span><span class="cf">function</span>()
+            <span class="dt">check=</span>function()
             {
-              <span class="cf">if</span> (self<span class="op">$</span>sigma2<span class="op">&lt;</span><span class="dv">0</span>) <span class="kw">stop</span>(<span class="st">&quot;sigma^2 must be positive&quot;</span>)
+              if (self$sigma2&lt;<span class="dv">0</span>) <span class="kw">stop</span>(<span class="st">&quot;sigma^2 must be positive&quot;</span>)
             }
           )
 )</code></pre></div>
 <p>On essaie :</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">modgauss=gauss_modlin_ajuste<span class="op">$</span><span class="kw">new</span>(<span class="kw">matrix</span>(<span class="kw">runif</span>(<span class="dv">100</span>,<span class="dv">1</span>,<span class="dv">7</span>),<span class="dv">50</span>,<span class="dv">2</span>),<span class="kw">c</span>(<span class="op">-</span><span class="dv">2</span>,<span class="dv">6</span>),<span class="dv">3</span>)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">modgauss=gauss_modlin_ajuste$<span class="kw">new</span>(<span class="kw">matrix</span>(<span class="kw">runif</span>(<span class="dv">100</span>,<span class="dv">1</span>,<span class="dv">7</span>),<span class="dv">50</span>,<span class="dv">2</span>),<span class="kw">c</span>(-<span class="dv">2</span>,<span class="dv">6</span>),<span class="dv">3</span>)
 <span class="co"># on accede aux champs ainsi</span>
-modgauss<span class="op">$</span>beta</code></pre></div>
+modgauss$beta</code></pre></div>
 <pre><code>## [1] -2  6</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># on peut utiliser les fonctions pour simuler aux points du meme design</span>
-modgauss<span class="op">$</span><span class="kw">sim</span>()</code></pre></div>
-<pre><code>##  [1]  3.9253414  8.8516137 20.2406528  6.6197553 31.0180087  1.8641920
-##  [7] 16.4806058  5.6472867 36.0301711 16.2222472 -1.1046866  5.2245384
-## [13]  3.6818691  4.5784981 -4.9366466 35.1921634 11.2176183 28.7373307
-## [19] 25.0481311  5.1689941  8.9235460 26.9439104 12.7581362 24.8360465
-## [25]  5.3993443 23.6410534  0.8388448 20.3889301 13.5690916 33.4030088
-## [31] -2.8909051  0.4464236  4.9208528 -3.1908468  0.5840698 29.9401227
-## [37]  9.8378896 21.6009441  8.2153769 28.0664441 36.6189895  5.9710942
-## [43] 26.8855223 14.1728177  2.5706293 27.9538621 28.3275601 -2.4636619
-## [49] 10.5126848 30.9396202</code></pre>
+modgauss$<span class="kw">sim</span>()</code></pre></div>
+<pre><code>##  [1] 28.379919 19.870595  3.397563 21.925739 -1.925194 17.758968 14.309104
+##  [8] -4.967995 -2.483482  1.113851 29.745878 -3.127554 -1.624085  8.826986
+## [15] 22.139810 23.247665 -2.647686 20.253213 14.702293 25.971069 26.609521
+## [22] 26.079295 15.884255 33.393025 21.406831 -2.014760 28.412367 14.190883
+## [29]  4.772673 38.559864  4.463545  8.674841 17.515216 29.810023  4.509207
+## [36] 14.768583 33.028880  3.472350 -1.562293  3.482213 17.680056 30.134698
+## [43] 23.788398 -2.608748 20.920416 30.334406 15.013098 18.836527 23.011891
+## [50]  4.554380</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># on peut utiliser la meme fonction pour simuler aux points d&#39;un autre design</span>
-modgauss<span class="op">$</span><span class="kw">sim</span>(<span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">2</span>),<span class="dv">1</span>,<span class="dv">2</span>))</code></pre></div>
-<pre><code>## [1] 13.91759</code></pre>
+modgauss$<span class="kw">sim</span>(<span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">2</span>),<span class="dv">1</span>,<span class="dv">2</span>))</code></pre></div>
+<pre><code>## [1] 10.37227</code></pre>
 <p>On crée à présent les classes permettant de recevoir les données. Une fonction <code>estime</code> au sein de ces classes aura pour sortie un modèle ajusté.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">don=<span class="kw">R6Class</span>(<span class="st">&quot;don&quot;</span>,
     <span class="dt">public=</span><span class="kw">list</span>(
       <span class="dt">Y=</span><span class="ot">NULL</span>,
       <span class="dt">X=</span><span class="ot">NULL</span>,
-      <span class="dt">initialize=</span><span class="cf">function</span>(X,Y)
+      <span class="dt">initialize=</span>function(X,Y)
       {
-        self<span class="op">$</span>X=X
-        self<span class="op">$</span>Y=Y
-        private<span class="op">$</span><span class="kw">check</span>()
+        self$X=X
+        self$Y=Y
+        private$<span class="kw">check</span>()
       }
       ),
      <span class="dt">private=</span><span class="kw">list</span>(
-       <span class="dt">check=</span><span class="cf">function</span>()
+       <span class="dt">check=</span>function()
        {
-         <span class="cf">if</span> (<span class="kw">nrow</span>(self<span class="op">$</span>X)<span class="op">!=</span><span class="kw">length</span>(self<span class="op">$</span>Y))
+         if (<span class="kw">nrow</span>(self$X)!=<span class="kw">length</span>(self$Y))
            <span class="kw">stop</span>(<span class="st">&quot;êtes vous ivre ?&quot;</span>)
        }
      )
@@ -378,59 +377,59 @@ modgauss<span class="op">$</span><span class="kw">sim</span>(<span class="kw">ma
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">poisdon=<span class="kw">R6Class</span>(<span class="st">&quot;poisdon&quot;</span>,
                  <span class="dt">inherit =</span> don,
                  <span class="dt">public =</span> <span class="kw">list</span>(
-                   <span class="dt">estime=</span><span class="cf">function</span>()
+                   <span class="dt">estime=</span>function()
                    {
-                     res=<span class="kw">glm</span>(self<span class="op">$</span>Y<span class="op">~</span>self<span class="op">$</span>X<span class="op">-</span><span class="dv">1</span>,<span class="dt">family =</span> <span class="st">&quot;poisson&quot;</span>)
-                     obj=poiss_modlin_ajuste<span class="op">$</span><span class="kw">new</span>(self<span class="op">$</span>X,<span class="kw">unname</span>(res<span class="op">$</span>coefficients))
+                     res=<span class="kw">glm</span>(self$Y~self$X<span class="dv">-1</span>,<span class="dt">family =</span> <span class="st">&quot;poisson&quot;</span>)
+                     obj=poiss_modlin_ajuste$<span class="kw">new</span>(self$X,<span class="kw">unname</span>(res$coefficients))
                      <span class="kw">return</span>(obj)
                    }
                  )
                  )</code></pre></div>
 <p>On essaie</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#on définit un modèle</span>
-modpois=poiss_modlin_ajuste<span class="op">$</span><span class="kw">new</span>(<span class="kw">matrix</span>(<span class="kw">runif</span>(<span class="dv">100</span>,<span class="op">-</span><span class="dv">1</span>,<span class="dv">2</span>),<span class="dv">50</span>,<span class="dv">2</span>),<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))
+modpois=poiss_modlin_ajuste$<span class="kw">new</span>(<span class="kw">matrix</span>(<span class="kw">runif</span>(<span class="dv">100</span>,-<span class="dv">1</span>,<span class="dv">2</span>),<span class="dv">50</span>,<span class="dv">2</span>),<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))
 <span class="co">#on simule selon ce modele</span>
-Y=modpois<span class="op">$</span><span class="kw">sim</span>()
-X=modpois<span class="op">$</span>X
+Y=modpois$<span class="kw">sim</span>()
+X=modpois$X
 
 <span class="co"># on cree la structure donnees</span>
-ex=poisdon<span class="op">$</span><span class="kw">new</span>(X,Y)
+ex=poisdon$<span class="kw">new</span>(X,Y)
 <span class="co">#on estime</span>
-est=ex<span class="op">$</span><span class="kw">estime</span>()
-est<span class="op">$</span>beta</code></pre></div>
-<pre><code>## [1] 0.974176 2.003777</code></pre>
+est=ex$<span class="kw">estime</span>()
+est$beta</code></pre></div>
+<pre><code>## [1] 0.9800452 2.0123753</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#on peut prédire selon le modèle</span>
-est<span class="op">$</span><span class="kw">pred</span>(<span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>),<span class="dv">1</span>,<span class="dv">2</span>))</code></pre></div>
+est$<span class="kw">pred</span>(<span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>),<span class="dv">1</span>,<span class="dv">2</span>))</code></pre></div>
 <pre><code>##          [,1]
-## [1,] 145.7263</code></pre>
+## [1,] 149.1266</code></pre>
 <p>On fait de même pour les données censées suivre une loi gaussienne en ajoutant la fonction à la suite de la définition de la classe. Ceci est utile lorsque les fonctions sont trop volumineuses.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gaussdon=<span class="kw">R6Class</span>(<span class="st">&quot;gaussdon&quot;</span>,
                  <span class="dt">inherit =</span> don)
 
-gaussdon<span class="op">$</span><span class="kw">set</span>(<span class="st">&quot;public&quot;</span>,<span class="st">&quot;estime&quot;</span>,
-       <span class="cf">function</span>()
+gaussdon$<span class="kw">set</span>(<span class="st">&quot;public&quot;</span>,<span class="st">&quot;estime&quot;</span>,
+       function()
        {
-            beta   &lt;-<span class="st"> </span><span class="kw">solve</span>(<span class="kw">t</span>(self<span class="op">$</span>X)<span class="op">%*%</span><span class="st"> </span>self<span class="op">$</span>X) <span class="op">%*%</span><span class="st"> </span><span class="kw">t</span>(self<span class="op">$</span>X) <span class="op">%*%</span><span class="st"> </span>self<span class="op">$</span>Y
-            sigma2 &lt;-<span class="st"> </span><span class="kw">sum</span>((self<span class="op">$</span>Y <span class="op">-</span><span class="st"> </span>self<span class="op">$</span>X <span class="op">%*%</span><span class="st"> </span>beta)<span class="op">^</span><span class="dv">2</span>)<span class="op">/</span>(<span class="kw">nrow</span>(self<span class="op">$</span>X) <span class="op">-</span><span class="st"> </span><span class="kw">ncol</span>(self<span class="op">$</span>X)) 
-            obj=gauss_modlin_ajuste<span class="op">$</span><span class="kw">new</span>(self<span class="op">$</span>X,<span class="kw">c</span>(beta),sigma2)
+            beta   &lt;-<span class="st"> </span><span class="kw">solve</span>(<span class="kw">t</span>(self$X)%*%<span class="st"> </span>self$X) %*%<span class="st"> </span><span class="kw">t</span>(self$X) %*%<span class="st"> </span>self$Y
+            sigma2 &lt;-<span class="st"> </span><span class="kw">sum</span>((self$Y -<span class="st"> </span>self$X %*%<span class="st"> </span>beta)^<span class="dv">2</span>)/(<span class="kw">nrow</span>(self$X) -<span class="st"> </span><span class="kw">ncol</span>(self$X)) 
+            obj=gauss_modlin_ajuste$<span class="kw">new</span>(self$X,<span class="kw">c</span>(beta),sigma2)
             <span class="kw">return</span>(obj)       
         }
 )</code></pre></div>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">modgauss=gauss_modlin_ajuste<span class="op">$</span><span class="kw">new</span>(<span class="kw">matrix</span>(<span class="kw">runif</span>(<span class="dv">100</span>,<span class="dv">1</span>,<span class="dv">7</span>),<span class="dv">50</span>,<span class="dv">2</span>),<span class="kw">c</span>(<span class="op">-</span><span class="dv">2</span>,<span class="dv">6</span>),<span class="dv">3</span>)
-X=modgauss<span class="op">$</span>X
-Y=modgauss<span class="op">$</span><span class="kw">sim</span>()
-exx=gaussdon<span class="op">$</span><span class="kw">new</span>(X,Y)
-estt=exx<span class="op">$</span><span class="kw">estime</span>()
-estt<span class="op">$</span>beta</code></pre></div>
-<pre><code>## [1] -2.027765  5.977719</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">estt<span class="op">$</span>sigma2</code></pre></div>
-<pre><code>## [1] 3.012972</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">modgauss=gauss_modlin_ajuste$<span class="kw">new</span>(<span class="kw">matrix</span>(<span class="kw">runif</span>(<span class="dv">100</span>,<span class="dv">1</span>,<span class="dv">7</span>),<span class="dv">50</span>,<span class="dv">2</span>),<span class="kw">c</span>(-<span class="dv">2</span>,<span class="dv">6</span>),<span class="dv">3</span>)
+X=modgauss$X
+Y=modgauss$<span class="kw">sim</span>()
+exx=gaussdon$<span class="kw">new</span>(X,Y)
+estt=exx$<span class="kw">estime</span>()
+estt$beta</code></pre></div>
+<pre><code>## [1] -2.179043  6.128144</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">estt$sigma2</code></pre></div>
+<pre><code>## [1] 2.526758</code></pre>
 <p>Si on s’était trompé sur les dimensions.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">modgauss=gauss_modlin_ajuste<span class="op">$</span><span class="kw">new</span>(<span class="kw">matrix</span>(<span class="kw">runif</span>(<span class="dv">100</span>,<span class="dv">1</span>,<span class="dv">7</span>),<span class="dv">50</span>,<span class="dv">2</span>),<span class="kw">c</span>(<span class="op">-</span><span class="dv">2</span>,<span class="dv">6</span>),<span class="dv">3</span>)
-X=modgauss<span class="op">$</span>X
-Y=modgauss<span class="op">$</span><span class="kw">sim</span>()
-Y=Y[<span class="op">-</span><span class="dv">1</span>]
-a=<span class="kw">try</span>(gaussdon<span class="op">$</span><span class="kw">new</span>(X,Y))
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">modgauss=gauss_modlin_ajuste$<span class="kw">new</span>(<span class="kw">matrix</span>(<span class="kw">runif</span>(<span class="dv">100</span>,<span class="dv">1</span>,<span class="dv">7</span>),<span class="dv">50</span>,<span class="dv">2</span>),<span class="kw">c</span>(-<span class="dv">2</span>,<span class="dv">6</span>),<span class="dv">3</span>)
+X=modgauss$X
+Y=modgauss$<span class="kw">sim</span>()
+Y=Y[-<span class="dv">1</span>]
+a=<span class="kw">try</span>(gaussdon$<span class="kw">new</span>(X,Y))
 <span class="kw">print</span>(a)</code></pre></div>
 <pre><code>## [1] &quot;Error in private$check() : êtes vous ivre ?\n&quot;
 ## attr(,&quot;class&quot;)
@@ -453,23 +452,23 @@ a=<span class="kw">try</span>(gaussdon<span class="op">$</span><span class="kw">
 <h2><span class="header-section-number">6.4</span> Quelques remarques supplémentaires</h2>
 <p>Pour diffuser un code, certains (dont JC) pensent qu’il vaut mieux refaire une surcouche qui s’appelle de maniere classique avec une fonction et des options.</p>
 <p>Exemple</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">fitmod=<span class="cf">function</span>(X,Y,loi)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">fitmod=function(X,Y,loi)
 {
-  <span class="cf">switch</span>(loi, 
+  switch(loi, 
          <span class="dt">poisson=</span>{
            obj=<span class="kw">poisdon</span>(X,Y)
-           res=obj<span class="op">$</span><span class="kw">estime</span>()
-           <span class="kw">return</span>(res<span class="op">$</span>beta)
+           res=obj$<span class="kw">estime</span>()
+           <span class="kw">return</span>(res$beta)
          },
          <span class="dt">gaussien=</span>{
            obj=<span class="kw">gaussdon</span>(X,Y)
-           res=obj<span class="op">$</span><span class="kw">estime</span>()
-           <span class="kw">return</span>(<span class="kw">list</span>(res<span class="op">$</span>beta,res<span class="op">$</span>sigma2))
+           res=obj$<span class="kw">estime</span>()
+           <span class="kw">return</span>(<span class="kw">list</span>(res$beta,res$sigma2))
          }  
   )
 }</code></pre></div>
 <p>Lorsque l’on veut copier un objet (par exemple <code>exx</code> de la classe <code>gaussdon</code>), il faut faire :</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a=exx<span class="op">$</span><span class="kw">clone</span>()</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a=exx$<span class="kw">clone</span>()</code></pre></div>
 <p>Sinon, si on fait <code>b=exx</code>, on modifiera <code>exx</code> en modifiant <code>b</code>.</p>
 <p>Quelques liens utiles :</p>
 <ul>

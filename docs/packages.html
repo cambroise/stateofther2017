@@ -25,7 +25,7 @@
 <meta name="author" content="Le groupe State Of The R in Roscoff">
 
 
-<meta name="date" content="2017-08-31">
+<meta name="date" content="2017-09-01">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -219,8 +219,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div id="creation-dun-package-rudimentaire" class="section level2">
 <h2><span class="header-section-number">7.2</span> Création d’un package rudimentaire</h2>
 <p>Supposons qu’on dispose de la fonction</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">OLS &lt;-<span class="st"> </span><span class="cf">function</span>(X,y) {
-  beta.hat &lt;-<span class="st"> </span><span class="kw">chol2inv</span>(<span class="kw">chol</span>(<span class="kw">crossprod</span>(X))) <span class="op">%*%</span><span class="st"> </span><span class="kw">crossprod</span>(X,y)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">OLS &lt;-<span class="st"> </span>function(X,y) {
+  beta.hat &lt;-<span class="st"> </span><span class="kw">chol2inv</span>(<span class="kw">chol</span>(<span class="kw">crossprod</span>(X))) %*%<span class="st"> </span><span class="kw">crossprod</span>(X,y)
   beta.hat
 }</code></pre></div>
 <div id="exercice-1-1" class="section level3">
@@ -230,7 +230,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>File -&gt; New Project -&gt; New Directory -&gt; New Package with git repository</p>
 </blockquote>
 <p>Vous pouvez également utiliser directement la commande</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">devtools<span class="op">::</span><span class="kw">create</span>(<span class="st">&quot;OLSfit&quot;</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">devtools::<span class="kw">create</span>(<span class="st">&quot;OLSfit&quot;</span>)</code></pre></div>
 </div>
 <div id="exercice-2" class="section level3">
 <h3><span class="header-section-number">7.2.2</span> Exercice 2</h3>
@@ -252,8 +252,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <span class="co">#&#39; @return what is returned</span>
 <span class="co">#&#39; @examples</span>
 <span class="co">#&#39; @export </span>
-OLS &lt;-<span class="st"> </span><span class="cf">function</span>(X,y) {
-  beta.hat &lt;-<span class="st"> </span><span class="kw">chol2inv</span>(<span class="kw">chol</span>(<span class="kw">crossprod</span>(X))) <span class="op">%*%</span><span class="st"> </span><span class="kw">crossprod</span>(X,y)
+OLS &lt;-<span class="st"> </span>function(X,y) {
+  beta.hat &lt;-<span class="st"> </span><span class="kw">chol2inv</span>(<span class="kw">chol</span>(<span class="kw">crossprod</span>(X))) %*%<span class="st"> </span><span class="kw">crossprod</span>(X,y)
   beta.hat
 }</code></pre></div>
 </div>
@@ -271,12 +271,12 @@ OLS &lt;-<span class="st"> </span><span class="cf">function</span>(X,y) {
 <span class="co">#&#39; y &lt;- X %*% beta + rnorm(n) </span>
 <span class="co">#&#39; OLS(X,y)</span>
 <span class="co">#&#39; @export</span>
-OLS &lt;-<span class="st"> </span><span class="cf">function</span>(X,y) {
-  beta.hat &lt;-<span class="st"> </span><span class="kw">chol2inv</span>(<span class="kw">chol</span>(<span class="kw">crossprod</span>(X))) <span class="op">%*%</span><span class="st"> </span><span class="kw">crossprod</span>(X,y)
+OLS &lt;-<span class="st"> </span>function(X,y) {
+  beta.hat &lt;-<span class="st"> </span><span class="kw">chol2inv</span>(<span class="kw">chol</span>(<span class="kw">crossprod</span>(X))) %*%<span class="st"> </span><span class="kw">crossprod</span>(X,y)
   beta.hat
 }</code></pre></div>
 <p>Effacez le fichier <code>NAMESPACE</code> et lancez la commande</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">devtools<span class="op">::</span><span class="kw">document</span>()</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">devtools::<span class="kw">document</span>()</code></pre></div>
 <p>pour générer les fichiers d’aide et mettre à jour le <code>NAMESPACE</code>.</p>
 </div>
 </div>
@@ -295,7 +295,7 @@ OLS &lt;-<span class="st"> </span><span class="cf">function</span>(X,y) {
 <div id="exercice-1-2" class="section level3">
 <h3><span class="header-section-number">7.3.1</span> Exercice 1</h3>
 <p>Spécifiez via Rstudio que vous allez dorénavant utiliser du code C++, à l’aide de la commande</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">devtools<span class="op">::</span><span class="kw">use_rcpp</span>()</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">devtools::<span class="kw">use_rcpp</span>()</code></pre></div>
 <p>Observez les modifications apportées à votre packages. Commentez.</p>
 </div>
 <div id="exercice-2-1" class="section level3">
@@ -318,17 +318,17 @@ OLS &lt;-<span class="st"> </span><span class="cf">function</span>(X,y) {
 <div id="question-1" class="section level4 unnumbered">
 <h4>Question</h4>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#include &quot;RcppArmadillo.h&quot;</span>
-<span class="op">/</span><span class="er">/</span><span class="st"> </span>[[Rcpp<span class="op">::</span><span class="kw">depends</span>(RcppArmadillo)]]
-NumericVector <span class="kw">OLScpp</span>(const arma<span class="op">::</span>mat X, const arma<span class="op">::</span>vec y) {
+/<span class="er">/</span><span class="st"> </span>[[Rcpp::<span class="kw">depends</span>(RcppArmadillo)]]
+NumericVector <span class="kw">OLScpp</span>(const arma::mat X, const arma::vec y) {
 
 }</code></pre></div>
 </div>
 <div id="solution-2" class="section level4 unnumbered">
 <h4>Solution</h4>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#include &quot;RcppArmadillo.h&quot;</span>
-<span class="op">/</span><span class="er">/</span><span class="st"> </span>[[Rcpp<span class="op">::</span><span class="kw">depends</span>(RcppArmadillo)]]
-NumericVector <span class="kw">OLScpp</span>(const arma<span class="op">::</span>mat X, const arma<span class="op">::</span>vec y) {
-  return <span class="kw">wrap</span>( <span class="kw">inv_sympd</span>(<span class="kw">X.t</span>() <span class="op">*</span><span class="st"> </span>X) <span class="op">*</span><span class="st"> </span><span class="kw">X.t</span>() <span class="op">*</span><span class="st"> </span>y ) ;
+/<span class="er">/</span><span class="st"> </span>[[Rcpp::<span class="kw">depends</span>(RcppArmadillo)]]
+NumericVector <span class="kw">OLScpp</span>(const arma::mat X, const arma::vec y) {
+  return <span class="kw">wrap</span>( <span class="kw">inv_sympd</span>(<span class="kw">X.t</span>() *<span class="st"> </span>X) *<span class="st"> </span><span class="kw">X.t</span>() *<span class="st"> </span>y ) ;
 }</code></pre></div>
 <p>Ajoutez <code>RcppArmadillo</code> au champ <code>LinkingTo</code> du fichier <code>DESCRIPTION</code>.</p>
 <p>Enfin, faites un <code>build and reload</code> de votre package. Constatez les fichiers nouvellement créer. Commentez.</p>
