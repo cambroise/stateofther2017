@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="git-via-github.html">
-<link rel="next" href="blogdown.html">
+<link rel="prev" href="index.html">
+<link rel="next" href="rmarkdown.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -213,115 +213,89 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="rmarkdown" class="section level1">
-<h1><span class="header-section-number">Chapitre 3</span> RMarkdown</h1>
-<div id="pourquoi" class="section level2">
-<h2><span class="header-section-number">3.1</span> RMarkdown pour quoi faire ?</h2>
-<div id="automatisation-de-la-production-de-document-scientifique" class="section level3">
-<h3><span class="header-section-number">3.1.1</span> Automatisation de la production de document scientifique</h3>
-<p>Dans un contexte de science reproductible, produire</p>
+<div id="git-via-github" class="section level1">
+<h1><span class="header-section-number">Chapitre 2</span> Git via GitHub</h1>
+<div id="a.-charger-un-dossier-dun-collaborateur-depuis-github.com-vers-son-espace-local-github-desktop-pour-modification" class="section level2">
+<h2><span class="header-section-number">2.1</span> A. Charger un dossier d’un collaborateur depuis “GitHub.com” vers son espace local “GitHub Desktop” pour modification</h2>
 <ul>
-<li>Présentation, article, notes de cours, livre, …</li>
-<li>Code</li>
-<li>Données</li>
+<li><p>Dans “Github.com”, aller sur le dossier à copier sur son espace local,</p></li>
+<li><p>cliquer sur <strong>“clone or download”</strong> ; cela ouvre une fenêtre avec l’adresse HTTPS ou SSH ; 3 solutions sont possibles :</p></li>
 </ul>
-<p>sous la forme de documents PDF, HTML, MS Word etc …</p>
-<p>Site web : <a href="http://rmarkdown.rstudio.com" class="uri">http://rmarkdown.rstudio.com</a></p>
-</div>
-</div>
-<div id="comment-ca-marche" class="section level2">
-<h2><span class="header-section-number">3.2</span> Comment ça marche</h2>
-<div id="un-exemple-de-fichier-.rmd-ce-document" class="section level3 smaller">
-<h3><span class="header-section-number">3.2.1</span> Un exemple de fichier .Rmd : ce document</h3>
-<div class="figure">
-<img src="images/ExempleMdFile.png" alt="Exemple d’un document RMarkdown" />
-<p class="caption">Exemple d’un document RMarkdown</p>
-</div>
-<p><img src="images/ExempleMdFile.png" width="50px" /></p>
-</div>
-<div id="schema-conceptuel" class="section level3">
-<h3><span class="header-section-number">3.2.2</span> Schéma conceptuel</h3>
-<div class="figure">
-<img src="images/RMarkdownFlow.png" alt="Processus de production de documents" />
-<p class="caption">Processus de production de documents</p>
-</div>
-</div>
-<div id="markdown" class="section level3">
-<h3><span class="header-section-number">3.2.3</span> Markdown</h3>
-<p>Un langage à balises très simple (version simplifiée de html par exemple)</p>
-<div id="exemple" class="section level4">
-<h4><span class="header-section-number">3.2.3.1</span> Exemple</h4>
-<pre><code>## Heading
-
-### Sub-heading
-#### Another deeper heading
- Paragraphs are separated
-by a blank line.</code></pre>
-</div>
-</div>
-<div id="markdown-cheatsheet" class="section level3">
-<h3><span class="header-section-number">3.2.4</span> Markdown Cheatsheet</h3>
-<p>Tout le détail (rapide !)</p>
-<div class="figure">
-<img src="images/RMarkdownF2.png" alt="Détails sur Markdown" />
-<p class="caption">Détails sur Markdown</p>
-</div>
-</div>
-<div id="pandoc" class="section level3">
-<h3><span class="header-section-number">3.2.5</span> Pandoc</h3>
-<p>C’est un convertisseur de format de documents. Il sait</p>
-<ul>
-<li>prendre un document d’un format x pour le passer en Markdown étendu</li>
-<li>prendre un document Markdown étendu pour le passer en un format y</li>
-</ul>
-<p>De fait il peut passer d’un format x à un format y</p>
-<p><a href="https://pandoc.org/MANUAL.pdf" class="uri">https://pandoc.org/MANUAL.pdf</a></p>
-</div>
-<div id="rmarkdown" class="section level3">
-<h3><span class="header-section-number">3.2.6</span> RMarkdown</h3>
-<p>C’est un document pandoc avec des balises spécifiques R. <a href="http://rmarkdown.rstudio.com/lesson-1.html" class="uri">http://rmarkdown.rstudio.com/lesson-1.html</a></p>
-</div>
-<div id="de-rmarkdown-a-un-document-finalise-avec-knitr" class="section level3">
-<h3><span class="header-section-number">3.2.7</span> De RMarkdown à un document finalisé avec knitr</h3>
-<p>Le bouton knit effectue les opérations suivantes :</p>
 <ol style="list-style-type: decimal">
-<li>Extraire la partie Markdown texte</li>
-<li>Executer le code R pour produire les sorties demandées</li>
-<li>Intégrer les sorties précédentes dans un document html, word ou pdf</li>
+<li>copier l’adresse HTTPS <code>https://github.com/username/my_repository.git</code> ou SSH <code>git@github.com:username/my_repository.git</code>.</li>
 </ol>
+<p>Dans <strong>GitHub Desktop</strong> aller sur file -&gt; clone repository -&gt; coller l’adresse HTTPS ou SSH</p>
+<ol start="2" style="list-style-type: decimal">
+<li><p>Cliquer sur <strong>Open in Desktop</strong> (indiquer l’éxécutable GitHub.exe à la 1ère utilisation)</p></li>
+<li><p>en ligne de commande depuis le <strong>Git Shell</strong> de <strong>GitHub Desktop</strong>, se placer dans le répertoire souhaité <code>$ cd path</code> et taper la commande <code>$ git clone https://github.com/username/my_repository.git</code> ou <code>$ git clone git@github.com:username/my_repository.git</code></p></li>
+</ol>
+<ul>
+<li>modifier le fichier en l’ouvrant comme classiquement et enregistrer ; la modification est prise en compte automatiquement dans le <strong>GitHub desktop</strong></li>
+</ul>
 </div>
+<div id="b.-renvoyer-les-fichiers-modifies-de-son-espace-github-desktop-vers-le-repository-dorigine-sur-github.com" class="section level2">
+<h2><span class="header-section-number">2.2</span> B. Renvoyer les fichiers modifiés de son espace “GitHub Desktop” vers le repository d’origine sur “GitHub.com”</h2>
+<div id="cas-ou-les-modifications-ne-sont-pas-en-conflit-avec-la-version-courante" class="section level3">
+<h3><span class="header-section-number">2.2.1</span> Cas où les modifications ne sont pas en conflit avec la version courante</h3>
+<ol style="list-style-type: decimal">
+<li>Dans <strong>GitHub Desktop</strong>,</li>
+</ol>
+<ul>
+<li><p>mettre un commentaire court sur la modification dans cadre <strong>summary</strong>, commentaire plus long dans <strong>description</strong> éventuellement,</p></li>
+<li><p>cliquer sur <strong>Commit to master</strong> pour valider localement les modifications</p></li>
+<li><p>cliquer ensuite sur <strong>Push Origin</strong> pour renvoyer vers le répertoire source situé dans “GitHub.com”</p></li>
+</ul>
+<ol start="2" style="list-style-type: decimal">
+<li>Dans <strong>GitHub shell</strong>, se placer dans le répertoire souhaité et taper les commandes</li>
+</ol>
+<p><code>$ git add modified_file.ext</code></p>
+<p><code>$ git commit  -m &quot;[descriptive message]</code></p>
+<p><code>$ git push</code></p>
 </div>
-<div id="un-document-rmarkdown-a-la-loupe" class="section level2">
-<h2><span class="header-section-number">3.3</span> Un document RMarkdown à la loupe</h2>
-<div id="entete-du-document-yaml" class="section level3">
-<h3><span class="header-section-number">3.3.1</span> Entete du document : YAML</h3>
+<div id="cas-ou-les-modifications-sont-en-conflit-avec-la-version-courante-et-les-modifications-sont-mineures" class="section level3">
+<h3><span class="header-section-number">2.2.2</span> Cas où les modifications sont en conflit avec la version courante et les modifications sont mineures</h3>
+<p>Il y a conflit lorsque un même fichier a été chargé par 2 collaborateurs qui ont fait des modifications et veulent valider (commit + push) leurs modifications pour renvoyer sur “GitHub.com”.</p>
+<p>Dans ce cas, le <code>commit</code> est possible mais pas le <code>push</code>. Il faut gérer le conflit :</p>
+<ul>
+<li><p>en faisant un <code>pull</code> (= permet de récupérer la version courante pour faire apparaitre les modifications des 2 collaborateurs) dans “GitHub Desktop” en cliquant sur <code>Pull Origin</code></p></li>
+<li><p>en ouvrant le fichier en local pour sélectionner les modifications à conserver et supprimer les balises ( <code>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</code>, <code>======</code>, <code>&gt;&gt;&gt;&gt;&gt;&gt;&gt; xxxxxxxx</code>).</p></li>
+</ul>
+<p>Le conflit étant résolu, le <code>commit</code> et <code>push</code> sont désormais possibles en cliquant sur <code>Push Origin</code> dans “GitHub Desktop”.</p>
+</div>
+<div id="cas-ou-les-modifications-sont-en-conflit-avec-la-version-courante-et-les-modifications-sont-majeures" class="section level3">
+<h3><span class="header-section-number">2.2.3</span> Cas où les modifications sont en conflit avec la version courante et les modifications sont majeures</h3>
+<p>Dans le cas où les modifications des utilisateurs sont trop importantes, on peut faire le choix de créer 2 versions du fichier en créant une nouvelle branche.</p>
+<p>On obtient l’organisation suivante :</p>
 <div class="figure">
-<img src="images/HeaderYAML.png" alt="Un exemple d’entête de fichier RMarkdown" />
-<p class="caption">Un exemple d’entête de fichier RMarkdown</p>
+<img src="images/fork.PNG" alt="Affichage de l’arborescence sous GitHub.com" />
+<p class="caption">Affichage de l’arborescence sous GitHub.com</p>
+</div>
+<div id="pour-manipuler-les-branches" class="section level4">
+<h4><span class="header-section-number">2.2.3.1</span> Pour manipuler les branches :</h4>
+<ul>
+<li>Sous <strong>GitHub Desktop</strong>:</li>
+</ul>
+<p>Pour créer une nouvelle branche, <code>Branch</code> -&gt; <code>new branch</code> , saisir un nom <em>branch_name_to_create</em> et cliquer sur <code>Create branch</code> puis sur l’icône <code>Publish branch</code> et faire <code>commit to &quot;branch_name_to_create&quot;</code> et <code>push</code> du fichier à mettre dans la nouvelle branche.</p>
+<p>Pour changer de branche, cliquer sur l’icône <code>current branch</code> et sélectionner la branche souhaitée.</p>
+<p>Pour toutes opérations sur les branches, sélectionnner la branche à manipuler et cliquer dans le menu <strong>Branch</strong></p>
+<ul>
+<li>Sous <strong>GitHub Shell</strong>, se placer dans le répertoire souhaité et taper les commandes</li>
+</ul>
+<p><code>$ git branch [branch_name_to_create]</code></p>
+<p><code>$ git add modified_file.ext</code></p>
+<p><code>$ git commit  -m &quot;[descriptive message]</code></p>
+<p><code>$ git push</code></p>
+<p>Pour changer de branche, <code>$ git checkout [branch_name]</code></p>
+<p>Pour lister les branches de l’arborescence, <code>$ git branch</code></p>
+<p>Pour afficher l’état du repository, <code>$ git status</code> (fichier modifié, ajouté, …)</p>
+<p>Pour supprimer une branche, <code>$ git branch -d branch_name</code></p>
 </div>
 </div>
-<div id="options-globales-pour-le-code-r" class="section level3">
-<h3><span class="header-section-number">3.3.2</span> Options globales pour le code R</h3>
-<p>Les options du code R du document peuvent être spécifiées par défaut <img src="images/GlobalOptions.png" alt="Gérer les options globalement" /></p>
 </div>
-<div id="code-chunk" class="section level3">
-<h3><span class="header-section-number">3.3.3</span> Code Chunk</h3>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">```{r}
-<span class="dv">2</span><span class="op">+</span><span class="dv">2</span>
-```</code></pre></div>
-<pre><code>## [1] 4</code></pre>
-<p>ou python, ou sql, bash ….</p>
-</div>
-<div id="r-code-chunk-quelques-options-utiles" class="section level3">
-<h3><span class="header-section-number">3.3.4</span> R Code Chunk, quelques options utiles</h3>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">```{r, fig.show<span class="op">=</span><span class="st">&#39;hide&#39;</span>, warning<span class="op">=</span>TRUE, message<span class="op">=</span>FALSE}
-data(cars)
-m <span class="op">&lt;-</span> mean(cars$speed)
-plot(speed<span class="op">~</span>dist)
-```</code></pre></div>
-<p>La vitesse moyenne est `` <code>r m</code> ``.</p>
+<div id="c.-references" class="section level2">
+<h2><span class="header-section-number">2.3</span> C. Références</h2>
+<p>Aide mémoire des commandes Git : <a href="https://services.github.com/on-demand/downloads/github-git-cheat-sheet.pdf" class="uri">https://services.github.com/on-demand/downloads/github-git-cheat-sheet.pdf</a></p>
 
-</div>
 </div>
 </div>
             </section>
@@ -329,8 +303,8 @@ plot(speed<span class="op">~</span>dist)
           </div>
         </div>
       </div>
-<a href="git-via-github.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="blogdown.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="rmarkdown.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

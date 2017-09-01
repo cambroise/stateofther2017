@@ -5,7 +5,10 @@ date: '31-08-2017'
 output: html_document 
 ---
 
-```{r setup, include=FALSE}
+# Git via GitHub
+
+
+```{r setup-git, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
