@@ -54,7 +54,7 @@ Ce livre résume les expériences des participants durant l'atelier.
   - Timothée Tabouy
 
 
-```{r include=FALSE}
+```{r, include=FALSE, eval=TRUE}
 # automatically create a bib database for R packages
 knitr::write_bib(c('base', 'rmarkdown', 'blogdown', 'knitr', 'devtools', 'tidyverse', 'tidyr', 'dplyr', 'purrr', 'ggplot2', 'R6', 'roxygen2'),file='packages.bib')
 ```
